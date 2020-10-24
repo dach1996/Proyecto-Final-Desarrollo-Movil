@@ -18,6 +18,8 @@
                     </FormattedString.Spans>
                 </FormattedString>
             </Label.FormattedText>
+
+            <Label>adrian guadalupe</Label>
         </Label>
     </StackLayout>
 
