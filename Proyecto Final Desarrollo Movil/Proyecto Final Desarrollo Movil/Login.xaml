@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.LoginPage">
+    <ContentPage.Content>
+
+        <Grid>
+            <Image Source="1.jpg" Aspect="AspectFill" />
+            <BoxView Color="AliceBlue" Opacity="0.8"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="2.jpg" WidthRequest="100" HeightRequest="100" Margin="0,50,0,30" />
+
+                <StackLayout Grid.Row="1" Padding="30,20">
+                    <Entry Placeholder="Correo electronico" PlaceholderColor="White" />
+                    <Entry Placeholder="Contraseña" PlaceholderColor="White" IsPassword="True" />
+                    <Button Text="Iniciar Sesión" PlaceholderColor="White" BorderRadius="20" TextColor="Turquoise" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="¡Recuperar contraseña!" />
+                        <Label Text="Registrarse" HorizontalOptions="EndAndExpand" FontAttributes="Bold" />
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Grid.Row="2" HorizontalOptions="Center" Margin="0,0,0,50">
+                    <Label Text="Iniciar sesión com " HorizontalOptions="Center" />
+                    <StackLayout Orientation="Horizontal" />
+                    <Image Grid.Row="0" Source="2.jpg" WidthRequest="45" HeightRequest="45" />
+                    <Image Grid.Row="0" Source="2.jpg" WidthRequest="45" HeightRequest="45" />
+                    <Image Grid.Row="0" Source="2.jpg" WidthRequest="45" HeightRequest="45" />
+                </StackLayout>
+
+            </Grid>
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
