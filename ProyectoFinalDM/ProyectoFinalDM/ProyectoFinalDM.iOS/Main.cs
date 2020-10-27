@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace Proyecto_Final_Desarrollo_Movil.iOS
+namespace ProyectoFinalDM.iOS
 {
     public class Application
     {

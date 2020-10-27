@@ -3,12 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8D34ECEC-7C88-4DAF-BD50-2B89D2508516}</ProjectGuid>
+    <ProjectGuid>{366B3B48-2407-40C2-A4F2-CBFF20413A9E}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Proyecto_Final_Desarrollo_Movil.Droid</RootNamespace>
-    <AssemblyName>Proyecto Final Desarrollo Movil.Android</AssemblyName>
+    <RootNamespace>ProyectoFinalDM.Droid</RootNamespace>
+    <AssemblyName>ProyectoFinalDM.Android</AssemblyName>
     <Deterministic>True</Deterministic>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
@@ -86,13 +86,19 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable\Imagen2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Proyecto Final Desarrollo Movil\Proyecto Final Desarrollo Movil.csproj">
-      <Project>{CB2347D9-9FCD-420B-B561-1BC24FA3665E}</Project>
-      <Name>Proyecto Final Desarrollo Movil</Name>
+    <ProjectReference Include="..\ProyectoFinalDM\ProyectoFinalDM.csproj">
+      <Project>{E3E75966-5266-4CC6-887B-DA7D1E8B681E}</Project>
+      <Name>ProyectoFinalDM</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\customer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Imagen1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

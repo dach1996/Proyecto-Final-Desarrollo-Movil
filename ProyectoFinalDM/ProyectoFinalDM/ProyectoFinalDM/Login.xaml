@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Login.LoginPage">
+             x:Class="ProyectoFinalDM.Login">
     <ContentPage.Content>
-
         <Grid>
             <Image Source="1.jpg" Aspect="AspectFill" />
             <BoxView Color="AliceBlue" Opacity="0.8"/>
@@ -20,7 +19,7 @@
                 <StackLayout Grid.Row="1" Padding="30,20">
                     <Entry Placeholder="Correo electronico" PlaceholderColor="White" />
                     <Entry Placeholder="Contraseña" PlaceholderColor="White" IsPassword="True" />
-                    <Button Text="Iniciar Sesión" PlaceholderColor="White" BorderRadius="20" TextColor="Turquoise" />
+                    <Button Text="Iniciar Sesión"  BorderRadius="20" TextColor="Turquoise" />
                     <StackLayout Orientation="Horizontal">
                         <Label Text="¡Recuperar contraseña!" />
                         <Label Text="Registrarse" HorizontalOptions="EndAndExpand" FontAttributes="Bold" />

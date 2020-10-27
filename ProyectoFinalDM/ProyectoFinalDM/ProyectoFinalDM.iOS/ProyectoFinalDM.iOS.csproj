@@ -5,13 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D6FF70B6-375D-4F75-B816-C3FFB7D759C5}</ProjectGuid>
+    <ProjectGuid>{9BD65065-83E3-4083-B915-7D2F2549E311}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Proyecto_Final_Desarrollo_Movil.iOS</RootNamespace>
+    <RootNamespace>ProyectoFinalDM.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Proyecto Final Desarrollo Movil.iOS</AssemblyName>
+    <AssemblyName>ProyectoFinalDM.iOS</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <ProvisioningType>automatic</ProvisioningType>
@@ -128,9 +128,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Proyecto Final Desarrollo Movil\Proyecto Final Desarrollo Movil.csproj">
-      <Project>{CB2347D9-9FCD-420B-B561-1BC24FA3665E}</Project>
-      <Name>Proyecto Final Desarrollo Movil</Name>
+    <ProjectReference Include="..\ProyectoFinalDM\ProyectoFinalDM.csproj">
+      <Project>{E3E75966-5266-4CC6-887B-DA7D1E8B681E}</Project>
+      <Name>ProyectoFinalDM</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\19_customer.png" />
   </ItemGroup>
 </Project>

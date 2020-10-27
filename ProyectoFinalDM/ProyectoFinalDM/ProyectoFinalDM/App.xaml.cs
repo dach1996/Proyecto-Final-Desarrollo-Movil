@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Proyecto_Final_Desarrollo_Movil
+namespace ProyectoFinalDM
 {
     public partial class App : Application
     {
@@ -10,7 +10,7 @@ namespace Proyecto_Final_Desarrollo_Movil
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Login();
         }
 
         protected override void OnStart()
