@@ -19,7 +19,7 @@ namespace ProyectoFinalDM
 
         private async void login(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ClienteView());
+            await Navigation.PushAsync(new TicketView());
         }
     }
 }

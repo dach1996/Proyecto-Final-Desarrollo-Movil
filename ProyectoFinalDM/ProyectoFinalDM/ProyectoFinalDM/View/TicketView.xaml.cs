@@ -11,20 +11,20 @@ using Xamarin.Forms.Xaml;
 namespace ProyectoFinalDM.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ClienteView : ContentPage
+    public partial class TicketView : ContentPage
     {
-        private ClienteViewModel clienteViewModel;
-        public ClienteView()
+        public TicketViewModel contexto;
+
+        public TicketView()
         {
-            
             InitializeComponent();
-            clienteViewModel = new ClienteViewModel();
-            BindingContext = clienteViewModel;
+            contexto = new TicketViewModel();
+            BindingContext = contexto;
         }
 
-        private void clienteSeleccionado(object sender, SelectedItemChangedEventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new NuevoTicketView());
         }
     }
 }

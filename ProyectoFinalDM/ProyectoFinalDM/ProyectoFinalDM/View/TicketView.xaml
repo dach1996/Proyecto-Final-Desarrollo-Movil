@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalDM.View.TicketView">
+    <StackLayout Margin="5">
+        <Button Clicked="Button_Clicked" Text="Nuevo Ticket +"  CornerRadius="20" BackgroundColor="Green"/>
+        <ListView    ItemsSource="{Binding tickets}" HasUnevenRows="True" Margin="5"  >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Column="0" Text="{Binding Codticket}"></Label>
+                            <Label HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1"  Text="{Binding CodCliente}"></Label>
+                            <Label HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="1"  Text="{Binding LocalTicket}"></Label>
+                            <Label HorizontalTextAlignment="Center" Grid.Row="2" Grid.Column="1"  Text="{Binding CategoriaTicket}"></Label>
+                            <Label HorizontalTextAlignment="End" Grid.RowSpan="3" Grid.Column="2"  Text="{Binding PrioridadTicket}"></Label>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        </StackLayout>
+
+</ContentPage>
