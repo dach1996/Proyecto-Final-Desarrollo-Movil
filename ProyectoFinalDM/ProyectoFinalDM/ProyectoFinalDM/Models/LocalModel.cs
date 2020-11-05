@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProyectoFinalDM.Models
 {
-    class LocalModel : Notificaciones
+   public class LocalModel : Notificaciones
     {
         private int codLocal;
 

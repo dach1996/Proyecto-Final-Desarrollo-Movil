@@ -24,15 +24,16 @@
             <Label Text="{Binding ticket.CodTicket}" />
 
             <Label Text="CLIENTE" />
-            <Picker ItemsSource="{Binding clientes}" ItemDisplayBinding="{Binding NombreCliente}" >
-                <Picker.Items ></Picker.Items>
-            </Picker>
+            <Picker  ItemsSource="{Binding clientes}"
+                     ItemDisplayBinding="{Binding NombreCliente}"
+                     SelectedItem="{Binding ticket.ClienteSelected}"/>
 
             <Label Text="LOCAL" />
-            <Picker ItemsSource="{Binding locales}" />
+            <Picker ItemsSource="{Binding locales}" ItemDisplayBinding="{Binding NombreLocal}"  />
 
             <Label Text="CATEGORIA" />
-            <Entry  Text="{Binding ticket.CategoriaTicket }" />
+            <Picker ItemsSource="{Binding categorias}"  />
+
 
             <Label Text="TITULO" />
             <Entry Text="{Binding ticket.TituloTicket}" />

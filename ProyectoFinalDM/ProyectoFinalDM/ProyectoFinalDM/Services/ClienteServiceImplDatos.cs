@@ -3,6 +3,7 @@ using ProyectoFinalDM.Services.IService;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace ProyectoFinalDM.Services
@@ -13,6 +14,7 @@ namespace ProyectoFinalDM.Services
         public ClienteServiceImplDatos()
         {
             clientes = new ObservableCollection<ClienteModel>();
+
             clientes.Add(new ClienteModel
             {
                 CodCliente = 0,
@@ -42,6 +44,11 @@ namespace ProyectoFinalDM.Services
         public ObservableCollection<ClienteModel> listarClientes()
         {
             return clientes;
+        }
+
+        public ClienteModel buscarCliente(int codCliente)
+        {
+            return clientes.FirstOrDefault(c => c.CodCliente==codCliente);
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services.IService;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using Xamarin.Forms;
+
 
 namespace ProyectoFinalDM.Services
 {
@@ -18,7 +16,10 @@ namespace ProyectoFinalDM.Services
             if (tickets == null)
             {
                 tickets = new ObservableCollection<TicketModel>();
-               /* for (int a = 1; a < 10; a++)
+                IClienteService clientesService = new ClienteServiceImplDatos();
+                ObservableCollection<ClienteModel> clientes = new ObservableCollection<ClienteModel>();
+                clientes = clientesService.listarClientes();
+                for (int a = 0; a < clientes.Count; a++)
                 {
                     tickets.Add(new TicketModel()
                     {
@@ -28,15 +29,14 @@ namespace ProyectoFinalDM.Services
                         FechaFinTicket = new DateTime(),
                         FechaTicket = new DateTime(),
                         LocalTicket = "Quicentro",
-                        CodCliente = "Taty",
                         CodUsuario = "Juanito Perez",
                         PrioridadTicket = "Alta",
-                        TituloTicket = "Coordinar para cambiar Sensor"
+                        TituloTicket = "Coordinar para cambiar Sensor",
+                        ClienteSelected = clientes[a]
                     });
-                
-
+               
                 }
-               */
+               
             }
         }
         public ObservableCollection<TicketModel> consultarTickets()

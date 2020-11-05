@@ -49,6 +49,29 @@ namespace ProyectoFinalDM.Models
         }
 
 
+        public override bool Equals(object obj)
+        {
+            return obj is ClienteModel model &&
+                   codCliente == model.codCliente &&
+                   CodCliente == model.CodCliente &&
+                   nombreCliente == model.nombreCliente &&
+                   NombreCliente == model.NombreCliente &&
+                   imagenCliente == model.imagenCliente &&
+                   ImagenCliente == model.ImagenCliente &&
+                   userCliente == model.userCliente &&
+                   UserCliente == model.UserCliente &&
+                   passwordCliente == model.passwordCliente &&
+                   PasswordCliente == model.PasswordCliente;
+        }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

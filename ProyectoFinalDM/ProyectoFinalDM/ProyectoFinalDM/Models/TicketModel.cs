@@ -7,12 +7,12 @@ namespace ProyectoFinalDM.Models
 {
     public class TicketModel : Notificaciones
     {
-        private bool isBisy=false;
+        private bool isBisy = false;
 
         public bool isBusy
         {
             get { return isBisy; }
-            set { isBisy=value; this.OnPropertyChanged(); }
+            set { isBisy = value; this.OnPropertyChanged(); }
         }
 
 
@@ -80,9 +80,9 @@ namespace ProyectoFinalDM.Models
             set { mycategoriaTicketVar = value; this.OnPropertyChanged(); }
         }
 
-        private string codCliente;
+        private int codCliente;
 
-        public string CodCliente
+        public int CodCliente
         {
             get { return codCliente; }
             set { codCliente = value; this.OnPropertyChanged(); }
@@ -96,6 +96,15 @@ namespace ProyectoFinalDM.Models
             set { codUsuario = value; this.OnPropertyChanged(); }
         }
 
+        private ClienteModel clienteSelected;
 
+        public ClienteModel ClienteSelected
+        {
+            get { return clienteSelected; }
+            set
+            {
+                clienteSelected = value; this.OnPropertyChanged();
+            }
+        }
     }
 }

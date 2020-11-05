@@ -1,5 +1,6 @@
 ﻿using ProyectoFinalDM.Models;
 using ProyectoFinalDM.ViewModel;
+using ProyectoFinalDM.ViewModel.Tickets;
 using System;
 using System.Collections.Generic;
 using System.Linq;

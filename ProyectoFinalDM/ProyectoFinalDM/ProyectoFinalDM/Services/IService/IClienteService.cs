@@ -6,5 +6,6 @@ namespace ProyectoFinalDM.Services.IService
     public interface IClienteService
     {
         ObservableCollection<ClienteModel> listarClientes();
+        ClienteModel buscarCliente(int  codCliente);
     }
 }

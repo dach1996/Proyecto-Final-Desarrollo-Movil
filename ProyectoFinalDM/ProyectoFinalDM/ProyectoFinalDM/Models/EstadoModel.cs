@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProyectoFinalDM.Models
 {
-    class Estados:Notificaciones
+    class EstadoModel:Notificaciones
 
     {
         private int codEstado;
