@@ -6,14 +6,14 @@ using System.Collections.ObjectModel;
 
 namespace ProyectoFinalDM.ViewModel
 {
-    class ClienteViewModel
+   public class ClienteViewModel
     {
-        private ObservableCollection<Cliente> clientes;
+        private ObservableCollection<ClienteModel> clientes;
 
         public ClienteViewModel()
         {
-            this.clientes = new ObservableCollection<Cliente>();
-            clientes.Add(new Cliente
+            this.clientes = new ObservableCollection<ClienteModel>();
+           /* clientes.Add(new ClienteModel
             {
                 codCliente = 0,
                 nombreCliente = "Crocs",
@@ -22,7 +22,7 @@ namespace ProyectoFinalDM.ViewModel
                 passwordCliente = ""
             });
 
-            clientes.Add(new Cliente
+            clientes.Add(new ClienteModel
             {
                 codCliente = 1,
                 nombreCliente = "Taty",
@@ -30,16 +30,16 @@ namespace ProyectoFinalDM.ViewModel
                 userCliente = "",
                 passwordCliente = ""
             });
-            clientes.Add(new Cliente
+            clientes.Add(new ClienteModel
             {
                 codCliente = 2,
                 nombreCliente = "Supermaxi",
                 imagenCliente = "https://www.corporacionfavorita.com/wp-content/uploads/2020/03/cf-logos-supermaxi.jpg",
                 userCliente = "",
                 passwordCliente = ""
-            });
+            });*/
         }
 
-        public ObservableCollection<Cliente> Clientes { get => clientes; set => clientes = value; }
+        public ObservableCollection<ClienteModel> Clientes { get => clientes; set => clientes = value; }
     }
 }

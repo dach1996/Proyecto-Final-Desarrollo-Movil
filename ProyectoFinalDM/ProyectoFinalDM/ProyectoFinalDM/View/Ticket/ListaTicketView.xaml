@@ -4,7 +4,7 @@
              x:Class="ProyectoFinalDM.View.TicketView">
     <StackLayout Margin="5">
         <Button Clicked="Button_Clicked" Text="Nuevo Ticket +"  CornerRadius="20" BackgroundColor="Green"/>
-        <ListView    ItemsSource="{Binding tickets}" HasUnevenRows="True" Margin="5"  >
+        <ListView  x:Name="LVTickets"  ItemsSource="{Binding tickets}"  HasUnevenRows="True" Margin="5" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -19,7 +19,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                            <Label VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Column="0" Text="{Binding Codticket}"></Label>
+                            <Label VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Column="0" Text="Cod"></Label>
                             <Label HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1"  Text="{Binding CodCliente}"></Label>
                             <Label HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="1"  Text="{Binding LocalTicket}"></Label>
                             <Label HorizontalTextAlignment="Center" Grid.Row="2" Grid.Column="1"  Text="{Binding CategoriaTicket}"></Label>

@@ -6,11 +6,12 @@ namespace ProyectoFinalDM
 {
     public partial class App : Application
     {
+        public static NavigationPage navegacion;
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage( new Login());
+            navegacion= new NavigationPage(new Login());
+            MainPage = navegacion;
         }
 
         protected override void OnStart()

@@ -11,7 +11,7 @@ namespace ProyectoFinalDM.Models
 
         public bool isBusy
         {
-            get { return isBisy=false; }
+            get { return isBisy; }
             set { isBisy=value; this.OnPropertyChanged(); }
         }
 

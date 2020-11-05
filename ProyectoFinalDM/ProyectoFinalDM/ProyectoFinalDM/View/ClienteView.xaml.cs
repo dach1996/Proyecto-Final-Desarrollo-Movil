@@ -20,6 +20,7 @@ namespace ProyectoFinalDM.View
             InitializeComponent();
             clienteViewModel = new ClienteViewModel();
             BindingContext = clienteViewModel;
+            
         }
 
         private void clienteSeleccionado(object sender, SelectedItemChangedEventArgs e)

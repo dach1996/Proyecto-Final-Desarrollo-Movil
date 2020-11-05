@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalDM.View.NuevoTicketView">
+    <NavigationPage.TitleView>
+        <StackLayout
+          Orientation="Horizontal"
+          VerticalOptions="Center"
+          Spacing="10">
+            <Image
+               Source="Icon.png"
+               Aspect="AspectFit" />
+            <Label
+               Text="Registrar Ticket"
+               FontSize="18"
+               TextColor="White"
+               VerticalTextAlignment="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ScrollView>
+        <StackLayout>
+
+            <Label Text="{Binding ticket.CodTicket}" />
+
+            <Label Text="CLIENTE" />
+            <Picker ItemsSource="{Binding clientes}" ItemDisplayBinding="{Binding NombreCliente}" >
+                <Picker.Items ></Picker.Items>
+            </Picker>
+
+            <Label Text="LOCAL" />
+            <Picker ItemsSource="{Binding locales}" />
+
+            <Label Text="CATEGORIA" />
+            <Entry  Text="{Binding ticket.CategoriaTicket }" />
+
+            <Label Text="TITULO" />
+            <Entry Text="{Binding ticket.TituloTicket}" />
+
+            <Label Text="PRIORIDAD" />
+            <Entry  Text="{Binding ticket.PrioridadTicket }" />
+
+            <Label Text="FECHA TICKET" />
+            <Label Text="{Binding ticket.FechaTicket }" />
+
+            <Label Text="FECHA FIN TICKET" />
+            <Label  Text="{Binding ticket.FechaFinTicket }" />
+
+            <Label Text="ESTADO" />
+            <Entry  Text="{Binding ticket.Estado }" IsReadOnly="True" Placeholder="Ingresado" />
+
+            <Label Text="USUARIO" />
+            <Entry  IsReadOnly="True"  Text="{Binding ticket.CodUsuario }" />
+
+            <StackLayout Orientation="Vertical">
+                <Button Text="Guardar" Command="{Binding guardarTicketCommand }" />
+                <Button Text="Borrar" Command="{Binding eliminarTicketCommand }" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

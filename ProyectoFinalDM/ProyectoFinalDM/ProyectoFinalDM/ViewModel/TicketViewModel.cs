@@ -1,6 +1,7 @@
 ﻿using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services;
 using ProyectoFinalDM.Services.IService;
+using ProyectoFinalDM.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,67 +13,72 @@ namespace ProyectoFinalDM.ViewModel
 {
     public class TicketViewModel : TicketModel
     {
-
-
-        public ObservableCollection<TicketModel> tickets { get; set; }
+        //Servicios
         public ITicketService servicioTicket = new TicketServiceImplDatos();
-        public TicketModel ticket = new TicketModel();
+        public IClienteService clienteService = new ClienteServiceImplDatos();
 
 
-        public TicketViewModel()
+        //Modelos
+        public ObservableCollection<TicketModel> tickets { get; set; }
+        public TicketModel ticket  { get;set; }
+        public ObservableCollection<ClienteModel> clientes { get; set; }
+        public ObservableCollection<string> locales { get; set; }
+
+        public TicketViewModel(TicketModel ticket=null)
         {
+        
+            if (ticket == null)
+            {
+                this.ticket = new TicketModel();
+            }
+            else
+            {
+                this.ticket = ticket;
+            }
+            clientes = clienteService.listarClientes();
             tickets = servicioTicket.consultarTickets();
             guardarTicketCommand = new Command(async () => await this.guardarTicket(), () => !this.isBusy);
-            editarTicketCommand = new Command(async () => await this.editarTicket(), () => !this.isBusy);
             eliminarTicketCommand = new Command(async () => await this.eliminarTicket(), () => !this.isBusy);
             limpiarCommand = new Command(limpiar, ()=> !this.isBusy);
+           }
 
 
-        }
 
        public Command guardarTicketCommand { get; set; }
         public Command editarTicketCommand { get; set; }
         public Command eliminarTicketCommand { get; set; }
         public Command limpiarCommand { get; set; }
 
+
+
         private async Task guardarTicket()
         {
             isBusy = true;
-            Guid CodTicket = Guid.NewGuid();
-            ticket = new TicketModel()
+            if (string.IsNullOrWhiteSpace(ticket.CodTicket))
             {
-                CodTicket = CodTicket.ToString(),
-                LocalTicket = LocalTicket,
-                Estado = "Nuevo",
-                CodCliente = CodCliente,
-                PrioridadTicket = PrioridadTicket,
-            };
-            servicioTicket.guardarTicket(ticket);
-            await Task.Delay(200);
+                Guid CodTicket = Guid.NewGuid();
+                ticket.CodTicket = CodTicket.ToString();
+                servicioTicket.guardarTicket(ticket);
+            }
+            else
+            {
+                servicioTicket.modificarTicket(ticket);
+            }
+            
+            await App.navegacion.PopAsync();
             isBusy = false;
         }
 
-        private async Task editarTicket()
-        {
-            isBusy = true;
-            ticket = new TicketModel()
-            {
-                CodTicket = CodCliente,
-                LocalTicket = LocalTicket,
-                Estado = "Nuevo",
-                CodCliente = CodCliente,
-                PrioridadTicket = PrioridadTicket,
-            };
-            servicioTicket.modificarTicket(ticket);
-            await Task.Delay(200);
-            isBusy = false;
-        }
 
         private async Task eliminarTicket()
         {
             isBusy = true;
-            servicioTicket.eliminarTicket(CodTicket);
-            await Task.Delay(200);
+            servicioTicket.eliminarTicket(ticket.CodTicket);
+            Page page = new Page();
+
+            bool pregunta = await App.navegacion.DisplayAlert("Advertencia", "Desea eliminar este registro", "Sí", "No");
+            if(pregunta)
+            await App.navegacion.PopAsync();
             isBusy = false;
         }
 

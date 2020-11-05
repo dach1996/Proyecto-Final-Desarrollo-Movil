@@ -14,21 +14,16 @@ namespace ProyectoFinalDM.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NuevoTicketView : ContentPage
     {
-        private TicketViewModel contexto = new TicketViewModel();
-        public NuevoTicketView()
+        private TicketViewModel contexto;
+        public NuevoTicketView(TicketModel ticket = null)
         {
+
             InitializeComponent();
+            contexto = new TicketViewModel(ticket);
             BindingContext = contexto;
-            lvTickets.ItemSelected += LvTickets_ItemSelected;
+
         }
 
-        private void LvTickets_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (e.SelectedItem != null)
-            {
-                TicketModel modelo = (TicketModel)e.SelectedItem;
-                
-            }
-        }
+    
     }
 }
