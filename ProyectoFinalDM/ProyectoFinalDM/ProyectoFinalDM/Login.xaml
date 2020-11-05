@@ -4,7 +4,7 @@
              x:Class="ProyectoFinalDM.Login">
     <ContentPage.Content>
         <Grid>
-            <Image Source="1.jpg" Aspect="AspectFill" />
+            <Image Source="Imagen1.jpg" Aspect="AspectFill" />
             <BoxView Color="AliceBlue" Opacity="0.8"/>
 
             <Grid>
@@ -14,7 +14,7 @@
                     <RowDefinition Height="Auto" />
 
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0" Source="2.jpg" WidthRequest="100" HeightRequest="100" Margin="0,50,0,30" />
+                <Image Grid.Row="0" Source="Imagen2.jpg" WidthRequest="100" HeightRequest="100" Margin="0,50,0,30" />
 
                 <StackLayout Grid.Row="1" Padding="30,20">
                     <Entry Placeholder="Correo electronico" PlaceholderColor="White" />
@@ -29,9 +29,9 @@
                 <StackLayout Grid.Row="2" HorizontalOptions="Center" Margin="0,0,0,50">
                     <Label Text="Iniciar sesión com " HorizontalOptions="Center" />
                     <StackLayout Orientation="Horizontal" />
-                    <Image Grid.Row="0" Source="2.jpg" WidthRequest="45" HeightRequest="45" />
-                    <Image Grid.Row="0" Source="2.jpg" WidthRequest="45" HeightRequest="45" />
-                    <Image Grid.Row="0" Source="2.jpg" WidthRequest="45" HeightRequest="45" />
+                    <Image Grid.Row="0" Source="Imagen2.jpg" WidthRequest="45" HeightRequest="45" />
+                    <Image Grid.Row="0" Source="Imagen2.jpg" WidthRequest="45" HeightRequest="45" />
+                    <Image Grid.Row="0" Source="Imagen2.jpg" WidthRequest="45" HeightRequest="45" />
                 </StackLayout>
 
             </Grid>
