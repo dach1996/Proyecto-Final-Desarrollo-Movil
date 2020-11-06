@@ -17,23 +17,25 @@ namespace ProyectoFinalDM.Services
             {
                 tickets = new ObservableCollection<TicketModel>();
                 IClienteService clientesService = new ClienteServiceImplDatos();
+                ICategoriasService categoriaService = new CategoriaServiceImplDatos();
                 ObservableCollection<ClienteModel> clientes = new ObservableCollection<ClienteModel>();
+                ObservableCollection<CategoriaModel> categorias = new ObservableCollection<CategoriaModel>();
                 clientes = clientesService.listarClientes();
+                categorias = categoriaService.listarCategorias();
                 for (int a = 0; a < clientes.Count; a++)
                 {
                     tickets.Add(new TicketModel()
                     {
-                        CodTicket = "asdf",
-                        CategoriaTicket = "Remplazo",
+                        CodTicket =  Guid.NewGuid().ToString(),
                         Estado = "Ingresado",
                         FechaFinTicket = new DateTime(),
                         FechaTicket = new DateTime(),
                         LocalTicket = "Quicentro",
                         CodUsuario = "Juanito Perez",
-                        PrioridadTicket = "Alta",
                         TituloTicket = "Coordinar para cambiar Sensor",
-                        ClienteSelected = clientes[a]
-                    });
+                        Cliente = clientes[a],
+                        Categoria = categorias[new Random().Next(1, 5)]
+                    }) ;
                
                 }
                

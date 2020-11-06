@@ -26,20 +26,25 @@
             <Label Text="CLIENTE" />
             <Picker  ItemsSource="{Binding clientes}"
                      ItemDisplayBinding="{Binding NombreCliente}"
-                     SelectedItem="{Binding ticket.ClienteSelected}"/>
+                     SelectedItem="{Binding ticket.Cliente}"/>
 
             <Label Text="LOCAL" />
             <Picker ItemsSource="{Binding locales}" ItemDisplayBinding="{Binding NombreLocal}"  />
 
             <Label Text="CATEGORIA" />
-            <Picker ItemsSource="{Binding categorias}"  />
+            <Picker  ItemsSource="{Binding categorias}"
+                     ItemDisplayBinding="{Binding NombreCategoria}"
+                     SelectedItem="{Binding ticket.Categoria}"/>
 
 
             <Label Text="TITULO" />
             <Entry Text="{Binding ticket.TituloTicket}" />
 
             <Label Text="PRIORIDAD" />
-            <Entry  Text="{Binding ticket.PrioridadTicket }" />
+            <Picker  ItemsSource="{Binding prioridades}"
+                     ItemDisplayBinding="{Binding NombrePrioridad}"
+                     SelectedItem="{Binding ticket.Prioridad}"/>
+
 
             <Label Text="FECHA TICKET" />
             <Label Text="{Binding ticket.FechaTicket }" />

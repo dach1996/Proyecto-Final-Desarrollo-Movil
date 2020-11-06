@@ -40,14 +40,6 @@ namespace ProyectoFinalDM.Models
             set { tituloTicket = value; this.OnPropertyChanged(); }
         }
 
-        private string prioridadTicket;
-
-        public string PrioridadTicket
-        {
-            get { return prioridadTicket; }
-            set { prioridadTicket = value; this.OnPropertyChanged(); }
-        }
-
         private DateTime fechaTicket;
 
         public DateTime FechaTicket
@@ -72,22 +64,6 @@ namespace ProyectoFinalDM.Models
             set { estado = value; this.OnPropertyChanged(); }
         }
 
-        private string mycategoriaTicketVar;
-
-        public string CategoriaTicket
-        {
-            get { return mycategoriaTicketVar; }
-            set { mycategoriaTicketVar = value; this.OnPropertyChanged(); }
-        }
-
-        private int codCliente;
-
-        public int CodCliente
-        {
-            get { return codCliente; }
-            set { codCliente = value; this.OnPropertyChanged(); }
-        }
-
         private string codUsuario;
 
         public string CodUsuario
@@ -96,15 +72,32 @@ namespace ProyectoFinalDM.Models
             set { codUsuario = value; this.OnPropertyChanged(); }
         }
 
-        private ClienteModel clienteSelected;
+        private ClienteModel cliente;
 
-        public ClienteModel ClienteSelected
+        public ClienteModel Cliente
         {
-            get { return clienteSelected; }
+            get { return cliente; }
             set
             {
-                clienteSelected = value; this.OnPropertyChanged();
+                cliente = value; this.OnPropertyChanged();
             }
         }
+
+        private CategoriaModel categoria;
+
+        public CategoriaModel Categoria
+        {
+            get { return categoria; }
+            set { categoria = value; }
+        }
+
+        private PrioridadModel prioridad;
+
+        public PrioridadModel Prioridad 
+        {
+            get { return prioridad; }
+            set { prioridad = value; }
+        }
+
     }
 }
