@@ -6,11 +6,11 @@ $dbConn =  connect($db);
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
 {
-    if (isset($_GET['codigo']))
+    if (isset($_GET['cod_usuario']))
     {
       //Mostrar un post
-      $sql = $dbConn->prepare("SELECT * estudiante  where codigo=:codigo");
-      $sql->bindValue(':codigo', $_GET['codigo']);
+      $sql = $dbConn->prepare("SELECT * usuarios  where cod_usuario=:cod_usuario");
+      $sql->bindValue(':cod_usuario', $_GET['cod_usuario']);
       $sql->execute();
       header("HTTP/1.1 200 OK");
       echo json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 
 	  else {
       //Mostrar lista de post
-      $sql = $dbConn->prepare("SELECT * FROM estudiante");
+      $sql = $dbConn->prepare("SELECT * FROM usuarios`");
       $sql->execute();
       $sql->setFetchMode(PDO::FETCH_ASSOC);
       header("HTTP/1.1 200 OK");
@@ -31,17 +31,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $input = $_POST;
-    $sql = "INSERT INTO estudiante
-          (codigo, nombre, apellido, edad)
+    $sql = "INSERT INTO usuarios
+    
+(cod_usuario,ced_usuario,nombre_usuario,apellido_usuario,password_usuario,fecha_nacimiento_usuario,foto_usuario,usuario_usuario,correo_usuario)          
           VALUES
-          (:codigo, :nombre, :apellido, :edad)";
+          (:cod_usuario, :ced_usuario, :nombre_usuario, :apellido_usuario,:password_usuario,:fecha_nacimiento_usuario,:foto_usuario,:usuario_usuario,:correo_usuario)";
     $statement = $dbConn->prepare($sql);
     bindAllValues($statement, $input);
     $statement->execute();
 
     $postCodigo = $dbConn->lastInsertId();
     if($postCodigo)
-    {      
+    {
       $input['codigo'] = $postCodigo;
       header("HTTP/1.1 200 OK");
       echo json_encode($input);
@@ -51,9 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
-	$codigo = $_GET['codigo'];
-  $statement = $dbConn->prepare("DELETE FROM  estudiante where codigo=:codigo");
-  $statement->bindValue(':codigo', $codigo);
+	$codigo = $_GET['cod_usuario'];
+  $statement = $dbConn->prepare("DELETE FROM  usuarios where cod_usuario=:cod_usuario");
+  $statement->bindValue(':cod_usuario', $codigo);
   $statement->execute();
 	header("HTTP/1.1 200 OK");
 	exit();
@@ -62,13 +63,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 if ($_SERVER['REQUEST_METHOD'] == 'PUT')
 {
     $input = $_GET;
-    $postCodigo = $input['codigo'];
+    $postCodigo = $input['cod_usuario'];
     $fields = getParams($input);
 
     $sql = "
-          UPDATE estudiante
+          UPDATE usuarios
           SET $fields
-          WHERE codigo='$postCodigo'
+          WHERE cod_usuario='$postCodigo'
            ";
 
     $statement = $dbConn->prepare($sql);
