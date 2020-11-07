@@ -72,3 +72,33 @@ CREATE TABLE detalles_ticket(
   CONSTRAINT detalle_usuario FOREIGN KEY (cod_usuario) REFERENCES usuarios (cod_usuario) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT detalle_ticket FOREIGN KEY (cod_ticket) REFERENCES tickets (cod_ticket) ON DELETE CASCADE ON UPDATE CASCADE
   );
+
+INSERT INTO `ticketsxamarin`.`categorias` (`nomb_categoria`) VALUES ('Revisar');
+INSERT INTO `ticketsxamarin`.`categorias` (`nomb_categoria`) VALUES ('Instalar');
+INSERT INTO `ticketsxamarin`.`categorias` (`nomb_categoria`) VALUES ('Buscar');
+INSERT INTO `ticketsxamarin`.`categorias` (`nomb_categoria`) VALUES ('Seguimiento');
+INSERT INTO `ticketsxamarin`.`categorias` (`nomb_categoria`) VALUES ('Desinstalacion');
+
+INSERT INTO `ticketsxamarin`.`clientes` (`nomb_cliente`, `image_cliente`, `usu_cliente`, `pass_cliente`) VALUES ('Taty', 'null', 'taty', '12345');
+INSERT INTO `ticketsxamarin`.`clientes` (`nomb_cliente`, `image_cliente`, `usu_cliente`, `pass_cliente`) VALUES ('Crocs', 'null', 'crocs', '12345');
+INSERT INTO `ticketsxamarin`.`clientes` (`nomb_cliente`, `image_cliente`, `usu_cliente`, `pass_cliente`) VALUES ('Supermaxi', 'null', 'supermaxi', '12345');
+INSERT INTO `ticketsxamarin`.`clientes` (`nomb_cliente`, `image_cliente`, `usu_cliente`, `pass_cliente`) VALUES ('Banda', 'null', 'banda', '12345');
+INSERT INTO `ticketsxamarin`.`clientes` (`nomb_cliente`, `image_cliente`, `usu_cliente`, `pass_cliente`) VALUES ('Fybeca', 'null', 'fybeca', '12345');
+
+INSERT INTO `ticketsxamarin`.`locales` (`nomb_local`) VALUES ('Bosque');
+INSERT INTO `ticketsxamarin`.`locales` (`nomb_local`) VALUES ('CCI');
+INSERT INTO `ticketsxamarin`.`locales` (`nomb_local`) VALUES ('San Marino');
+INSERT INTO `ticketsxamarin`.`locales` (`nomb_local`) VALUES ('Portoviejo');
+INSERT INTO `ticketsxamarin`.`locales` (`nomb_local`) VALUES ('Quicentro');
+
+INSERT INTO `ticketsxamarin`.`usuarios` (`ced_usuario`, `nombre_usuario`, `apellido_usuario`, `password_usuario`, `usuario_usuario`) VALUES ('1716361444', 'Danny', 'Cárdenas', '12345', 'danny');
+INSERT INTO `ticketsxamarin`.`usuarios` (`ced_usuario`, `nombre_usuario`, `apellido_usuario`, `password_usuario`, `usuario_usuario`) VALUES ('1716361477', 'Adrian', 'Guadalupe', '12345', 'adrian');
+INSERT INTO `ticketsxamarin`.`usuarios` (`ced_usuario`, `nombre_usuario`, `apellido_usuario`, `password_usuario`, `usuario_usuario`) VALUES ('1716361477', 'Bryan', 'Vergara', '12345', 'bryan');
+INSERT INTO `ticketsxamarin`.`usuarios` (`ced_usuario`, `nombre_usuario`, `apellido_usuario`, `password_usuario`, `usuario_usuario`) VALUES ('1716361488', 'Pablo', 'Salazar', '12345', 'pablo');
+
+INSERT INTO `ticketsxamarin`.`tickets` (`cod_local`, `titulo_ticket`, `estado_ticket`, `prioridad_ticket`, `cod_usuario`, `cod_cliente`, `cod_categoria`) VALUES ('1', 'Revisar Sensor', 'Ingresado', 'Alta', '1', '1', '1');
+INSERT INTO `ticketsxamarin`.`tickets` (`cod_local`, `titulo_ticket`, `estado_ticket`, `prioridad_ticket`, `cod_usuario`, `cod_cliente`, `cod_categoria`) VALUES ('2', 'Corregir Mancha', 'Ingresado', 'Baja', '2', '2', '2');
+INSERT INTO `ticketsxamarin`.`tickets` (`cod_local`, `titulo_ticket`, `estado_ticket`, `prioridad_ticket`, `cod_usuario`, `cod_cliente`, `cod_categoria`) VALUES ('3', 'Ver datos', 'Ingresado', 'Media', '3', '3', '3');
+INSERT INTO `ticketsxamarin`.`tickets` (`cod_local`, `titulo_ticket`, `estado_ticket`, `prioridad_ticket`, `cod_usuario`, `cod_cliente`, `cod_categoria`) VALUES ('4', 'Desinstalar Local', 'Ingresado', 'Alta', '4', '4', '4');
+
+
