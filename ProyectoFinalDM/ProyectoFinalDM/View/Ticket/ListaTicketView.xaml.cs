@@ -34,5 +34,10 @@ namespace ProyectoFinalDM.View
         {
             await Navigation.PushAsync(new NuevoTicketView());
         }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            ticketViewModel.Prueba = !ticketViewModel.Prueba;
+        }
     }
 }

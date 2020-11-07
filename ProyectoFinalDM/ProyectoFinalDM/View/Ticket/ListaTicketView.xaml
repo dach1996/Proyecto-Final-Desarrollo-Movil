@@ -2,9 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoFinalDM.View.TicketView">
-    <StackLayout Margin="5">
+    <StackLayout Margin="5" >
         <Button Clicked="Button_Clicked" Text="Nuevo Ticket +"  CornerRadius="20" BackgroundColor="Green"/>
-        <ListView  x:Name="LVTickets"  ItemsSource="{Binding tickets}"  HasUnevenRows="True" Margin="5" >
+        <Button Clicked="Button_Clicked_1" Text="Prueba"  CornerRadius="20" BackgroundColor="Green"/>
+        <ActivityIndicator IsVisible="{Binding Prueba}" IsRunning="True" VerticalOptions="CenterAndExpand"></ActivityIndicator>
+        <ListView  x:Name="LVTickets" IsVisible="{Binding Prueba}"  ItemsSource="{Binding tickets}"  HasUnevenRows="True" Margin="5" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -29,6 +31,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        </StackLayout>
+    </StackLayout>
 
 </ContentPage>
