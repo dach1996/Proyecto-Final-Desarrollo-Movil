@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinalDM.View.NuevoTicketView">
+             x:Class="ProyectoFinalDM.View.Detalle.DetalleView">
     <NavigationPage.TitleView>
         <StackLayout
           Orientation="Horizontal"
@@ -61,8 +61,8 @@
             <StackLayout Orientation="Vertical">
                 <Button Text="Guardar" Command="{Binding guardarTicketCommand }" />
                 <Button Text="Borrar" Command="{Binding eliminarTicketCommand }" />
-                <Button Text="Detalles" Command="{Binding verDetalleCommand }" />
-                
+                <Button Text="Detalles" Command="{Binding eliminarTicketCommand }" />
+
             </StackLayout>
         </StackLayout>
     </ScrollView>

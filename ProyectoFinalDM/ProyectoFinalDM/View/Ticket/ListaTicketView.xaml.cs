@@ -1,5 +1,6 @@
 ﻿using ProyectoFinalDM.Models;
 using ProyectoFinalDM.ViewModel;
+using ProyectoFinalDM.ViewModel.Tickets;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,17 +10,19 @@ namespace ProyectoFinalDM.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TicketView : ContentPage
     {
-        private TicketViewModel ticketViewModel;
+
         public TicketView()
         {
             InitializeComponent();
-            ticketViewModel = new TicketViewModel();
-            BindingContext = ticketViewModel;
             LVTickets.ItemTapped += LVTickets_ItemTapped;
         }
 
 
-
+        protected override void OnAppearing()
+        {
+            BindingContext = new ListaTicketsViewModel();
+            base.OnAppearing();
+        }
         private async void LVTickets_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             TicketModel modelo = new TicketModel();
@@ -35,9 +38,6 @@ namespace ProyectoFinalDM.View
             await Navigation.PushAsync(new NuevoTicketView());
         }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
-        {
-            ticketViewModel.Prueba = !ticketViewModel.Prueba;
-        }
+
     }
 }

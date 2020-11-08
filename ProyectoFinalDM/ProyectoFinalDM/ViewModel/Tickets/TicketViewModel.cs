@@ -22,17 +22,7 @@ namespace ProyectoFinalDM.ViewModel
 
 
 
-        //Modelos
-        private bool prueba;
-
-        public bool Prueba
-        {
-            get { return prueba; }
-            set { prueba = value; this.OnPropertyChanged(); }
-        }
-
    
-
         public TicketModel ticket { get; set; }
         public ObservableCollection<TicketModel> tickets { get; set; }
         public ObservableCollection<ClienteModel> clientes { get; set; }
@@ -40,13 +30,13 @@ namespace ProyectoFinalDM.ViewModel
         public ObservableCollection<LocalModel> locales { get; set; }
         public ObservableCollection<PrioridadModel> prioridades { get; set; }
 
+        public Command guardarTicketCommand { get; set; }
+        public Command eliminarTicketCommand { get; set; }
         public TicketViewModel(TicketModel ticket = null)
         {
-            Prueba = false;
             prioridades = prioridadService.listarPrioridades();
             clientes = clienteService.listarClientes();
             categorias = categoriaService.listarCategorias();
-            tickets = ticketService.consultarTickets();
             if (ticket == null)
             {
                 this.ticket = new TicketModel();
@@ -59,15 +49,6 @@ namespace ProyectoFinalDM.ViewModel
             guardarTicketCommand = new Command(async () => await this.guardarTicket());
             eliminarTicketCommand = new Command(async () => await this.eliminarTicket());
         }
-
-
-
-        public Command guardarTicketCommand { get; set; }
-        public Command editarTicketCommand { get; set; }
-        public Command eliminarTicketCommand { get; set; }
-        public Command limpiarCommand { get; set; }
-
-
 
         private async Task guardarTicket()
         {
