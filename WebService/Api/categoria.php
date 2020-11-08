@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
     if (isset($_GET['codigo']))
     {
       //Mostrar un post
-      $sql = $dbConn->prepare("SELECT * estudiante  where codigo=:codigo");
+      $sql = $dbConn->prepare("SELECT * categorias  where codigo=:codigo");
       $sql->bindValue(':codigo', $_GET['codigo']);
       $sql->execute();
       header("HTTP/1.1 200 OK");
@@ -31,10 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $input = $_POST;
-    $sql = "INSERT INTO estudiante
-          (codigo, nombre, apellido, edad)
+    $sql = "INSERT INTO categorias
+          (cod_categoria, nomb_categoria)
           VALUES
-          (:codigo, :nombre, :apellido, :edad)";
+          (:cod_categoria, :nomb_categoria)";
     $statement = $dbConn->prepare($sql);
     bindAllValues($statement, $input);
     $statement->execute();
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
 	$codigo = $_GET['codigo'];
-  $statement = $dbConn->prepare("DELETE FROM  estudiante where codigo=:codigo");
+  $statement = $dbConn->prepare("DELETE FROM  categorias where codigo=:codigo");
   $statement->bindValue(':codigo', $codigo);
   $statement->execute();
 	header("HTTP/1.1 200 OK");
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT')
     $fields = getParams($input);
 
     $sql = "
-          UPDATE estudiante
+          UPDATE categorias
           SET $fields
           WHERE codigo='$postCodigo'
            ";
