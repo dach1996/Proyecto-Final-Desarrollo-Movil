@@ -6,11 +6,11 @@ $dbConn =  connect($db);
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
 {
-    if (isset($_GET['codigo']))
+    if (isset($_GET['cod_categoria']))
     {
       //Mostrar un post
-      $sql = $dbConn->prepare("SELECT * categorias  where codigo=:codigo");
-      $sql->bindValue(':codigo', $_GET['codigo']);
+      $sql = $dbConn->prepare("SELECT * categorias  where cod_categoria=:cod_categoria");
+      $sql->bindValue(':cod_categoria', $_GET['cod_categoria']);
       $sql->execute();
       header("HTTP/1.1 200 OK");
       echo json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 
 	  else {
       //Mostrar lista de post
-      $sql = $dbConn->prepare("SELECT * FROM estudiante");
+      $sql = $dbConn->prepare("SELECT * FROM categorias");
       $sql->execute();
       $sql->setFetchMode(PDO::FETCH_ASSOC);
       header("HTTP/1.1 200 OK");
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $postCodigo = $dbConn->lastInsertId();
     if($postCodigo)
     {      
-      $input['codigo'] = $postCodigo;
+      $input['cod_categoria'] = $postCodigo;
       header("HTTP/1.1 200 OK");
       echo json_encode($input);
       exit();
@@ -51,9 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
-	$codigo = $_GET['codigo'];
-  $statement = $dbConn->prepare("DELETE FROM  categorias where codigo=:codigo");
-  $statement->bindValue(':codigo', $codigo);
+	$codigo = $_GET['cod_categoria'];
+  $statement = $dbConn->prepare("DELETE FROM  categorias where cod_categoria=:cod_categoria");
+  $statement->bindValue(':cod_categoria', $codigo);
   $statement->execute();
 	header("HTTP/1.1 200 OK");
 	exit();
@@ -62,13 +62,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 if ($_SERVER['REQUEST_METHOD'] == 'PUT')
 {
     $input = $_GET;
-    $postCodigo = $input['codigo'];
+    $postCodigo = $input['cod_categoria'];
     $fields = getParams($input);
 
     $sql = "
           UPDATE categorias
           SET $fields
-          WHERE codigo='$postCodigo'
+          WHERE cod_categoria='$postCodigo'
            ";
 
     $statement = $dbConn->prepare($sql);
