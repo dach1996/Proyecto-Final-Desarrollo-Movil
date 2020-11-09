@@ -102,3 +102,11 @@ INSERT INTO `ticketsxamarin`.`tickets` (`cod_local`, `titulo_ticket`, `estado_ti
 INSERT INTO `ticketsxamarin`.`tickets` (`cod_local`, `titulo_ticket`, `estado_ticket`, `prioridad_ticket`, `cod_usuario`, `cod_cliente`, `cod_categoria`) VALUES ('4', 'Desinstalar Local', 'Ingresado', 'Alta', '4', '4', '4');
 
 
+
+INSERT INTO `detalles_ticket`(`texto_detalle`, `fecha_detalle`, `cod_ticket`, `cod_usuario`) VALUES ('Instalar nuevo sensor','09-11-2020 08:00:00',1,2)
+
+INSERT INTO `detalles_ticket`(`texto_detalle`, `fecha_detalle`, `cod_ticket`, `cod_usuario`) VALUES ('Instalar nuevo sensor','2020-11-09 08:00:00',2,4)
+
+INSERT INTO `detalles_ticket`(`texto_detalle`, `fecha_detalle`, `cod_ticket`, `cod_usuario`) VALUES ('Revisar los datos de entrada','2020-11-11 12:00:00',3,3)
+
+INSERT INTO `detalles_ticket`(`texto_detalle`, `fecha_detalle`, `cod_ticket`, `cod_usuario`) VALUES ('Levantar equipos y entregar en central','2020-11-12 09:30:00',4,1)
