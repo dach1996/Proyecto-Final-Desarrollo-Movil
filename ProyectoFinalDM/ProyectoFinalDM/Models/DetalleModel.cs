@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProyectoFinalDM.Models
 {
-    class DetalleModel:Notificaciones
+    public class DetalleModel:Notificaciones
     {
         private int codDetalle ;
 

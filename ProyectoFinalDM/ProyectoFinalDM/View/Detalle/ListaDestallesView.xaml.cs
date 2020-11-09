@@ -12,13 +12,12 @@ using Xamarin.Forms.Xaml;
 namespace ProyectoFinalDM.View.Detalle
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetalleView : ContentPage
+    public partial class ListaDestallesView : ContentPage
     {
-  
-        public DetalleView()
+        public ListaDestallesView(TicketModel ticket)
         {
             InitializeComponent();
-     
+            BindingContext = new ListaDetallesViewModel(ticket);
         }
     }
 }

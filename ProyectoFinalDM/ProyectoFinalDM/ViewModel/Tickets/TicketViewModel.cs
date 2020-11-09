@@ -3,6 +3,7 @@ using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services;
 using ProyectoFinalDM.Services.IService;
 using ProyectoFinalDM.View;
+using ProyectoFinalDM.View.Detalle;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,6 +31,7 @@ namespace ProyectoFinalDM.ViewModel
         public ObservableCollection<LocalModel> locales { get; set; }
         public ObservableCollection<PrioridadModel> prioridades { get; set; }
 
+        public Command verDetalleCommand { get; set; }
         public Command guardarTicketCommand { get; set; }
         public Command eliminarTicketCommand { get; set; }
         public TicketViewModel(TicketModel ticket = null)
@@ -48,8 +50,10 @@ namespace ProyectoFinalDM.ViewModel
             }
             guardarTicketCommand = new Command(async () => await this.guardarTicket());
             eliminarTicketCommand = new Command(async () => await this.eliminarTicket());
+            verDetalleCommand = new Command(async () => await this.verDetalles());
         }
 
+       
         private async Task guardarTicket()
         {
 
@@ -77,6 +81,12 @@ namespace ProyectoFinalDM.ViewModel
             bool pregunta = await App.navegacion.DisplayAlert("Advertencia", "Desea eliminar este registro", "Sí", "No");
             if (pregunta)
                 await App.navegacion.PopAsync();
+
+        }
+
+        private async Task verDetalles()
+        {
+                await App.navegacion.PushAsync(new ListaDestallesView(this.ticket));
 
         }
 

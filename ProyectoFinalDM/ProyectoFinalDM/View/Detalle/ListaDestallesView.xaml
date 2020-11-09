@@ -1,10 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinalDM.View.TicketView">
-    <StackLayout Margin="5" >
-        <Button Clicked="Button_Clicked" Text="Nuevo Ticket +"  CornerRadius="20" BackgroundColor="Green"/>
-        <ListView  x:Name="LVTickets" ItemsSource="{Binding tickets}"  HasUnevenRows="True" Margin="5" >
+             x:Class="ProyectoFinalDM.View.Detalle.ListaDestallesView">
+    <NavigationPage.TitleView>
+        <StackLayout
+          Orientation="Horizontal"
+          VerticalOptions="Center"
+          Spacing="10">
+            <Image
+               Source="Icon.png"
+               Aspect="AspectFit" />
+            <Label
+               Text="Detalles"
+               FontSize="18"
+               TextColor="White"
+               VerticalTextAlignment="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+ 
+        <StackLayout>
+        <ListView  x:Name="LVTickets" ItemsSource="{Binding detalles}"  HasUnevenRows="True" Margin="5" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -19,16 +35,13 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                            <Label VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Column="0" Text="Cod"></Label>
-                            <Label HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1"  Text="{Binding Cliente.NombreCliente}"></Label>
-                            <Label HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="1"  Text="{Binding LocalTicket}"></Label>
-                            <Label HorizontalTextAlignment="Center" Grid.Row="2" Grid.Column="1"  Text="{Binding Categoria.NombreCategoria}"></Label>
-                            <Label HorizontalTextAlignment="End" Grid.RowSpan="3" Grid.Column="2"  Text="{Binding PrioridadTicket}"></Label>
+                            <Label HorizontalTextAlignment="Start" Grid.RowSpan="3" Grid.Column="0" Text="{Binding FechaDetalle}"></Label>
+                            <Label HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="1"  Text="{Binding TextoDetalle}"></Label>
+                            <Label HorizontalTextAlignment="End" Grid.RowSpan="3" Grid.Column="2"  Text="{Binding CodUsuario}"></Label>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
-
 </ContentPage>

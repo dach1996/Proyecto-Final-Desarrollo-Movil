@@ -15,6 +15,7 @@ namespace ProyectoFinalDM.View
     public partial class NuevoTicketView : ContentPage
     {
         private TicketViewModel contexto;
+
         public NuevoTicketView(TicketModel ticket = null)
         {
 
