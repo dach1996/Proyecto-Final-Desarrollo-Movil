@@ -1,25 +1,25 @@
 <?php
-include "config.php";
-include "utils.php";
-
+include "../config.php";
+include "../utils.php";
 $dbConn =  connect($db);
 
+$tablaTicket="detalles_ticket";
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
 {
-    if (isset($_GET['codigo']))
+     $var = $_GET;
+    if (isset($_GET['cod_ticket']))
     {
       //Mostrar un post
-      $sql = $dbConn->prepare("SELECT * estudiante  where codigo=:codigo");
-      $sql->bindValue(':codigo', $_GET['codigo']);
+      $sql = $dbConn->prepare("SELECT * from  $tablaTicket  where cod_ticket=:cod_ticket");
+      $sql->bindValue(':cod_ticket', $_GET['cod_ticket']);
       $sql->execute();
       header("HTTP/1.1 200 OK");
       echo json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
       exit();
 	  }
-
 	  else {
       //Mostrar lista de post
-      $sql = $dbConn->prepare("SELECT * FROM estudiante");
+      $sql = $dbConn->prepare("SELECT * FROM $tablaTicket");
       $sql->execute();
       $sql->setFetchMode(PDO::FETCH_ASSOC);
       header("HTTP/1.1 200 OK");
@@ -31,10 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $input = $_POST;
-    $sql = "INSERT INTO estudiante
-          (codigo, nombre, apellido, edad)
+    $sql = "INSERT INTO $tablaTicket
+          (texto_detalle,fecha_detalle,cod_ticket,cod_usuario)
           VALUES
-          (:codigo, :nombre, :apellido, :edad)";
+          (:texto_detalle, :fecha_detalle, :cod_ticket, :cod_usuario)";
     $statement = $dbConn->prepare($sql);
     bindAllValues($statement, $input);
     $statement->execute();
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $postCodigo = $dbConn->lastInsertId();
     if($postCodigo)
     {      
-      $input['codigo'] = $postCodigo;
+      $input['cod_local'] = $postCodigo;
       header("HTTP/1.1 200 OK");
       echo json_encode($input);
       exit();
@@ -51,9 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
-	$codigo = $_GET['codigo'];
-  $statement = $dbConn->prepare("DELETE FROM  estudiante where codigo=:codigo");
-  $statement->bindValue(':codigo', $codigo);
+	$codigo = $_GET['cod_ticket'];
+  $statement = $dbConn->prepare("DELETE FROM  $tablaTicket where cod_ticket=:cod_ticket");
+  $statement->bindValue(':cod_ticket', $codigo);
   $statement->execute();
 	header("HTTP/1.1 200 OK");
 	exit();
@@ -62,13 +62,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 if ($_SERVER['REQUEST_METHOD'] == 'PUT')
 {
     $input = $_GET;
-    $postCodigo = $input['codigo'];
+    $postCodigo = $input['cod_ticket'];
     $fields = getParams($input);
 
     $sql = "
-          UPDATE estudiante
+          UPDATE $tablaTicket
           SET $fields
-          WHERE codigo='$postCodigo'
+          WHERE cod_ticket='$postCodigo'
            ";
 
     $statement = $dbConn->prepare($sql);
