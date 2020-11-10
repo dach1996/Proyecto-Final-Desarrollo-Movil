@@ -19,13 +19,14 @@ namespace ProyectoFinalDM.Services
         public DetalleServiceImplDatos()
         {
             detalles = new ObservableCollection<DetalleModel>();
-            detalles.Add(new DetalleModel { CodDetalle = 1, CodUsuario = 1, FechaDetalle = DateTime.Now, TextoDetalle = "Prueba" });
+            detalles.Add(new DetalleModel { CodDetalle = 1, CodUsuario = 1, FechaDetalle = DateTime.Now, TextoDetalle = "Esto es el detalle del Ticket 1" });
             detalles.Add(new DetalleModel { CodDetalle = 2, CodUsuario = 1, FechaDetalle = DateTime.Now, TextoDetalle = "Prueba" });
             detalles.Add(new DetalleModel { CodDetalle = 3, CodUsuario = 1, FechaDetalle = DateTime.Now, TextoDetalle = "Prueba" });
             detalles.Add(new DetalleModel { CodDetalle = 4, CodUsuario = 1, FechaDetalle = DateTime.Now, TextoDetalle = "Prueba" });
             detalles.Add(new DetalleModel { CodDetalle = 5, CodUsuario = 1, FechaDetalle = DateTime.Now, TextoDetalle = "Prueba" });
 
-        }
+
+             }
         public void editarDetalle(DetalleModel detalle)
         {
             for (int i = 0; i < detalles.Count; i++)

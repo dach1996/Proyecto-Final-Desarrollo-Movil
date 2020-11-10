@@ -17,10 +17,7 @@
                VerticalTextAlignment="Center" />
         </StackLayout>
     </NavigationPage.TitleView>
-
-    <ScrollView>
-        <StackLayout>
-
-        </StackLayout>
-    </ScrollView>
+    <StackLayout>
+       
+    </StackLayout>
 </ContentPage>

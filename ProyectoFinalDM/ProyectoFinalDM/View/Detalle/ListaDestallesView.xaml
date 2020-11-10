@@ -18,30 +18,39 @@
         </StackLayout>
     </NavigationPage.TitleView>
 
- 
-        <StackLayout>
-        <ListView  x:Name="LVTickets" ItemsSource="{Binding detalles}"  HasUnevenRows="True" Margin="5" >
+
+    <StackLayout BackgroundColor="#E3DED2">
+        <ListView  x:Name="LVTickets" ItemsSource="{Binding detalles}" SeparatorVisibility="None"    HasUnevenRows="True" Margin="5" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Label HorizontalTextAlignment="Start" Grid.RowSpan="3" Grid.Column="0" Text="{Binding FechaDetalle}"></Label>
-                            <Label HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="1"  Text="{Binding TextoDetalle}"></Label>
-                            <Label HorizontalTextAlignment="End" Grid.RowSpan="3" Grid.Column="2"  Text="{Binding CodUsuario}"></Label>
-                        </Grid>
+                        <StackLayout Margin="5">
+                        <Frame BorderColor="Gray" CornerRadius="5" Padding="8">
+                            <StackLayout>
+                                    <Label FontSize="Small" FontAttributes="Bold" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="Fecha: "> </Span>
+                                                    <Span Text="{Binding FechaDetalle}"></Span>
+                                                    <Span Text=" - "></Span>
+                                                    <Span Text="{Binding CodUsuario}"></Span>
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <BoxView Color="Gray" HeightRequest="2" HorizontalOptions="Fill" />
+                                    <Label Text="{Binding TextoDetalle}" FontSize="Large" TextColor="Black"/>
+                            </StackLayout>
+                        </Frame>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackLayout Orientation="Horizontal" BackgroundColor="#F0EEED">
+            <Entry Placeholder="Ingresa Destalles" HorizontalOptions="FillAndExpand" ></Entry>
+            <Button Text="Send" Command="{Binding guardarDetalleCommnad}" HorizontalOptions="End"></Button>
+        </StackLayout>
     </StackLayout>
 </ContentPage>
