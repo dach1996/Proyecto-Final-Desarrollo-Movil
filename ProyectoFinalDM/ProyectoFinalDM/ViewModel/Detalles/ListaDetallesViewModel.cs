@@ -20,12 +20,12 @@ namespace ProyectoFinalDM.ViewModel.Detalles
         {
             detalle = new DetalleModel();
             this.detalles = detallesService.listarDetalles();
-            this.guardarDetalleCommnad = new Command(async () => await guardarDetalle());
+            this.guardarDetalleCommnad = new Command(()=>guardarDetalle());
         }
 
         public Command guardarDetalleCommnad { get; set; }
 
-        private async Task guardarDetalle()
+        private void guardarDetalle()
         {
             detallesService.nuevoDetalles(detalle);
         }

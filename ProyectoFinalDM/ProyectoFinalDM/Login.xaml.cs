@@ -1,4 +1,5 @@
 ﻿using ProyectoFinalDM.View;
+using ProyectoFinalDM.ViewModel.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,8 @@ namespace ProyectoFinalDM
         public Login()
         {
             InitializeComponent();
+            BindingContext = new LoginViewModel();
 
-        }
-
-        private async void login(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new TicketView());
         }
     }
 }
