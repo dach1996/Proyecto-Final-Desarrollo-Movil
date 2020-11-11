@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 
 	  else {
       //Mostrar lista de post
-      $sql = $dbConn->prepare("SELECT * FROM usuarios`");
+      $sql = $dbConn->prepare("SELECT * FROM usuarios");
       $sql->execute();
       $sql->setFetchMode(PDO::FETCH_ASSOC);
       header("HTTP/1.1 200 OK");
