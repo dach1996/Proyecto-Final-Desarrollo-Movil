@@ -10,7 +10,8 @@ namespace ProyectoFinalDM.Services.IService
     {
         void guardarTicket(TicketModel ticketModel);
         void modificarTicket(TicketModel ticketModel);
-        void eliminarTicket(string codTicket);
+        void eliminarTicket(int codTicket);
         ObservableCollection<TicketModel> consultarTickets();
+        TicketModel buscarTicketPorId(int codTicket);
     }
 }

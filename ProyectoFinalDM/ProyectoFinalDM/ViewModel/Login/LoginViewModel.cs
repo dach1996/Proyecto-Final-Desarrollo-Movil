@@ -26,13 +26,14 @@ namespace ProyectoFinalDM.ViewModel.Login
         private async void verificarIngreso()
         {
             usuarioLogiado = usuarioService.buscarUsuario(Username, Password);
-            if (usuarioLogiado == null)
+            if (usuarioLogiado != null)
             {
-               
+                UsuarioServiceImplDatos.usuario = usuarioLogiado;
+                await App.navegacion.PushAsync(new TicketView());
             }
             else
             {
-                await App.navegacion.PushAsync(new TicketView());
+                await App.navegacion.DisplayAlert("Acceso Denegado","Error Usuario o Contraseña Incorrecto", "OK");
             }
         }
     }

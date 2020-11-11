@@ -18,21 +18,28 @@ namespace ProyectoFinalDM.Services
                 tickets = new ObservableCollection<TicketModel>();
                 IClienteService clientesService = new ClienteServiceImplDatos();
                 ICategoriasService categoriaService = new CategoriaServiceImplDatos();
+                IUsuariosService usuarioService = new UsuarioServiceImplDatos();
+                IPrioridadService prioridadesService = new PrioridadServiceImplDatos();
                 ObservableCollection<ClienteModel> clientes = new ObservableCollection<ClienteModel>();
                 ObservableCollection<CategoriaModel> categorias = new ObservableCollection<CategoriaModel>();
+                ObservableCollection<PrioridadModel> prioridades = new ObservableCollection<PrioridadModel>();
+                ObservableCollection<UsuarioModel> usuarios = new ObservableCollection<UsuarioModel>();
                 clientes = clientesService.listarClientes();
                 categorias = categoriaService.listarCategorias();
+                prioridades = prioridadesService.listarPrioridades();
+                usuarios = usuarioService.listarUsuarios();
                 for (int a = 0; a < clientes.Count; a++)
                 {
                     tickets.Add(new TicketModel()
                     {
-                        CodTicket =  Guid.NewGuid().ToString(),
+                        CodTicket =  (a+1),
                         Estado = "Ingresado",
                         FechaFinTicket = new DateTime(),
                         FechaTicket = new DateTime(),
                         LocalTicket = "Quicentro",
-                        CodUsuario = "Juanito Perez",
                         TituloTicket = "Coordinar para cambiar Sensor",
+                        Prioridad= prioridades[new Random().Next(1,3)],
+                        Usuario = usuarios[new Random().Next(1,3)],
                         Cliente = clientes[a],
                         Categoria = categorias[new Random().Next(1, 5)]
                     }) ;
@@ -47,6 +54,8 @@ namespace ProyectoFinalDM.Services
         }
         public void guardarTicket(TicketModel ticketModel)
         {
+            ticketModel.CodTicket = tickets.Count;
+            
             tickets.Add(ticketModel);
         }
         public void modificarTicket(TicketModel ticketModel)
@@ -59,12 +68,15 @@ namespace ProyectoFinalDM.Services
                 }
             }
         }
-        public void eliminarTicket(string codTicket)
+        public void eliminarTicket(int codTicket)
         {
             TicketModel ticket = tickets.FirstOrDefault(t => t.CodTicket == codTicket);
             tickets.Remove(ticket);
         }
 
-
+        public TicketModel buscarTicketPorId(int codTicket)
+        {
+            return tickets.FirstOrDefault(t => t.CodTicket == codTicket);
+        }
     }
 }

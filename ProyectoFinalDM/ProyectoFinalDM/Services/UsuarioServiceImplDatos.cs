@@ -23,5 +23,10 @@ namespace ProyectoFinalDM.Services
         {
             return usuarios.FirstOrDefault(u=> (u.UsernameUsuario==username || u.NombreUsuario== username)&& u.PasswordUsuario==password);
         }
+
+        public ObservableCollection<UsuarioModel> listarUsuarios()
+        {
+            return usuarios;
+        }
     }
 }

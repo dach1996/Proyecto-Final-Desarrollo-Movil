@@ -57,10 +57,10 @@ namespace ProyectoFinalDM.ViewModel
         private async Task guardarTicket()
         {
 
-            if (string.IsNullOrWhiteSpace(ticket.CodTicket))
+            if (ticket.CodTicket==0)
             {
-                Guid CodTicket = Guid.NewGuid();
-                ticket.CodTicket = CodTicket.ToString();
+
+                ticket.Usuario = UsuarioServiceImplDatos.usuario;
                 ticketService.guardarTicket(ticket);
 
             }

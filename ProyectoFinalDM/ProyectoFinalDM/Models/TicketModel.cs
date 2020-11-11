@@ -16,9 +16,9 @@ namespace ProyectoFinalDM.Models
         }
 
 
-        private string codTicket;
+        private int codTicket;
 
-        public string CodTicket
+        public int CodTicket
         {
             get { return codTicket; }
             set { codTicket = value; this.OnPropertyChanged(); }
@@ -64,13 +64,15 @@ namespace ProyectoFinalDM.Models
             set { estado = value; this.OnPropertyChanged(); }
         }
 
-        private string codUsuario;
 
-        public string CodUsuario
+        private UsuarioModel usuario;
+
+        public UsuarioModel Usuario
         {
-            get { return codUsuario; }
-            set { codUsuario = value; this.OnPropertyChanged(); }
+            get { return usuario; }
+            set { usuario = value; }
         }
+
 
         private ClienteModel cliente;
 
@@ -99,5 +101,64 @@ namespace ProyectoFinalDM.Models
             set { prioridad = value; }
         }
 
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is TicketModel model &&
+                   isBisy == model.isBisy &&
+                   isBusy == model.isBusy &&
+                   codTicket == model.codTicket &&
+                   CodTicket == model.CodTicket &&
+                   localTicket == model.localTicket &&
+                   LocalTicket == model.LocalTicket &&
+                   tituloTicket == model.tituloTicket &&
+                   TituloTicket == model.TituloTicket &&
+                   fechaTicket == model.fechaTicket &&
+                   FechaTicket == model.FechaTicket &&
+                   fechaFinTicket == model.fechaFinTicket &&
+                   FechaFinTicket == model.FechaFinTicket &&
+                   estado == model.estado &&
+                   Estado == model.Estado &&
+                   EqualityComparer<UsuarioModel>.Default.Equals(usuario, model.usuario) &&
+                   EqualityComparer<UsuarioModel>.Default.Equals(Usuario, model.Usuario) &&
+                   EqualityComparer<ClienteModel>.Default.Equals(cliente, model.cliente) &&
+                   EqualityComparer<ClienteModel>.Default.Equals(Cliente, model.Cliente) &&
+                   EqualityComparer<CategoriaModel>.Default.Equals(categoria, model.categoria) &&
+                   EqualityComparer<CategoriaModel>.Default.Equals(Categoria, model.Categoria) &&
+                   EqualityComparer<PrioridadModel>.Default.Equals(prioridad, model.prioridad) &&
+                   EqualityComparer<PrioridadModel>.Default.Equals(Prioridad, model.Prioridad);
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -292620316;
+            hashCode = hashCode * -1521134295 + isBisy.GetHashCode();
+            hashCode = hashCode * -1521134295 + isBusy.GetHashCode();
+            hashCode = hashCode * -1521134295 + codTicket.GetHashCode();
+            hashCode = hashCode * -1521134295 + CodTicket.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(localTicket);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LocalTicket);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(tituloTicket);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(TituloTicket);
+            hashCode = hashCode * -1521134295 + fechaTicket.GetHashCode();
+            hashCode = hashCode * -1521134295 + FechaTicket.GetHashCode();
+            hashCode = hashCode * -1521134295 + fechaFinTicket.GetHashCode();
+            hashCode = hashCode * -1521134295 + FechaFinTicket.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(estado);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Estado);
+            hashCode = hashCode * -1521134295 + EqualityComparer<UsuarioModel>.Default.GetHashCode(usuario);
+            hashCode = hashCode * -1521134295 + EqualityComparer<UsuarioModel>.Default.GetHashCode(Usuario);
+            hashCode = hashCode * -1521134295 + EqualityComparer<ClienteModel>.Default.GetHashCode(cliente);
+            hashCode = hashCode * -1521134295 + EqualityComparer<ClienteModel>.Default.GetHashCode(Cliente);
+            hashCode = hashCode * -1521134295 + EqualityComparer<CategoriaModel>.Default.GetHashCode(categoria);
+            hashCode = hashCode * -1521134295 + EqualityComparer<CategoriaModel>.Default.GetHashCode(Categoria);
+            hashCode = hashCode * -1521134295 + EqualityComparer<PrioridadModel>.Default.GetHashCode(prioridad);
+            hashCode = hashCode * -1521134295 + EqualityComparer<PrioridadModel>.Default.GetHashCode(Prioridad);
+            return hashCode;
+        }
     }
 }

@@ -56,7 +56,7 @@
             <Entry  Text="{Binding ticket.Estado }" IsReadOnly="True" Placeholder="Ingresado" />
 
             <Label Text="USUARIO" />
-            <Entry  IsReadOnly="True"  Text="{Binding ticket.CodUsuario }" />
+            <Entry  IsReadOnly="True"  Text="{Binding ticket.Usuario.NombreUsuario }" />
 
             <StackLayout Orientation="Vertical">
                 <Button Text="Guardar" Command="{Binding guardarTicketCommand }" />

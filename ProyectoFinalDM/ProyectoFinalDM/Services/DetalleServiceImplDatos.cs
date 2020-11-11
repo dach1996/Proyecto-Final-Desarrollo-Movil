@@ -58,6 +58,7 @@ namespace ProyectoFinalDM.Services
 
         public void nuevoDetalles(DetalleModel detalle)
         {
+
             detalles.Add(detalle);
         }
     }
