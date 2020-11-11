@@ -45,6 +45,14 @@ namespace ProyectoFinalDM.Models
             set { passwordUsuario = value; this.OnPropertyChanged(); }
         }
 
+        public string NombreCompleto
+        {
+            get
+            {
+                return $"{NombreUsuario} {ApellidoUsuario}";
+            }
+        }
+
         private DateTime fechaNacimientoUsuario;
 
         public DateTime FechaNacimientoUsuario

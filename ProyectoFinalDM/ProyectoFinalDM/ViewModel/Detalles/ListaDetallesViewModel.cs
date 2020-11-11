@@ -15,11 +15,14 @@ namespace ProyectoFinalDM.ViewModel.Detalles
         private IDetallesService detallesService = new DetalleServiceImplDatos();
         public DetalleModel detalle { get; set; }
         public ObservableCollection<DetalleModel> detalles { get; set; }
+        private TicketModel ticket;
 
         public ListaDetallesViewModel(TicketModel ticket)
+
         {
             detalle = new DetalleModel();
-            this.detalles = detallesService.listarDetalles();
+            this.ticket = ticket;
+            this.detalles = detallesService.buscarDetallesPorIdTicket(ticket.CodTicket);
             this.guardarDetalleCommnad = new Command(()=>guardarDetalle());
         }
 
@@ -27,7 +30,12 @@ namespace ProyectoFinalDM.ViewModel.Detalles
 
         private void guardarDetalle()
         {
+           
+            detalle.Usuario = UsuarioServiceImplDatos.usuario;
+            detalle.FechaDetalle = new DateTime();
+            detalle.Ticket = ticket;
             detallesService.nuevoDetalles(detalle);
+            detalles.Add(detalle);
         }
 
 

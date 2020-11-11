@@ -20,15 +20,18 @@ namespace ProyectoFinalDM.Services
                 ICategoriasService categoriaService = new CategoriaServiceImplDatos();
                 IUsuariosService usuarioService = new UsuarioServiceImplDatos();
                 IPrioridadService prioridadesService = new PrioridadServiceImplDatos();
+                ILocalesService localService = new LocalServiceImplDatos();
                 ObservableCollection<ClienteModel> clientes = new ObservableCollection<ClienteModel>();
                 ObservableCollection<CategoriaModel> categorias = new ObservableCollection<CategoriaModel>();
                 ObservableCollection<PrioridadModel> prioridades = new ObservableCollection<PrioridadModel>();
                 ObservableCollection<UsuarioModel> usuarios = new ObservableCollection<UsuarioModel>();
+                ObservableCollection<LocalModel> locales = new ObservableCollection<LocalModel>();
                 clientes = clientesService.listarClientes();
                 categorias = categoriaService.listarCategorias();
                 prioridades = prioridadesService.listarPrioridades();
                 usuarios = usuarioService.listarUsuarios();
-                for (int a = 0; a < clientes.Count; a++)
+                locales = localService.listarLocales();
+                for (int a = 0; a < 10; a++)
                 {
                     tickets.Add(new TicketModel()
                     {
@@ -36,11 +39,11 @@ namespace ProyectoFinalDM.Services
                         Estado = "Ingresado",
                         FechaFinTicket = new DateTime(),
                         FechaTicket = new DateTime(),
-                        LocalTicket = "Quicentro",
+                        Local = locales[new Random().Next(1, 5)],
                         TituloTicket = "Coordinar para cambiar Sensor",
                         Prioridad= prioridades[new Random().Next(1,3)],
                         Usuario = usuarios[new Random().Next(1,3)],
-                        Cliente = clientes[a],
+                        Cliente = clientes[new Random().Next(1, 3)],
                         Categoria = categorias[new Random().Next(1, 5)]
                     }) ;
                

@@ -21,18 +21,22 @@
     <ScrollView>
         <StackLayout>
 
+            <Button Text="PRuieba" Command="{Binding prueba}"></Button>
             <Label Text="{Binding ticket.CodTicket}" />
 
             <Label Text="CLIENTE" />
             <Picker  ItemsSource="{Binding clientes}"
                      ItemDisplayBinding="{Binding NombreCliente}"
-                     SelectedItem="{Binding ticket.Cliente}"/>
+                     SelectedItem="{Binding ticket.Cliente}"
+                     SelectedIndexChanged="Picker_SelectedIndexChanged"/>
 
             <Label Text="LOCAL" />
-            <Picker ItemsSource="{Binding locales}" ItemDisplayBinding="{Binding NombreLocal}"  />
+            <Picker ItemsSource="{Binding locales}"
+                    ItemDisplayBinding="{Binding NombreLocal}"  
+                    SelectedItem="{Binding ticket.Local}"/>
 
             <Label Text="CATEGORIA" />
-            <Picker  ItemsSource="{Binding categorias}"
+            <Picker  ItemsSource="{Binding categorias}" 
                      ItemDisplayBinding="{Binding NombreCategoria}"
                      SelectedItem="{Binding ticket.Categoria}"/>
 

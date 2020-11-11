@@ -14,19 +14,29 @@ namespace ProyectoFinalDM.Services
     public class DetalleServiceImplDatos : IDetallesService
     {
         public static ObservableCollection<DetalleModel> detalles { get; set; }
-
+        IUsuariosService usuarioService = new UsuarioServiceImplDatos();
+        ITicketService ticketService = new TicketServiceImplDatos();
+        ObservableCollection<UsuarioModel> usuarios = new ObservableCollection<UsuarioModel>();
+        ObservableCollection<TicketModel> tickets = new ObservableCollection<TicketModel>();
+               
 
         public DetalleServiceImplDatos()
         {
+            if (detalles == null) { 
+                tickets = TicketServiceImplDatos.tickets;
+            usuarios = usuarioService.listarUsuarios();
             detalles = new ObservableCollection<DetalleModel>();
-            detalles.Add(new DetalleModel { CodDetalle = 1, CodUsuario = 1, FechaDetalle = DateTime.Now, TextoDetalle = "Esto es el detalle del Ticket 1" });
-            detalles.Add(new DetalleModel { CodDetalle = 2, CodUsuario = 1, FechaDetalle = DateTime.Now, TextoDetalle = "Prueba" });
-            detalles.Add(new DetalleModel { CodDetalle = 3, CodUsuario = 1, FechaDetalle = DateTime.Now, TextoDetalle = "Prueba" });
-            detalles.Add(new DetalleModel { CodDetalle = 4, CodUsuario = 1, FechaDetalle = DateTime.Now, TextoDetalle = "Prueba" });
-            detalles.Add(new DetalleModel { CodDetalle = 5, CodUsuario = 1, FechaDetalle = DateTime.Now, TextoDetalle = "Prueba" });
-
-
-             }
+          
+            for (int i = 0; i < 60; i++)
+            {
+                 detalles.Add(new DetalleModel { CodDetalle = i, 
+                    Usuario =  usuarios[new Random().Next(1,3)], 
+                    FechaDetalle = DateTime.Now, 
+                    Ticket = tickets [new Random().Next(1, 9)],
+                    TextoDetalle = "Esto es el detalle del Ticket 1" });
+            }
+            }
+        }
         public void editarDetalle(DetalleModel detalle)
         {
             for (int i = 0; i < detalles.Count; i++)
@@ -58,8 +68,14 @@ namespace ProyectoFinalDM.Services
 
         public void nuevoDetalles(DetalleModel detalle)
         {
-
+            detalle.CodDetalle=detalles.Count+1;
             detalles.Add(detalle);
+        }
+
+        public ObservableCollection<DetalleModel> buscarDetallesPorIdTicket(int codTicket)
+        {
+            var lista =detalles.Where(d => d.Ticket.CodTicket == codTicket).ToList();
+            return new ObservableCollection<DetalleModel>(lista);
         }
     }
 }

@@ -15,9 +15,9 @@ namespace ProyectoFinalDM.Services
         public UsuarioServiceImplDatos()
         {
             usuarios = new ObservableCollection<UsuarioModel>();
-            usuarios.Add(new UsuarioModel {CodUsuario=1, NombreUsuario="Danny",PasswordUsuario="12345"});
-            usuarios.Add(new UsuarioModel {CodUsuario=2, NombreUsuario="Alex",PasswordUsuario="Moya"});
-            usuarios.Add(new UsuarioModel {CodUsuario=3, NombreUsuario="Adrian",PasswordUsuario="Guadalpue"});
+            usuarios.Add(new UsuarioModel {CodUsuario=1, ApellidoUsuario="Cárdenas ",NombreUsuario="Danny",PasswordUsuario="12345"});
+            usuarios.Add(new UsuarioModel {CodUsuario=2, ApellidoUsuario="Moya", NombreUsuario="Alex",PasswordUsuario="12345"});
+            usuarios.Add(new UsuarioModel {CodUsuario=3,ApellidoUsuario="Guadalupe", NombreUsuario="Adrian",PasswordUsuario="12345"});
         }
         public UsuarioModel buscarUsuario(string username, string password)
         {

@@ -21,7 +21,7 @@
                             </Grid.ColumnDefinitions>
                             <Label VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Column="0" Text="{Binding CodTicket}"></Label>
                             <Label HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1"  Text="{Binding Cliente.NombreCliente}"></Label>
-                            <Label HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="1"  Text="{Binding LocalTicket}"></Label>
+                            <Label HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="1"  Text="{Binding Local.NombreLocal}"></Label>
                             <Label HorizontalTextAlignment="Center" Grid.Row="2" Grid.Column="1"  Text="{Binding Categoria.NombreCategoria}"></Label>
                             <Label HorizontalTextAlignment="End" Grid.RowSpan="3" Grid.Column="2"  Text="{Binding Prioridad.NombrePrioridad}"></Label>
                         </Grid>

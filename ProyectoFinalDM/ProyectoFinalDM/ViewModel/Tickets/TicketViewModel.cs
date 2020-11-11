@@ -20,6 +20,7 @@ namespace ProyectoFinalDM.ViewModel
         private IClienteService clienteService = new ClienteServiceImplDatos();
         private ICategoriasService categoriaService = new CategoriaServiceImplDatos();
         private IPrioridadService prioridadService = new PrioridadServiceImplDatos();
+        private ILocalesService localService = new LocalServiceImplDatos();
 
 
 
@@ -29,16 +30,22 @@ namespace ProyectoFinalDM.ViewModel
         public ObservableCollection<ClienteModel> clientes { get; set; }
         public ObservableCollection<CategoriaModel> categorias { get; set; }
         public ObservableCollection<LocalModel> locales { get; set; }
+
         public ObservableCollection<PrioridadModel> prioridades { get; set; }
 
         public Command verDetalleCommand { get; set; }
         public Command guardarTicketCommand { get; set; }
         public Command eliminarTicketCommand { get; set; }
+        public Command prueba { get; set; }
         public TicketViewModel(TicketModel ticket = null)
         {
             prioridades = prioridadService.listarPrioridades();
             clientes = clienteService.listarClientes();
             categorias = categoriaService.listarCategorias();
+            locales = new ObservableCollection<LocalModel>();
+     
+
+
             if (ticket == null)
             {
                 this.ticket = new TicketModel();
@@ -50,7 +57,7 @@ namespace ProyectoFinalDM.ViewModel
             }
             guardarTicketCommand = new Command(async () => await this.guardarTicket());
             eliminarTicketCommand = new Command(async () => await this.eliminarTicket());
-            verDetalleCommand = new Command(async () => await this.verDetalles());
+            prueba = new Command(async () => await this.pruebaCommand());
         }
 
        
@@ -73,6 +80,7 @@ namespace ProyectoFinalDM.ViewModel
         }
 
 
+
         private async Task eliminarTicket()
         {
             ticketService.eliminarTicket(ticket.CodTicket);
@@ -86,8 +94,18 @@ namespace ProyectoFinalDM.ViewModel
 
         private async Task verDetalles()
         {
+                
                 await App.navegacion.PushAsync(new ListaDestallesView(this.ticket));
 
+        }
+        private async Task pruebaCommand()
+        {
+            var consulta = localService.listarLocales();
+            locales.Clear();
+            foreach (var item in consulta)
+            {
+                locales.Add(item);
+            }
         }
 
     }

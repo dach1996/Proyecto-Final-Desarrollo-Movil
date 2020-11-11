@@ -23,6 +23,7 @@ namespace ProyectoFinalDM.Models
             set { textoDetalle = value; this.OnPropertyChanged(); }
         }
 
+
         private DateTime fechaDetalle;
 
         public DateTime FechaDetalle
@@ -39,18 +40,24 @@ namespace ProyectoFinalDM.Models
             set { ticket = value; this.OnPropertyChanged(); }
         }
 
-        private int codUsuario;
+        private UsuarioModel usuario;
 
-        public int CodUsuario
+        public UsuarioModel Usuario
         {
-            get { return codUsuario; }
-            set { codUsuario = value; this.OnPropertyChanged(); }
+            get { return usuario; }
+            set { usuario = value; this.OnPropertyChanged(); }
+        }
+
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
 
         public override bool Equals(object obj)
         {
             return obj is DetalleModel model &&
-             
+                   codDetalle == model.codDetalle &&
                    CodDetalle == model.CodDetalle &&
                    textoDetalle == model.textoDetalle &&
                    TextoDetalle == model.TextoDetalle &&
@@ -58,13 +65,13 @@ namespace ProyectoFinalDM.Models
                    FechaDetalle == model.FechaDetalle &&
                    EqualityComparer<TicketModel>.Default.Equals(ticket, model.ticket) &&
                    EqualityComparer<TicketModel>.Default.Equals(Ticket, model.Ticket) &&
-                   codUsuario == model.codUsuario &&
-                   CodUsuario == model.CodUsuario;
+                   EqualityComparer<UsuarioModel>.Default.Equals(usuario, model.usuario) &&
+                   EqualityComparer<UsuarioModel>.Default.Equals(Usuario, model.Usuario);
         }
 
         public override int GetHashCode()
         {
-            int hashCode = -1890358689;
+            int hashCode = -2022348130;
             hashCode = hashCode * -1521134295 + codDetalle.GetHashCode();
             hashCode = hashCode * -1521134295 + CodDetalle.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(textoDetalle);
@@ -73,14 +80,9 @@ namespace ProyectoFinalDM.Models
             hashCode = hashCode * -1521134295 + FechaDetalle.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<TicketModel>.Default.GetHashCode(ticket);
             hashCode = hashCode * -1521134295 + EqualityComparer<TicketModel>.Default.GetHashCode(Ticket);
-            hashCode = hashCode * -1521134295 + codUsuario.GetHashCode();
-            hashCode = hashCode * -1521134295 + CodUsuario.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<UsuarioModel>.Default.GetHashCode(usuario);
+            hashCode = hashCode * -1521134295 + EqualityComparer<UsuarioModel>.Default.GetHashCode(Usuario);
             return hashCode;
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
         }
     }
 }

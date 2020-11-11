@@ -24,13 +24,6 @@ namespace ProyectoFinalDM.Models
             set { codTicket = value; this.OnPropertyChanged(); }
         }
 
-        private string localTicket;
-
-        public string LocalTicket
-        {
-            get { return localTicket; }
-            set { localTicket = value; this.OnPropertyChanged(); }
-        }
 
         private string tituloTicket;
 
@@ -70,7 +63,7 @@ namespace ProyectoFinalDM.Models
         public UsuarioModel Usuario
         {
             get { return usuario; }
-            set { usuario = value; }
+            set { usuario = value; this.OnPropertyChanged(); }
         }
 
 
@@ -90,7 +83,7 @@ namespace ProyectoFinalDM.Models
         public CategoriaModel Categoria
         {
             get { return categoria; }
-            set { categoria = value; }
+            set { categoria = value; this.OnPropertyChanged(); }
         }
 
         private PrioridadModel prioridad;
@@ -98,7 +91,7 @@ namespace ProyectoFinalDM.Models
         public PrioridadModel Prioridad 
         {
             get { return prioridad; }
-            set { prioridad = value; }
+            set { prioridad = value; this.OnPropertyChanged(); }
         }
 
         public override string ToString()
@@ -109,12 +102,11 @@ namespace ProyectoFinalDM.Models
         public override bool Equals(object obj)
         {
             return obj is TicketModel model &&
+                   base.Equals(obj) &&
                    isBisy == model.isBisy &&
                    isBusy == model.isBusy &&
                    codTicket == model.codTicket &&
                    CodTicket == model.CodTicket &&
-                   localTicket == model.localTicket &&
-                   LocalTicket == model.LocalTicket &&
                    tituloTicket == model.tituloTicket &&
                    TituloTicket == model.TituloTicket &&
                    fechaTicket == model.fechaTicket &&
@@ -130,18 +122,19 @@ namespace ProyectoFinalDM.Models
                    EqualityComparer<CategoriaModel>.Default.Equals(categoria, model.categoria) &&
                    EqualityComparer<CategoriaModel>.Default.Equals(Categoria, model.Categoria) &&
                    EqualityComparer<PrioridadModel>.Default.Equals(prioridad, model.prioridad) &&
-                   EqualityComparer<PrioridadModel>.Default.Equals(Prioridad, model.Prioridad);
+                   EqualityComparer<PrioridadModel>.Default.Equals(Prioridad, model.Prioridad) &&
+                   EqualityComparer<LocalModel>.Default.Equals(local, model.local) &&
+                   EqualityComparer<LocalModel>.Default.Equals(Local, model.Local);
         }
 
         public override int GetHashCode()
         {
-            int hashCode = -292620316;
+            int hashCode = -1075536574;
+            hashCode = hashCode * -1521134295 + base.GetHashCode();
             hashCode = hashCode * -1521134295 + isBisy.GetHashCode();
             hashCode = hashCode * -1521134295 + isBusy.GetHashCode();
             hashCode = hashCode * -1521134295 + codTicket.GetHashCode();
             hashCode = hashCode * -1521134295 + CodTicket.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(localTicket);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LocalTicket);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(tituloTicket);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(TituloTicket);
             hashCode = hashCode * -1521134295 + fechaTicket.GetHashCode();
@@ -158,7 +151,23 @@ namespace ProyectoFinalDM.Models
             hashCode = hashCode * -1521134295 + EqualityComparer<CategoriaModel>.Default.GetHashCode(Categoria);
             hashCode = hashCode * -1521134295 + EqualityComparer<PrioridadModel>.Default.GetHashCode(prioridad);
             hashCode = hashCode * -1521134295 + EqualityComparer<PrioridadModel>.Default.GetHashCode(Prioridad);
+            hashCode = hashCode * -1521134295 + EqualityComparer<LocalModel>.Default.GetHashCode(local);
+            hashCode = hashCode * -1521134295 + EqualityComparer<LocalModel>.Default.GetHashCode(Local);
             return hashCode;
         }
+
+        private LocalModel local;
+
+        public LocalModel Local
+        {
+            get { return local; }
+            set { local = value; this.OnPropertyChanged(); }
+        }
+
+
+
     }
+
+
+
 }

@@ -27,14 +27,14 @@
                         <StackLayout Margin="5">
                         <Frame BorderColor="Gray" CornerRadius="5" Padding="8">
                             <StackLayout>
-                                    <Label FontSize="Small" FontAttributes="Bold" >
+                                    <Label FontSize="12" FontAttributes="None" >
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
                                                     <Span Text="Fecha: "> </Span>
                                                     <Span Text="{Binding FechaDetalle}"></Span>
                                                     <Span Text=" - "></Span>
-                                                    <Span Text="{Binding CodUsuario}"></Span>
+                                                    <Span Text="{Binding Usuario.NombreCompleto}"></Span>
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -49,7 +49,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackLayout Orientation="Horizontal" BackgroundColor="#F0EEED">
-            <Entry Placeholder="Ingresa Destalles" HorizontalOptions="FillAndExpand" ></Entry>
+            <Entry Text="{Binding detalle.TextoDetalle}" Placeholder="Ingresa Destalles" HorizontalOptions="FillAndExpand" ></Entry>
             <Button Text="Send" Command="{Binding guardarDetalleCommnad}" HorizontalOptions="End"></Button>
         </StackLayout>
     </StackLayout>

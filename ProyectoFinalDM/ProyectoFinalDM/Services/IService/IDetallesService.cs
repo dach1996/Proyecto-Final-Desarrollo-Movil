@@ -12,6 +12,7 @@ namespace ProyectoFinalDM.Services.IService
         void nuevoDetalles(DetalleModel detalle);
         void editarDetalle(DetalleModel detalle);
         void eliminarDetalle(int codDetalle);
+        ObservableCollection<DetalleModel> buscarDetallesPorIdTicket(int codTicket);
 
     }
 }
