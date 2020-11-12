@@ -20,7 +20,8 @@ namespace ProyectoFinalDM.Services.WSImplements
         }
         private async Task consultarJson()
         { 
-                var consultaSerializada = await httpClient.GetStringAsync(Url);
+
+                var consultaSerializada = await  httpClient.GetStringAsync(Url);
                 var consultaDeserializada = JsonConvert.DeserializeObject<List<UsuarioModel>>(consultaSerializada);
                 consulta = new ObservableCollection<UsuarioModel>(consultaDeserializada);
         }

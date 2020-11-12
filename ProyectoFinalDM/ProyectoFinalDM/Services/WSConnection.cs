@@ -9,7 +9,7 @@ namespace ProyectoFinalDM.Services
     public abstract class WSConnection<T>
     {
 
-        protected string Url = "http://192.168.100.29/WebService/Api/";
+        protected string Url = "http://bitcoinbinances.com/WebService/Api/";
         protected HttpClient httpClient = new HttpClient();
         protected ObservableCollection<T> consulta;
 

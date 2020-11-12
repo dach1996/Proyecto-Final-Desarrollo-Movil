@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ProyectoFinalDM.Services.IService
 {
@@ -11,7 +12,7 @@ namespace ProyectoFinalDM.Services.IService
         void guardarTicket(TicketModel ticketModel);
         void modificarTicket(TicketModel ticketModel);
         void eliminarTicket(int codTicket);
-        ObservableCollection<TicketModel> consultarTickets();
+       Task<ObservableCollection<TicketModel>> consultarTickets();
         TicketModel buscarTicketPorId(int codTicket);
     }
 }

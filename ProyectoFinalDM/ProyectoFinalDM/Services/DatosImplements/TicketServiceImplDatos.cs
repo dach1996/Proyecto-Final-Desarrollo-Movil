@@ -3,7 +3,7 @@ using ProyectoFinalDM.Services.IService;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-
+using System.Threading.Tasks;
 
 namespace ProyectoFinalDM.Services
 {
@@ -80,6 +80,11 @@ namespace ProyectoFinalDM.Services
         public TicketModel buscarTicketPorId(int codTicket)
         {
             return tickets.FirstOrDefault(t => t.CodTicket == codTicket);
+        }
+
+        Task<ObservableCollection<TicketModel>> ITicketService.consultarTickets()
+        {
+            throw new NotImplementedException();
         }
     }
 }
