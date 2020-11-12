@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ProyectoFinalDM.Services.IService
 {
     public interface IUsuariosService
     {
-        UsuarioModel buscarUsuario(string username, string password);
+        Task<UsuarioModel> buscarUsuario(string username, string password);
         ObservableCollection<UsuarioModel> listarUsuarios();
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ProyectoFinalDM.Services
 {
@@ -19,9 +20,14 @@ namespace ProyectoFinalDM.Services
             usuarios.Add(new UsuarioModel {CodUsuario=2, ApellidoUsuario="Moya", NombreUsuario="Alex",PasswordUsuario="12345"});
             usuarios.Add(new UsuarioModel {CodUsuario=3,ApellidoUsuario="Guadalupe", NombreUsuario="Adrian",PasswordUsuario="12345"});
         }
-        public UsuarioModel buscarUsuario(string username, string password)
+        public async Task <UsuarioModel> buscarUsuario(string username, string password)
         {
-            return usuarios.FirstOrDefault(u=> (u.UsernameUsuario==username || u.NombreUsuario== username)&& u.PasswordUsuario==password);
+            await Task.Run(() =>
+            {
+                return   usuarios.FirstOrDefault(u => (u.UsernameUsuario == username || u.NombreUsuario == username) && u.PasswordUsuario == password);
+            });
+            return null;
+           
         }
 
         public ObservableCollection<UsuarioModel> listarUsuarios()

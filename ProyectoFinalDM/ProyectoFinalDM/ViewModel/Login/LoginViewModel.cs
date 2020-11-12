@@ -1,6 +1,7 @@
 ﻿using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services;
 using ProyectoFinalDM.Services.IService;
+using ProyectoFinalDM.Services.WSImplements;
 using ProyectoFinalDM.View;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace ProyectoFinalDM.ViewModel.Login
 {
     class LoginViewModel
     {
-        private IUsuariosService usuarioService = new UsuarioServiceImplDatos();
+        private UsuarioServiceImplWS usuarioService = new UsuarioServiceImplWS();
         public static UsuarioModel usuarioLogiado;
         public string Username { get; set; }
         public string Password { get; set; }
@@ -25,9 +26,10 @@ namespace ProyectoFinalDM.ViewModel.Login
 
         private async void verificarIngreso()
         {
-            usuarioLogiado = usuarioService.buscarUsuario(Username, Password);
+            usuarioLogiado = await usuarioService.buscarUsuario(Username, Password);
             if (usuarioLogiado != null)
             {
+                
                 UsuarioServiceImplDatos.usuario = usuarioLogiado;
                 await App.navegacion.PushAsync(new TicketView());
             }

@@ -1,4 +1,5 @@
-﻿using ProyectoFinalDM.INotifyProperty;
+﻿using Newtonsoft.Json;
+using ProyectoFinalDM.INotifyProperty;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,7 @@ namespace ProyectoFinalDM.Models
     {
         private int codUsuario;
 
+        [JsonProperty(PropertyName= "cod_usuario")]
         public int CodUsuario
         {
             get { return codUsuario; }
@@ -17,6 +19,7 @@ namespace ProyectoFinalDM.Models
 
         private string numeroCedula;
 
+        [JsonProperty(PropertyName = "ced_usuario")]
         public string NumeroCedula
         {
             get { return numeroCedula; }
@@ -24,6 +27,7 @@ namespace ProyectoFinalDM.Models
         }
         private string nombreUsuario;
 
+        [JsonProperty(PropertyName = "nombre_usuario")]
         public string NombreUsuario
         {
             get { return nombreUsuario; }
@@ -31,6 +35,7 @@ namespace ProyectoFinalDM.Models
         }
         private string apellidoUsuario;
 
+        [JsonProperty(PropertyName = "apellido_usuario")]
         public string ApellidoUsuario
         {
             get { return apellidoUsuario; }
@@ -39,6 +44,7 @@ namespace ProyectoFinalDM.Models
 
         private string passwordUsuario;
 
+        [JsonProperty(PropertyName = "password_usuario")]
         public string PasswordUsuario
         {
             get { return passwordUsuario; }
@@ -53,9 +59,10 @@ namespace ProyectoFinalDM.Models
             }
         }
 
-        private DateTime fechaNacimientoUsuario;
+        private DateTime? fechaNacimientoUsuario;
 
-        public DateTime FechaNacimientoUsuario
+        [JsonProperty(PropertyName = "fecha_nacimiento_usuario")]
+        public DateTime? FechaNacimientoUsuario
         {
             get { return fechaNacimientoUsuario; }
             set { fechaNacimientoUsuario = value; this.OnPropertyChanged(); }
@@ -63,6 +70,7 @@ namespace ProyectoFinalDM.Models
 
         private string fotoUsuario;
 
+        [JsonProperty(PropertyName = "foto_usuario")]
         public string FotoUsuario
         {
             get { return fotoUsuario; }
@@ -71,6 +79,7 @@ namespace ProyectoFinalDM.Models
 
         private string usernameUsuario;
 
+        [JsonProperty(PropertyName = "usuario_usuario")]
         public string UsernameUsuario
         {
             get { return usernameUsuario; }
@@ -79,6 +88,7 @@ namespace ProyectoFinalDM.Models
 
         private string correoUsuario;
 
+        [JsonProperty(PropertyName = "correo_usuario")]
         public string CorreoUsuario
         {
             get { return correoUsuario; }

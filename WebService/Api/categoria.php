@@ -1,6 +1,7 @@
 <?php
-include "config.php";
-include "utils.php";
+include "../config.php";
+include "../utils.php";
+
 
 $dbConn =  connect($db);
 
