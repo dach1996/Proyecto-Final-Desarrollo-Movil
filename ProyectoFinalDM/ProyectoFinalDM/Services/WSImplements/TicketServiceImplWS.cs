@@ -16,6 +16,9 @@ namespace ProyectoFinalDM.Services.WSImplements
     {
 
         private IUsuariosService usuariosService = new UsuarioServiceImplWS();
+        private IClienteService clienteService = new ClientesServiceImplWS();
+        private ILocalesService localService = new LocalesServiceImplWS();
+        private ICategoriasService categoriaService = new CategoriaServiceImplWS();
         public TicketServiceImplWS()
         {
             base.httpClient = new HttpClient();
@@ -31,14 +34,17 @@ namespace ProyectoFinalDM.Services.WSImplements
                 foreach (var item in consultaDeserializada)
                 {
                     consulta.Add(new TicketModel {
-                        CodTicket=item.CodTicket,
+                        CodTicket = item.CodTicket,
                         TituloTicket = item.TituloTicket,
-                        FechaFinTicket = item.FechaTicket,
-                        Cliente = new ClienteModel { NombreCliente=item.NombreCliente},
-                        Local = new LocalModel { NombreLocal = item.NombreLocal},
-                        Categoria = new CategoriaModel { NombreCategoria= item.NombreCategoria},
-                        Estado = item.Estado
-                    });
+                        FechaTicket = item.FechaTicket,
+                        FechaFinTicket = item.FechaFinTicket,
+                        Estado = item.Estado,
+                        Usuario = usuariosService.buscarUsuarioId(item.CodUsuario),
+                        Cliente = clienteService.buscarCliente(item.CodCliente),
+                        Local = localService.buscarLocal(item.CodLocal),
+                        PrioridadTicket=item.PrioridadTicket,
+                        Categoria = categoriaService.buscarCategoria(item.CodCategoria)
+                    }) ;
                 }
             }
             catch (Exception e)

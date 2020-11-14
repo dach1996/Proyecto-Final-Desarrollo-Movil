@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ProyectoFinalDM.Services.IService
 {
-    public interface IPrioridadService
+    public interface IEstadosService
     {
-        ObservableCollection<String> listarPrioridades();
-        String buscarPrioridad(string prioridad);
-        Task consultarPrioridades();
+        ObservableCollection<String> listarEstados();
+        String buscarEstado(string estado);
+        Task consultarEstados();
     }
 }

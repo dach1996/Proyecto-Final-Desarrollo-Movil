@@ -18,10 +18,10 @@ namespace ProyectoFinalDM.Services
             {
                 tickets = new ObservableCollection<TicketModel>();
                 ClienteServiceImplDatos clientesService = new ClienteServiceImplDatos();
-                ICategoriasService categoriaService = new CategoriaServiceImplDatos();
+                CategoriaServiceImplDatos categoriaService = new CategoriaServiceImplDatos();
                 IUsuariosService usuarioService = new UsuarioServiceImplWS();
                 IPrioridadService prioridadesService = new PrioridadServiceImplDatos();
-                ILocalesService localService = new LocalServiceImplDatos();
+                LocalServiceImplDatos localService = new LocalServiceImplDatos();
                 ObservableCollection<ClienteModel> clientes = new ObservableCollection<ClienteModel>();
                 ObservableCollection<CategoriaModel> categorias = new ObservableCollection<CategoriaModel>();
                 ObservableCollection<PrioridadModel> prioridades = new ObservableCollection<PrioridadModel>();
@@ -29,7 +29,7 @@ namespace ProyectoFinalDM.Services
                 ObservableCollection<LocalModel> locales = new ObservableCollection<LocalModel>();
                 clientes = clientesService.listarClientes();
                 categorias = categoriaService.listarCategorias();
-                prioridades = prioridadesService.listarPrioridades();
+
                 usuarios = usuarioService.listarUsuarios();
                 locales = localService.listarLocales();
                 for (int a = 0; a < 10; a++)
@@ -42,7 +42,7 @@ namespace ProyectoFinalDM.Services
                         FechaTicket = new DateTime(),
                         Local = locales[new Random().Next(1, 5)],
                         TituloTicket = "Coordinar para cambiar Sensor",
-                        Prioridad= prioridades[new Random().Next(1,3)],
+                     
                         Usuario = usuarios[new Random().Next(1,3)],
                         Cliente = clientes[new Random().Next(1, 3)],
                         Categoria = categorias[new Random().Next(1, 5)]

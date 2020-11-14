@@ -38,6 +38,10 @@ namespace ProyectoFinalDM.Services.WSImplements
             return StaticData.usuarios;
         }
 
+        public UsuarioModel buscarUsuarioId(int codUsuario)
+        {
+            return StaticData.usuarios.FirstOrDefault(u => u.CodUsuario==codUsuario);
 
+        }
     }
 }

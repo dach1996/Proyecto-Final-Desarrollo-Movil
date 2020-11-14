@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ProyectoFinalDM.Services
 {
-    class LocalServiceImplDatos : ILocalesService
+    class LocalServiceImplDatos
     {
         public ObservableCollection<LocalModel> locales { get; set; }
         public LocalServiceImplDatos()

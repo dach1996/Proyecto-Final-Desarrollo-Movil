@@ -4,7 +4,7 @@
              x:Class="ProyectoFinalDM.Login">
     <ContentPage.Content>
         <Grid>
-            <Image Source="Imagen1.jpg" Aspect="AspectFill" />
+            <!-- <Image Source="Imagen1.jpg" Aspect="AspectFill" />-->
             <BoxView Color="AliceBlue" Opacity="0.8"/>
 
             <Grid>
@@ -20,6 +20,7 @@
                     <Entry Text="{Binding Password}"  Placeholder="Contraseña" PlaceholderColor="White" IsPassword="True" />
                     <Button Command="{Binding verificarIngresoCommand}"  BackgroundColor="Gray" Text="Iniciar Sesión"  BorderRadius="20" TextColor="Black"  />
                     <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+                    <Label HorizontalOptions="Center"  FontSize="20" Text="{Binding estadoAuth}"></Label>
                 </StackLayout>
 
 

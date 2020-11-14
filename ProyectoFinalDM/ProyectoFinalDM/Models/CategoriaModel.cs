@@ -1,4 +1,5 @@
-﻿using ProyectoFinalDM.INotifyProperty;
+﻿using Newtonsoft.Json;
+using ProyectoFinalDM.INotifyProperty;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,7 @@ namespace ProyectoFinalDM.Models
     {
         private int codCategoria;
 
+        [JsonProperty(PropertyName = "cod_categoria")]
         public int CodCategoria
         {
             get { return codCategoria; }
@@ -17,6 +19,7 @@ namespace ProyectoFinalDM.Models
 
         private string nombreCategoria;
 
+        [JsonProperty(PropertyName = "nomb_categoria")]
         public string NombreCategoria
         {
             get { return nombreCategoria; }

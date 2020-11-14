@@ -44,8 +44,8 @@
 
             <Label Text="PRIORIDAD" />
             <Picker  ItemsSource="{Binding prioridades}"
-                     ItemDisplayBinding="{Binding NombrePrioridad}"
-                     SelectedItem="{Binding ticket.Prioridad}"/>
+                     ItemDisplayBinding="{Binding .}"
+                     SelectedItem="{Binding ticket.PrioridadTicket}"/>
 
 
             <Label Text="FECHA TICKET" />

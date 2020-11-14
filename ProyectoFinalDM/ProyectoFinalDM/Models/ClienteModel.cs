@@ -60,9 +60,17 @@ namespace ProyectoFinalDM.Models
         }
 
 
+       
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
         public override bool Equals(object obj)
         {
             return obj is ClienteModel model &&
+                   IsBusy == model.IsBusy &&
                    codCliente == model.codCliente &&
                    CodCliente == model.CodCliente &&
                    nombreCliente == model.nombreCliente &&
@@ -77,12 +85,19 @@ namespace ProyectoFinalDM.Models
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
+            int hashCode = 1950701894;
+            hashCode = hashCode * -1521134295 + IsBusy.GetHashCode();
+            hashCode = hashCode * -1521134295 + codCliente.GetHashCode();
+            hashCode = hashCode * -1521134295 + CodCliente.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(nombreCliente);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(NombreCliente);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(imagenCliente);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ImagenCliente);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(userCliente);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(UserCliente);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(passwordCliente);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(PasswordCliente);
+            return hashCode;
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ProyectoFinalDM.Services
 {
-    public class CategoriaServiceImplDatos : ICategoriasService
+    public class CategoriaServiceImplDatos 
     {
         private ObservableCollection<CategoriaModel> categorias;
         public CategoriaServiceImplDatos()

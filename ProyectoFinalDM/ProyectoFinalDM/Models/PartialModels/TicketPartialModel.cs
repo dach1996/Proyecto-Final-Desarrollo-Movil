@@ -17,6 +17,14 @@ namespace ProyectoFinalDM.Models.PartialModels
             set { codTicket = value; this.OnPropertyChanged(); }
         }
 
+        private int codLocal;
+
+        [JsonProperty(PropertyName = "cod_local")]
+        public int CodLocal
+        {
+            get { return codLocal; }
+            set { codLocal = value; this.OnPropertyChanged(); }
+        }
         private string tituloTicket;
 
         [JsonProperty(PropertyName = "titulo_ticket")]
@@ -35,30 +43,16 @@ namespace ProyectoFinalDM.Models.PartialModels
             set { fechaTicket = value; this.OnPropertyChanged(); }
         }
 
-        private string nombreCliente;
 
-        [JsonProperty(PropertyName = "nomb_cliente")]
-        public string NombreCliente
+        private DateTime? fechaFinTicket;
+
+        [JsonProperty(PropertyName = "fecha_fin_ticket")]
+        public DateTime? FechaFinTicket
         {
-            get { return nombreCliente; }
-            set { nombreCliente = value; this.OnPropertyChanged(); }
+            get { return fechaFinTicket; }
+            set { fechaFinTicket = value; this.OnPropertyChanged(); }
         }
 
-        private string nombreLocal;
-        [JsonProperty(PropertyName = "nomb_local")]
-        public string NombreLocal
-        {
-            get { return nombreLocal; }
-            set { nombreLocal = value; this.OnPropertyChanged(); }
-        }
-
-        private string nombreCategoria;
-        [JsonProperty(PropertyName = "nomb_categoria")]
-        public string NombreCategoria
-        {
-            get { return nombreCategoria; }
-            set { nombreCategoria = value; this.OnPropertyChanged(); }
-        }
 
         private string estado;
         [JsonProperty(PropertyName = "estado_ticket")]
@@ -67,5 +61,42 @@ namespace ProyectoFinalDM.Models.PartialModels
             get { return estado; }
             set { estado = value; this.OnPropertyChanged(); }
         }
+
+
+        private string prioridadTicket;
+        [JsonProperty(PropertyName = "prioridad_ticket")]
+        public string PrioridadTicket
+        {
+            get { return prioridadTicket; }
+            set { prioridadTicket = value; this.OnPropertyChanged(); }
+        }
+
+        private int codUsuario;
+
+        [JsonProperty(PropertyName = "cod_usuario")]
+        public int CodUsuario
+        {
+            get { return codUsuario; }
+            set { codUsuario = value; this.OnPropertyChanged(); }
+        }
+
+        private int codCliente;
+
+        [JsonProperty(PropertyName = "cod_cliente")]
+        public int CodCliente
+        {
+            get { return codCliente; }
+            set { codCliente = value; this.OnPropertyChanged(); }
+        }
+
+        private int codCategoria;
+
+        [JsonProperty(PropertyName = "cod_categoria")]
+        public int CodCategoria
+        {
+            get { return codCategoria; }
+            set { codCategoria = value; this.OnPropertyChanged(); }
+        }
+
     }
 }

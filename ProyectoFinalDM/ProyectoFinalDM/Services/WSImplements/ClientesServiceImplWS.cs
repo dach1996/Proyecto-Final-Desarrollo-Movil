@@ -23,7 +23,7 @@ namespace ProyectoFinalDM.Services.WSImplements
             return StaticData.clientes.FirstOrDefault(c => c.CodCliente ==codCliente);
         }
 
-        public  Task consultarJson()
+        public  Task consultarJsonCliente()
         {
             try
             {

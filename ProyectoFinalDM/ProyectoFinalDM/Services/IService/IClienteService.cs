@@ -8,6 +8,6 @@ namespace ProyectoFinalDM.Services.IService
     {
         ObservableCollection<ClienteModel> listarClientes();
         ClienteModel buscarCliente(int  codCliente);
-        Task consultarJson();
+        Task consultarJsonCliente();
     }
 }

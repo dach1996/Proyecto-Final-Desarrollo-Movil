@@ -1,26 +1,44 @@
 ﻿using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services.IService;
+using ProyectoFinalDM.Services.WSImplements;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ProyectoFinalDM.Services
 {
-    class PrioridadServiceImplDatos : IPrioridadService
+    public class PrioridadServiceImplDatos : IPrioridadService
     {
-        private ObservableCollection<PrioridadModel> prioridades;
+        private ObservableCollection<String> prioridades;
 
         public PrioridadServiceImplDatos()
         {
-            prioridades = new ObservableCollection<PrioridadModel>();
-            prioridades.Add(new PrioridadModel { CodPrioridad = 1, NombrePrioridad = "INGRESADO" });
-            prioridades.Add(new PrioridadModel { CodPrioridad = 2, NombrePrioridad = "EN PROCESO" });
-            prioridades.Add(new PrioridadModel { CodPrioridad = 3, NombrePrioridad = "COMPLETADO" });
+            prioridades = new ObservableCollection<String>();
+       
         }
-        public ObservableCollection<PrioridadModel> listarPrioridades()
+
+        public String buscarPrioridad(string prioridad)
         {
-            return prioridades;
+            return StaticData.prioridades.FirstOrDefault(p=>p==prioridad);
+
+        }
+
+        public Task consultarPrioridades()
+        {
+            return Task.Run(() =>
+            {
+                prioridades.Add( "Alta" );
+                prioridades.Add( "Media" );
+                prioridades.Add( "Baja" );
+                StaticData.prioridades = prioridades;
+            });
+            
+        }
+
+        public ObservableCollection<String> listarPrioridades()
+        {
+            return StaticData.prioridades;
         }
     }
 }

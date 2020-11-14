@@ -90,24 +90,33 @@ namespace ProyectoFinalDM.Models
             set { categoria = value; this.OnPropertyChanged(); }
         }
 
-        private PrioridadModel prioridad;
+        private string prioridadTicket;
 
-        public PrioridadModel Prioridad 
+
+        [JsonProperty(PropertyName = "estado_ticket")]
+        public string PrioridadTicket
         {
-            get { return prioridad; }
-            set { prioridad = value; this.OnPropertyChanged(); }
+            get { return prioridadTicket; }
+            set { prioridadTicket = value; this.OnPropertyChanged(); }
         }
+        private LocalModel local;
 
+        public LocalModel Local
+        {
+            get { return local; }
+            set { local = value; this.OnPropertyChanged(); }
+        }
         public override string ToString()
         {
             return base.ToString();
         }
 
+
+
         public override bool Equals(object obj)
         {
             return obj is TicketModel model &&
-                   base.Equals(obj) &&
-
+                   IsBusy == model.IsBusy &&
                    codTicket == model.codTicket &&
                    CodTicket == model.CodTicket &&
                    tituloTicket == model.tituloTicket &&
@@ -124,17 +133,16 @@ namespace ProyectoFinalDM.Models
                    EqualityComparer<ClienteModel>.Default.Equals(Cliente, model.Cliente) &&
                    EqualityComparer<CategoriaModel>.Default.Equals(categoria, model.categoria) &&
                    EqualityComparer<CategoriaModel>.Default.Equals(Categoria, model.Categoria) &&
-                   EqualityComparer<PrioridadModel>.Default.Equals(prioridad, model.prioridad) &&
-                   EqualityComparer<PrioridadModel>.Default.Equals(Prioridad, model.Prioridad) &&
+                   prioridadTicket == model.prioridadTicket &&
+                   PrioridadTicket == model.PrioridadTicket &&
                    EqualityComparer<LocalModel>.Default.Equals(local, model.local) &&
                    EqualityComparer<LocalModel>.Default.Equals(Local, model.Local);
         }
 
         public override int GetHashCode()
         {
-            int hashCode = -1075536574;
-            hashCode = hashCode * -1521134295 + base.GetHashCode();
-
+            int hashCode = -227968216;
+            hashCode = hashCode * -1521134295 + IsBusy.GetHashCode();
             hashCode = hashCode * -1521134295 + codTicket.GetHashCode();
             hashCode = hashCode * -1521134295 + CodTicket.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(tituloTicket);
@@ -151,23 +159,12 @@ namespace ProyectoFinalDM.Models
             hashCode = hashCode * -1521134295 + EqualityComparer<ClienteModel>.Default.GetHashCode(Cliente);
             hashCode = hashCode * -1521134295 + EqualityComparer<CategoriaModel>.Default.GetHashCode(categoria);
             hashCode = hashCode * -1521134295 + EqualityComparer<CategoriaModel>.Default.GetHashCode(Categoria);
-            hashCode = hashCode * -1521134295 + EqualityComparer<PrioridadModel>.Default.GetHashCode(prioridad);
-            hashCode = hashCode * -1521134295 + EqualityComparer<PrioridadModel>.Default.GetHashCode(Prioridad);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(prioridadTicket);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(PrioridadTicket);
             hashCode = hashCode * -1521134295 + EqualityComparer<LocalModel>.Default.GetHashCode(local);
             hashCode = hashCode * -1521134295 + EqualityComparer<LocalModel>.Default.GetHashCode(Local);
             return hashCode;
         }
-
-        private LocalModel local;
-
-        public LocalModel Local
-        {
-            get { return local; }
-            set { local = value; this.OnPropertyChanged(); }
-        }
-
-
-
     }
 
 

@@ -10,7 +10,7 @@ namespace ProyectoFinalDM.Models
     {
         private int codLocal;
 
-        [JsonProperty(PropertyName = "cod_cliente")]
+        [JsonProperty(PropertyName = "cod_local")]
         public int CodLocal
         {
             get { return codLocal; }
@@ -19,7 +19,7 @@ namespace ProyectoFinalDM.Models
 
         private string nombreLocal;
 
-        [JsonProperty(PropertyName = "cod_cliente")]
+        [JsonProperty(PropertyName = "nomb_local")]
         public string NombreLocal
         {
             get { return nombreLocal; }
