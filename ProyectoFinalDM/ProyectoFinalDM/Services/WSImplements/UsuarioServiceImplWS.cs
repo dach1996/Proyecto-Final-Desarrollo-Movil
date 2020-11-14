@@ -11,32 +11,33 @@ using System.Threading.Tasks;
 
 namespace ProyectoFinalDM.Services.WSImplements
 {
-   public class UsuarioServiceImplWS : WSConnection<UsuarioModel>, IUsuariosService
+    public class UsuarioServiceImplWS : WSConnection<UsuarioModel>, IUsuariosService
     {
+
         public UsuarioServiceImplWS()
         {
             base.httpClient = new HttpClient();
             base.Url = base.Url + "usuario.php";
         }
-        private async Task consultarJson()
-        { 
-
-                var consultaSerializada = await  httpClient.GetStringAsync(Url);
-                var consultaDeserializada = JsonConvert.DeserializeObject<List<UsuarioModel>>(consultaSerializada);
-                consulta = new ObservableCollection<UsuarioModel>(consultaDeserializada);
-        }
-        public async Task<UsuarioModel> buscarUsuario(string username, string password)
+        public Task consultarJsonUsuarios()
         {
-            await this.consultarJson();
-            return consulta.FirstOrDefault(u => u.UsernameUsuario == username && u.PasswordUsuario == password);
+            return Task.Run(async()=>{
+                var consultaSerializada = await httpClient.GetStringAsync(Url);
+                var consultaDeserializada = JsonConvert.DeserializeObject<List<UsuarioModel>>(consultaSerializada);
+                StaticData.usuarios = new ObservableCollection<UsuarioModel>(consultaDeserializada);
+            });
+        }
+        public  UsuarioModel buscarUsuario(string username, string password)
+        {
+            return StaticData.usuarios.FirstOrDefault(u => u.UsernameUsuario == username && u.PasswordUsuario == password);
+           
         }
 
         public ObservableCollection<UsuarioModel> listarUsuarios()
         {
-
-            return consulta;
+            return StaticData.usuarios;
         }
 
- 
+
     }
 }

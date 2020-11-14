@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoFinalDM.Services
 {
-    public class UsuarioServiceImplDatos : IUsuariosService
+    public class UsuarioServiceImplDatos
     {
         public static ObservableCollection<UsuarioModel> usuarios { get; set; }
         public static UsuarioModel usuario { get; set; }
@@ -33,6 +33,11 @@ namespace ProyectoFinalDM.Services
         public ObservableCollection<UsuarioModel> listarUsuarios()
         {
             return usuarios;
+        }
+
+        public Task consultarJsonUsuarios()
+        {
+            throw new NotImplementedException();
         }
     }
 }

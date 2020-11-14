@@ -1,6 +1,7 @@
 ﻿using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services;
 using ProyectoFinalDM.Services.IService;
+using ProyectoFinalDM.Services.WSImplements;
 using ProyectoFinalDM.ViewModel;
 using ProyectoFinalDM.ViewModel.Tickets;
 using System;
@@ -12,11 +13,9 @@ namespace ProyectoFinalDM.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TicketView : ContentPage
     {
-        private ITicketService ticketService;
         public TicketView()
         {
             InitializeComponent();
-            ticketService = new TicketServiceImplDatos();
             LVTickets.ItemTapped += LVTickets_ItemTapped;
         }
 
@@ -31,7 +30,6 @@ namespace ProyectoFinalDM.View
             var modelo = (TicketModel)e.Item;
             if (e.Item == null) return;
             ((ListView)sender).SelectedItem = null;
-            var ticket = ticketService.buscarTicketPorId(modelo.CodTicket);
             await Navigation.PushAsync(new NuevoTicketView(modelo));
         }
 

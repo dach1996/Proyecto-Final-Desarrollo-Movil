@@ -1,4 +1,5 @@
-﻿using ProyectoFinalDM.INotifyProperty;
+﻿using Newtonsoft.Json;
+using ProyectoFinalDM.INotifyProperty;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,17 +8,12 @@ namespace ProyectoFinalDM.Models
 {
     public class TicketModel : Notificaciones
     {
-        private bool isBisy = false;
 
-        public bool isBusy
-        {
-            get { return isBisy; }
-            set { isBisy = value; this.OnPropertyChanged(); }
-        }
 
 
         private int codTicket;
 
+        [JsonProperty(PropertyName = "cod_ticket")]
         public int CodTicket
         {
             get { return codTicket; }
@@ -27,23 +23,28 @@ namespace ProyectoFinalDM.Models
 
         private string tituloTicket;
 
+        [JsonProperty(PropertyName = "titulo_ticket")]
         public string TituloTicket
         {
             get { return tituloTicket; }
             set { tituloTicket = value; this.OnPropertyChanged(); }
         }
 
-        private DateTime fechaTicket;
+        private DateTime? fechaTicket;
 
-        public DateTime FechaTicket
+
+        [JsonProperty(PropertyName = "fecha_inicio_ticket")]
+        public DateTime? FechaTicket
         {
             get { return fechaTicket; }
             set { fechaTicket = value; this.OnPropertyChanged(); }
         }
 
-        private DateTime fechaFinTicket;
+        private DateTime? fechaFinTicket;
 
-        public DateTime FechaFinTicket
+
+        [JsonProperty(PropertyName = "fecha_fin_ticket")]
+        public DateTime? FechaFinTicket
         {
             get { return fechaFinTicket; }
             set { fechaFinTicket = value; this.OnPropertyChanged(); }
@@ -51,14 +52,17 @@ namespace ProyectoFinalDM.Models
 
         private string estado;
 
+
+        [JsonProperty(PropertyName = "estado_ticket")]
         public string Estado
         {
             get { return estado; }
             set { estado = value; this.OnPropertyChanged(); }
         }
 
-
+    
         private UsuarioModel usuario;
+
 
         public UsuarioModel Usuario
         {
@@ -103,8 +107,7 @@ namespace ProyectoFinalDM.Models
         {
             return obj is TicketModel model &&
                    base.Equals(obj) &&
-                   isBisy == model.isBisy &&
-                   isBusy == model.isBusy &&
+
                    codTicket == model.codTicket &&
                    CodTicket == model.CodTicket &&
                    tituloTicket == model.tituloTicket &&
@@ -131,8 +134,7 @@ namespace ProyectoFinalDM.Models
         {
             int hashCode = -1075536574;
             hashCode = hashCode * -1521134295 + base.GetHashCode();
-            hashCode = hashCode * -1521134295 + isBisy.GetHashCode();
-            hashCode = hashCode * -1521134295 + isBusy.GetHashCode();
+
             hashCode = hashCode * -1521134295 + codTicket.GetHashCode();
             hashCode = hashCode * -1521134295 + CodTicket.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(tituloTicket);

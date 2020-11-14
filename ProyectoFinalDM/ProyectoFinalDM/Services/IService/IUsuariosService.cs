@@ -9,7 +9,8 @@ namespace ProyectoFinalDM.Services.IService
 {
     public interface IUsuariosService
     {
-        Task<UsuarioModel> buscarUsuario(string username, string password);
+        UsuarioModel buscarUsuario(string username, string password);
         ObservableCollection<UsuarioModel> listarUsuarios();
+        Task consultarJsonUsuarios();
     }
 }

@@ -8,8 +8,15 @@ namespace ProyectoFinalDM.INotifyProperty
 {
     public abstract class Notificaciones : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
 
+        private bool isBusy;
+
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set { isBusy = value; this.OnPropertyChanged(); }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged([CallerMemberName] string propiedad=null)
         {

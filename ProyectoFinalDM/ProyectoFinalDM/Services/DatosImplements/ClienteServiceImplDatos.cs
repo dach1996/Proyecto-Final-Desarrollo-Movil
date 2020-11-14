@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ProyectoFinalDM.Services
 {
-    public class ClienteServiceImplDatos : IClienteService
+    public class ClienteServiceImplDatos 
     {
         private ObservableCollection<ClienteModel> clientes;
         public ClienteServiceImplDatos()

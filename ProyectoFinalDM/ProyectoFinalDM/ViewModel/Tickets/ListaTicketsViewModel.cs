@@ -1,4 +1,5 @@
-﻿using ProyectoFinalDM.Models;
+﻿using ProyectoFinalDM.INotifyProperty;
+using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services;
 using ProyectoFinalDM.Services.IService;
 using ProyectoFinalDM.Services.WSImplements;
@@ -11,18 +12,9 @@ using System.Threading.Tasks;
 namespace ProyectoFinalDM.ViewModel.Tickets
 {
    
-    class ListaTicketsViewModel : ProyectoFinalDM.INotifyProperty.Notificaciones
+    class ListaTicketsViewModel : Notificaciones
     {
         private ITicketService ticketService = new TicketServiceImplWS();
-
-        private bool isBusy;
-
-        public bool IsBusy
-        {
-            get { return isBusy; }
-            set { isBusy = value; this.OnPropertyChanged(); }
-        }
-
 
         public ObservableCollection<TicketModel> tickets { get; set; }
         public ListaTicketsViewModel()

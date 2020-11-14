@@ -2,29 +2,31 @@
 using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services;
 using ProyectoFinalDM.Services.IService;
+using ProyectoFinalDM.Services.WSImplements;
 using ProyectoFinalDM.View;
 using ProyectoFinalDM.View.Detalle;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ProyectoFinalDM.ViewModel
 {
-    public class TicketViewModel:Notificaciones
+    public class TicketViewModel : Notificaciones
     {
         //Servicios
-        private ITicketService ticketService = new TicketServiceImplDatos();
-        private IClienteService clienteService = new ClienteServiceImplDatos();
+        private ITicketService ticketService = new TicketServiceImplWS();
+        private ClienteServiceImplDatos clienteService = new ClienteServiceImplDatos();
         private ICategoriasService categoriaService = new CategoriaServiceImplDatos();
         private IPrioridadService prioridadService = new PrioridadServiceImplDatos();
         private ILocalesService localService = new LocalServiceImplDatos();
 
 
 
-   
+
         public TicketModel ticket { get; set; }
         public ObservableCollection<TicketModel> tickets { get; set; }
         public ObservableCollection<ClienteModel> clientes { get; set; }
@@ -39,11 +41,12 @@ namespace ProyectoFinalDM.ViewModel
         public Command prueba { get; set; }
         public TicketViewModel(TicketModel ticket = null)
         {
+
             prioridades = prioridadService.listarPrioridades();
             clientes = clienteService.listarClientes();
             categorias = categoriaService.listarCategorias();
             locales = new ObservableCollection<LocalModel>();
-     
+            this.ticket = new TicketModel(); 
 
 
             if (ticket == null)
@@ -53,18 +56,28 @@ namespace ProyectoFinalDM.ViewModel
             }
             else
             {
-                this.ticket = ticket;
+                cargarDatosTicket(ticket.CodTicket);
             }
             guardarTicketCommand = new Command(async () => await this.guardarTicket());
             eliminarTicketCommand = new Command(async () => await this.eliminarTicket());
-            prueba = new Command(async () => await this.pruebaCommand());
         }
 
-       
+        private async void cargarDatosTicket(int codigoTicket)
+        {
+            IsBusy = true;
+            var consulta = await ticketService.buscarTicketPorId(codigoTicket);
+            PropertyInfo[] properties = typeof(TicketModel).GetProperties();
+            for (int i = 0; i < properties.Length; i++)
+            {
+                properties[i].SetValue(this.ticket, properties[i].GetValue(consulta));
+            }
+            IsBusy = false;
+
+        }
         private async Task guardarTicket()
         {
 
-            if (ticket.CodTicket==0)
+            if (ticket.CodTicket == 0)
             {
 
                 ticket.Usuario = UsuarioServiceImplDatos.usuario;
@@ -94,18 +107,9 @@ namespace ProyectoFinalDM.ViewModel
 
         private async Task verDetalles()
         {
-                
-                await App.navegacion.PushAsync(new ListaDestallesView(this.ticket));
 
-        }
-        private async Task pruebaCommand()
-        {
-            var consulta = localService.listarLocales();
-            locales.Clear();
-            foreach (var item in consulta)
-            {
-                locales.Add(item);
-            }
+            await App.navegacion.PushAsync(new ListaDestallesView(this.ticket));
+
         }
 
     }

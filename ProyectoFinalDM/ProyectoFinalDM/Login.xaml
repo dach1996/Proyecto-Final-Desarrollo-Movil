@@ -12,27 +12,16 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
-
                 </Grid.RowDefinitions>
                 <Image Grid.Row="0" Source="Imagen2.jpg" WidthRequest="100" HeightRequest="100" Margin="0,50,0,30" />
 
                 <StackLayout Grid.Row="1" Padding="30,20">
                     <Entry Text="{Binding Username}" Placeholder="Usuario" PlaceholderColor="White" />
                     <Entry Text="{Binding Password}"  Placeholder="Contraseña" PlaceholderColor="White" IsPassword="True" />
-                    <Button Command="{Binding verificarIngresoCommand}" Text="Iniciar Sesión"  BorderRadius="20" TextColor="Turquoise"  />
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="¡Recuperar contraseña!" />
-                        <Label Text="Registrarse" HorizontalOptions="EndAndExpand" FontAttributes="Bold" />
-                    </StackLayout>
+                    <Button Command="{Binding verificarIngresoCommand}"  BackgroundColor="Gray" Text="Iniciar Sesión"  BorderRadius="20" TextColor="Black"  />
+                    <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
                 </StackLayout>
 
-                <StackLayout Grid.Row="2" HorizontalOptions="Center" Margin="0,0,0,50">
-                    <Label Text="Iniciar sesión com " HorizontalOptions="Center" />
-                    <StackLayout Orientation="Horizontal" />
-                    <Image Grid.Row="0" Source="Imagen2.jpg" WidthRequest="45" HeightRequest="45" />
-                    <Image Grid.Row="0" Source="Imagen2.jpg" WidthRequest="45" HeightRequest="45" />
-                    <Image Grid.Row="0" Source="Imagen2.jpg" WidthRequest="45" HeightRequest="45" />
-                </StackLayout>
 
             </Grid>
 

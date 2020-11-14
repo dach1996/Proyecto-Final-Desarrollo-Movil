@@ -1,4 +1,5 @@
-﻿using ProyectoFinalDM.INotifyProperty;
+﻿using Newtonsoft.Json;
+using ProyectoFinalDM.INotifyProperty;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,7 @@ namespace ProyectoFinalDM.Models
     {
         private int codLocal;
 
+        [JsonProperty(PropertyName = "cod_cliente")]
         public int CodLocal
         {
             get { return codLocal; }
@@ -17,6 +19,7 @@ namespace ProyectoFinalDM.Models
 
         private string nombreLocal;
 
+        [JsonProperty(PropertyName = "cod_cliente")]
         public string NombreLocal
         {
             get { return nombreLocal; }

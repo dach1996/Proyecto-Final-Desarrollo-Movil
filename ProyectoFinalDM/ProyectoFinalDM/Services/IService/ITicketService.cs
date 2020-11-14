@@ -13,6 +13,6 @@ namespace ProyectoFinalDM.Services.IService
         void modificarTicket(TicketModel ticketModel);
         void eliminarTicket(int codTicket);
        Task<ObservableCollection<TicketModel>> consultarTickets();
-        TicketModel buscarTicketPorId(int codTicket);
+        Task<TicketModel> buscarTicketPorId(int codTicket);
     }
 }

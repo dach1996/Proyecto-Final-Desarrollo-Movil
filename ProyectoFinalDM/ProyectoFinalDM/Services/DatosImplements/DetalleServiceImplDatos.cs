@@ -1,5 +1,6 @@
 ﻿using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services.IService;
+using ProyectoFinalDM.Services.WSImplements;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,7 +15,7 @@ namespace ProyectoFinalDM.Services
     public class DetalleServiceImplDatos : IDetallesService
     {
         public static ObservableCollection<DetalleModel> detalles { get; set; }
-        IUsuariosService usuarioService = new UsuarioServiceImplDatos();
+        IUsuariosService usuarioService = new UsuarioServiceImplWS();
         ITicketService ticketService = new TicketServiceImplDatos();
         ObservableCollection<UsuarioModel> usuarios = new ObservableCollection<UsuarioModel>();
         ObservableCollection<TicketModel> tickets = new ObservableCollection<TicketModel>();

@@ -1,5 +1,6 @@
 ﻿using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services.IService;
+using ProyectoFinalDM.Services.WSImplements;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,9 +17,9 @@ namespace ProyectoFinalDM.Services
             if (tickets == null)
             {
                 tickets = new ObservableCollection<TicketModel>();
-                IClienteService clientesService = new ClienteServiceImplDatos();
+                ClienteServiceImplDatos clientesService = new ClienteServiceImplDatos();
                 ICategoriasService categoriaService = new CategoriaServiceImplDatos();
-                IUsuariosService usuarioService = new UsuarioServiceImplDatos();
+                IUsuariosService usuarioService = new UsuarioServiceImplWS();
                 IPrioridadService prioridadesService = new PrioridadServiceImplDatos();
                 ILocalesService localService = new LocalServiceImplDatos();
                 ObservableCollection<ClienteModel> clientes = new ObservableCollection<ClienteModel>();
@@ -83,6 +84,11 @@ namespace ProyectoFinalDM.Services
         }
 
         Task<ObservableCollection<TicketModel>> ITicketService.consultarTickets()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<TicketModel> ITicketService.buscarTicketPorId(int codTicket)
         {
             throw new NotImplementedException();
         }

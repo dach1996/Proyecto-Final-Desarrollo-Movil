@@ -16,31 +16,14 @@ namespace ProyectoFinalDM.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NuevoTicketView : ContentPage
     {
-        private TicketViewModel contexto;
-        private ILocalesService localService = new LocalServiceImplDatos();
         public NuevoTicketView(TicketModel ticket = null)
         {
-
-            InitializeComponent();
-            contexto = new TicketViewModel(ticket);
-            
-            BindingContext = contexto;
+            InitializeComponent();      
+            BindingContext = new TicketViewModel(ticket); 
 
         }
 
-        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            pruebaCommand();
-        }
+  
 
-        private async Task pruebaCommand()
-        {
-            var consulta = localService.listarLocales();
-            contexto.locales.Clear();
-            foreach (var item in consulta)
-            {
-                contexto.locales.Add(item);
-            }
-        }
     }
 }

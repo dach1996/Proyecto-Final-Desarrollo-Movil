@@ -6,6 +6,7 @@ using System.Text;
 
 namespace ProyectoFinalDM.Models
 {
+    [JsonObject]
     public class UsuarioModel:Notificaciones
     {
         private int codUsuario;

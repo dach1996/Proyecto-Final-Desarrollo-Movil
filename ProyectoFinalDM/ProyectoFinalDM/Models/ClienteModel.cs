@@ -1,4 +1,5 @@
-﻿using ProyectoFinalDM.INotifyProperty;
+﻿using Newtonsoft.Json;
+using ProyectoFinalDM.INotifyProperty;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,8 @@ namespace ProyectoFinalDM.Models
     {
         private int codCliente;
 
+
+        [JsonProperty(PropertyName = "cod_cliente")]
         public int CodCliente
         {
             get { return codCliente; }
@@ -18,6 +21,8 @@ namespace ProyectoFinalDM.Models
 
         private string nombreCliente;
 
+
+        [JsonProperty(PropertyName = "nomb_cliente")]
         public string NombreCliente
         {
             get { return nombreCliente; }
@@ -26,6 +31,8 @@ namespace ProyectoFinalDM.Models
 
         private string imagenCliente;
 
+
+        [JsonProperty(PropertyName = "image_cliente")]
         public string ImagenCliente
         {
             get { return imagenCliente; }
@@ -34,6 +41,8 @@ namespace ProyectoFinalDM.Models
 
         private string userCliente;
 
+
+        [JsonProperty(PropertyName = "usu_cliente")]
         public string UserCliente
         {
             get { return userCliente; }
@@ -42,6 +51,8 @@ namespace ProyectoFinalDM.Models
 
         private string passwordCliente;
 
+
+        [JsonProperty(PropertyName = "pass_cliente")]
         public string PasswordCliente
         {
             get { return passwordCliente; }
