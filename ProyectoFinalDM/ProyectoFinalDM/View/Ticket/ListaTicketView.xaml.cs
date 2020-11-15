@@ -16,7 +16,6 @@ namespace ProyectoFinalDM.View
         public TicketView()
         {
             InitializeComponent();
-            LVTickets.ItemTapped += LVTickets_ItemTapped;
         }
 
 
@@ -24,19 +23,6 @@ namespace ProyectoFinalDM.View
         {
             BindingContext = new ListaTicketsViewModel();
             base.OnAppearing();
-        }
-        private async void LVTickets_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            var modelo = (TicketModel)e.Item;
-            if (e.Item == null) return;
-            ((ListView)sender).SelectedItem = null;
-            await Navigation.PushAsync(new NuevoTicketView(modelo));
-        }
-
-
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new NuevoTicketView());
         }
 
 

@@ -58,7 +58,7 @@ namespace ProyectoFinalDM.ViewModel.Login
                     );
 
                 Console.WriteLine("Terminé de cargar todos");
-                UsuarioServiceImplDatos.usuario = usuarioLogiado;
+                StaticData.usuaroLogeado = usuarioLogiado;
                 IsBusy = false;
                 estadoAuth = "";
                 await App.navegacion.PushAsync(new TicketView());

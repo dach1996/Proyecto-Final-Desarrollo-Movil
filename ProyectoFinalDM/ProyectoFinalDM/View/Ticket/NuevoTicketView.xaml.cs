@@ -18,12 +18,8 @@ namespace ProyectoFinalDM.View
     {
         public NuevoTicketView(TicketModel ticket = null)
         {
-            InitializeComponent();      
-            BindingContext = new TicketViewModel(ticket); 
-
+            InitializeComponent();
+            BindingContext = new TicketViewModel(ticket);
         }
-
-  
-
     }
 }

@@ -19,25 +19,13 @@ namespace ProyectoFinalDM.ViewModel
     {
         //Servicios
         private ITicketService ticketService = new TicketServiceImplWS();
-        private IClienteService clienteService = new ClientesServiceImplWS();
-        private ICategoriasService categoriaService = new CategoriaServiceImplWS();
-        private IPrioridadService prioridadService = new PrioridadServiceImplDatos();
-        private ILocalesService localService = new LocalesServiceImplWS();
-
-
-
-
         public TicketModel ticket { get; set; }
         public ObservableCollection<String> estados { get; set; }
         public ObservableCollection<ClienteModel> clientes { get; set; }
         public ObservableCollection<CategoriaModel> categorias { get; set; }
         public ObservableCollection<LocalModel> locales { get; set; }
         public ObservableCollection<String> prioridades { get; set; }
-
-        public Command verDetalleCommand { get; set; }
         public Command guardarTicketCommand { get; set; }
-        public Command eliminarTicketCommand { get; set; }
-        public Command prueba { get; set; }
         public TicketViewModel(TicketModel ticket = null)
         {
 
@@ -46,20 +34,20 @@ namespace ProyectoFinalDM.ViewModel
             categorias = StaticData.categorias;
             locales = StaticData.locales;
             estados = StaticData.estados;
- 
+
             if (ticket == null)
             {
                 this.ticket = new TicketModel();
-                this.ticket.Categoria = new CategoriaModel { CodCategoria = 0, NombreCategoria = "INGRESADO" };
+                this.ticket.Estado = ("Ingresado");
+                this.ticket.Usuario = StaticData.usuaroLogeado;
             }
             else
             {
                 this.ticket = ticket;
             }
-            guardarTicketCommand = new Command(async () => await this.guardarTicket());
-            eliminarTicketCommand = new Command(async () => await this.eliminarTicket());
+            guardarTicketCommand = new Command(this.guardarTicket);
         }
-
+        /* COMO RECORRER UN OBJETO
         private async void cargarDatosTicket(int codigoTicket)
         {
             IsBusy = true;
@@ -72,31 +60,20 @@ namespace ProyectoFinalDM.ViewModel
             await this.cargarClienteTicket();
             IsBusy = false;
 
-        }
+        }*/
 
-        private Task cargarClienteTicket()
+
+        private void guardarTicket()
         {
-            return Task.Run(()=>{
-                this.ticket.Cliente = clienteService.buscarCliente(1);
-            });
-        }
-
-        private async Task guardarTicket()
-        {
-
             if (ticket.CodTicket == 0)
             {
-
-                ticket.Usuario = UsuarioServiceImplDatos.usuario;
-                ticketService.guardarTicket(ticket);
-
+                ticketService.guardarTicket(this.ticket);
             }
             else
             {
                 ticketService.modificarTicket(ticket);
             }
-
-            await App.navegacion.PopAsync();
+            //await App.navegacion.PopAsync();
         }
 
 

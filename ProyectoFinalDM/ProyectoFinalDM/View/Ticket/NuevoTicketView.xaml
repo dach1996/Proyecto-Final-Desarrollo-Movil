@@ -62,9 +62,6 @@
 
             <StackLayout Orientation="Vertical">
                 <Button Text="Guardar" Command="{Binding guardarTicketCommand }" />
-                <Button Text="Borrar" Command="{Binding eliminarTicketCommand }" />
-                <Button Text="Detalles" Command="{Binding verDetalleCommand }" />
-                
             </StackLayout>
         </StackLayout>
     </ScrollView>

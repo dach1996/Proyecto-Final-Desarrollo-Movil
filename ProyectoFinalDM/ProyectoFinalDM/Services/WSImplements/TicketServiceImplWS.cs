@@ -5,10 +5,13 @@ using ProyectoFinalDM.Services.IService;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ProyectoFinalDM.Services.WSImplements
 {
@@ -54,19 +57,60 @@ namespace ProyectoFinalDM.Services.WSImplements
             }
         }
 
-        public void guardarTicket(TicketModel ticketModel)
+        public async void guardarTicket(TicketModel ticketModel)
         {
-            throw new NotImplementedException();
+            try
+            {
+                WebClient cliente = new WebClient();
+                var parametros = new NameValueCollection();
+                parametros.Add("cod_local", ticketModel.Local.CodLocal.ToString());
+                parametros.Add("titulo_ticket", ticketModel.TituloTicket);
+                parametros.Add("fecha_inicio_ticket", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                parametros.Add("estado_ticket", ticketModel.Estado);
+                parametros.Add("prioridad_ticket", ticketModel.PrioridadTicket);
+                parametros.Add("cod_usuario", ticketModel.Usuario.CodUsuario.ToString());
+                parametros.Add("cod_cliente", ticketModel.Cliente.CodCliente.ToString());
+                parametros.Add("cod_categoria", ticketModel.Categoria.CodCategoria.ToString());
+                var respuesta= cliente.UploadValues(base.Url, "POST", parametros);
+                await App.Current.MainPage.DisplayAlert("Alerta", "Dato ingresado Correctamente", "ok");
+                await App.Current.MainPage.Navigation.PopAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
         }
 
-        public void modificarTicket(TicketModel ticketModel)
+        public async void modificarTicket(TicketModel ticketModel)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var builder = new UriBuilder(Url);
+                builder.Port = -1;
+                var query = HttpUtility.ParseQueryString(builder.Query);
+                query["cod_ticket"] = ticketModel.CodTicket.ToString();
+                query["cod_local"] = ticketModel.Local.CodLocal.ToString();
+                query["titulo_ticket"] = ticketModel.TituloTicket;
+                query["prioridad_ticket"] = ticketModel.PrioridadTicket;
+                query["cod_cliente"] = ticketModel.Cliente.CodCliente.ToString();
+                query["cod_categoria"] = ticketModel.Categoria.CodCategoria.ToString();
+                builder.Query = query.ToString();
+                string url = builder.ToString();
+                var consultaSerializada = await httpClient.PutAsync(url, null);
+                await App.Current.MainPage.DisplayAlert("Alerta", "Dato Guardado Correctamente", "ok");
+                await App.Current.MainPage.Navigation.PopAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
 
-        public void eliminarTicket(int codTicket)
+        public async void eliminarTicket(int codTicket)
         {
-            throw new NotImplementedException();
+            var consultaSerializada = await httpClient.DeleteAsync(Url + "?cod_ticket="+codTicket);
         }
 
         public async Task<ObservableCollection<TicketModel>> consultarTickets()

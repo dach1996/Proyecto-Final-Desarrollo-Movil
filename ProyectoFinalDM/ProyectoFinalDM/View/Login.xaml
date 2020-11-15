@@ -21,6 +21,7 @@
                     <Button Command="{Binding verificarIngresoCommand}"  BackgroundColor="Gray" Text="Iniciar Sesión"  BorderRadius="20" TextColor="Black"  />
                     <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
                     <Label HorizontalOptions="Center"  FontSize="20" Text="{Binding estadoAuth}"></Label>
+                  
                 </StackLayout>
 
 

@@ -14,6 +14,7 @@ namespace ProyectoFinalDM.Services.WSImplements
         public static ObservableCollection<LocalModel> locales;
         public static ObservableCollection<String> prioridades;
         public static ObservableCollection<String> estados;
+        public static UsuarioModel usuaroLogeado;
 
         
     }
