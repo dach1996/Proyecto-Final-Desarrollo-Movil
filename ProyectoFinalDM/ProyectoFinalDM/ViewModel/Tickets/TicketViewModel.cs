@@ -28,6 +28,7 @@ namespace ProyectoFinalDM.ViewModel
         public Command guardarTicketCommand { get; set; }
         public TicketViewModel(TicketModel ticket = null)
         {
+           
 
             prioridades = StaticData.prioridades;
             clientes = StaticData.clientes;
@@ -76,25 +77,6 @@ namespace ProyectoFinalDM.ViewModel
             //await App.navegacion.PopAsync();
         }
 
-
-
-        private async Task eliminarTicket()
-        {
-            ticketService.eliminarTicket(ticket.CodTicket);
-            Page page = new Page();
-
-            bool pregunta = await App.navegacion.DisplayAlert("Advertencia", "Desea eliminar este registro", "Sí", "No");
-            if (pregunta)
-                await App.navegacion.PopAsync();
-
-        }
-
-        private async Task verDetalles()
-        {
-
-            await App.navegacion.PushAsync(new ListaDestallesView(this.ticket));
-
-        }
 
     }
 }

@@ -12,32 +12,27 @@ using Xamarin.Forms.Internals;
 
 namespace ProyectoFinalDM.Services
 {
-    public class DetalleServiceImplDatos : IDetallesService
+    public class DetalleServiceImplDatos
     {
         public static ObservableCollection<DetalleModel> detalles { get; set; }
         IUsuariosService usuarioService = new UsuarioServiceImplWS();
         ITicketService ticketService = new TicketServiceImplDatos();
         ObservableCollection<UsuarioModel> usuarios = new ObservableCollection<UsuarioModel>();
         ObservableCollection<TicketModel> tickets = new ObservableCollection<TicketModel>();
-               
+
 
         public DetalleServiceImplDatos()
         {
-            if (detalles == null) { 
+            if (detalles == null) {
                 tickets = TicketServiceImplDatos.tickets;
-            usuarios = usuarioService.listarUsuarios();
-            detalles = new ObservableCollection<DetalleModel>();
-          
-            for (int i = 0; i < 60; i++)
-            {
-                 detalles.Add(new DetalleModel { CodDetalle = i, 
-                    Usuario =  usuarios[new Random().Next(1,3)], 
-                    FechaDetalle = DateTime.Now, 
-                    Ticket = tickets [new Random().Next(1, 9)],
-                    TextoDetalle = "Esto es el detalle del Ticket 1" });
-            }
-            }
-        }
+                usuarios = usuarioService.listarUsuarios();
+                detalles = new ObservableCollection<DetalleModel>();
+
+                for (int i = 0; i < 60; i++)
+                {
+                   
+                }
+            } }
         public void editarDetalle(DetalleModel detalle)
         {
             for (int i = 0; i < detalles.Count; i++)

@@ -32,6 +32,7 @@ namespace ProyectoFinalDM.Services.WSImplements
             try
             {
                 consulta = new ObservableCollection<TicketModel>();
+
                 var consultaSerializada = await httpClient.GetStringAsync(Url);
                 var consultaDeserializada = JsonConvert.DeserializeObject<List<TicketPartialModel>>(consultaSerializada);
                 foreach (var item in consultaDeserializada)
@@ -110,7 +111,7 @@ namespace ProyectoFinalDM.Services.WSImplements
 
         public async void eliminarTicket(int codTicket)
         {
-            var consultaSerializada = await httpClient.DeleteAsync(Url + "?cod_ticket="+codTicket);
+           await httpClient.DeleteAsync(Url + "?cod_ticket="+codTicket);
         }
 
         public async Task<ObservableCollection<TicketModel>> consultarTickets()

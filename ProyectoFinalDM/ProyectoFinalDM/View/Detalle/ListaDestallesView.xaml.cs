@@ -14,12 +14,10 @@ namespace ProyectoFinalDM.View.Detalle
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListaDestallesView : ContentPage
     {
-        private ListaDetallesViewModel listaDetallesViewModel;
         public ListaDestallesView(TicketModel ticket)
         {
             InitializeComponent();
-            listaDetallesViewModel = new ListaDetallesViewModel(ticket);
-            BindingContext = listaDetallesViewModel;
+            BindingContext = new ListaDetallesViewModel(ticket);
         }
     }
 }

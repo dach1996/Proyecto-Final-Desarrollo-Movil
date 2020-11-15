@@ -4,6 +4,7 @@ using ProyectoFinalDM.Services;
 using ProyectoFinalDM.Services.IService;
 using ProyectoFinalDM.Services.WSImplements;
 using ProyectoFinalDM.View;
+using ProyectoFinalDM.View.Detalle;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -41,9 +42,11 @@ namespace ProyectoFinalDM.ViewModel.Tickets
             if (pregunta)
             {
                 var modelo = (TicketModel)o;
-                ticketService.eliminarTicket(modelo.CodTicket);
+                await Task.Run(() => {
+                    ticketService.eliminarTicket(modelo.CodTicket);
+                });
                 this.cargarTickets();
-            }  
+            }
         }
 
         private async void editarTicket(Object o)
@@ -59,14 +62,14 @@ namespace ProyectoFinalDM.ViewModel.Tickets
 
         private async void verDetalles(Object o)
         {
-
+            var modelo = (TicketModel)o;
+            await App.navegacion.PushAsync(new ListaDestallesView(modelo));
         }
 
-        private void cargarTickets()
+        private  async void cargarTickets()
         {
-
             IsBusy = true;
-            Task.Run(async () =>
+            await Task.Run(async () =>
             {
                 var consulta = await ticketService.consultarTickets();
                 this.tickets.Clear();
@@ -76,7 +79,6 @@ namespace ProyectoFinalDM.ViewModel.Tickets
                 }
                 IsBusy = false;
             });
-
         }
     }
 }

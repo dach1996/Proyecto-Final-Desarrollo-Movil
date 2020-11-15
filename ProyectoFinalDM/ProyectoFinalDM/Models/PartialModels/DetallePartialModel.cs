@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ProyectoFinalDM.Models
 {
-    public class DetalleModel:Notificaciones
+    public class DetallePartialModel:Notificaciones
     {
         private int codDetalle ;
 
@@ -36,22 +36,13 @@ namespace ProyectoFinalDM.Models
             set { fechaDetalle = value; this.OnPropertyChanged(); }
         }
 
-        private TicketModel ticket;
+        private int codUsuarui;
 
-        [JsonProperty(PropertyName = "cod_categoria")]
-        public TicketModel Ticket
+        [JsonProperty(PropertyName = "cod_usuario")]
+        public int CodUsuario
         {
-            get { return ticket; }
-            set { ticket = value; this.OnPropertyChanged(); }
-        }
-
-        private UsuarioModel usuario;
-
-        [JsonProperty(PropertyName = "cod_categoria")]
-        public UsuarioModel Usuario
-        {
-            get { return usuario; }
-            set { usuario = value; this.OnPropertyChanged(); }
+            get { return codUsuarui; }
+            set { codUsuarui = value; this.OnPropertyChanged(); }
         }
 
 
@@ -60,34 +51,33 @@ namespace ProyectoFinalDM.Models
             return base.ToString();
         }
 
+
         public override bool Equals(object obj)
         {
-            return obj is DetalleModel model &&
+            return obj is DetallePartialModel model &&
+                   IsBusy == model.IsBusy &&
                    codDetalle == model.codDetalle &&
                    CodDetalle == model.CodDetalle &&
                    textoDetalle == model.textoDetalle &&
                    TextoDetalle == model.TextoDetalle &&
                    fechaDetalle == model.fechaDetalle &&
                    FechaDetalle == model.FechaDetalle &&
-                   EqualityComparer<TicketModel>.Default.Equals(ticket, model.ticket) &&
-                   EqualityComparer<TicketModel>.Default.Equals(Ticket, model.Ticket) &&
-                   EqualityComparer<UsuarioModel>.Default.Equals(usuario, model.usuario) &&
-                   EqualityComparer<UsuarioModel>.Default.Equals(Usuario, model.Usuario);
+                   codUsuarui == model.codUsuarui &&
+                   CodUsuario == model.CodUsuario;
         }
 
         public override int GetHashCode()
         {
-            int hashCode = -2022348130;
+            int hashCode = 1708532706;
+            hashCode = hashCode * -1521134295 + IsBusy.GetHashCode();
             hashCode = hashCode * -1521134295 + codDetalle.GetHashCode();
             hashCode = hashCode * -1521134295 + CodDetalle.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(textoDetalle);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(TextoDetalle);
             hashCode = hashCode * -1521134295 + fechaDetalle.GetHashCode();
             hashCode = hashCode * -1521134295 + FechaDetalle.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<TicketModel>.Default.GetHashCode(ticket);
-            hashCode = hashCode * -1521134295 + EqualityComparer<TicketModel>.Default.GetHashCode(Ticket);
-            hashCode = hashCode * -1521134295 + EqualityComparer<UsuarioModel>.Default.GetHashCode(usuario);
-            hashCode = hashCode * -1521134295 + EqualityComparer<UsuarioModel>.Default.GetHashCode(Usuario);
+            hashCode = hashCode * -1521134295 + codUsuarui.GetHashCode();
+            hashCode = hashCode * -1521134295 + CodUsuario.GetHashCode();
             return hashCode;
         }
     }

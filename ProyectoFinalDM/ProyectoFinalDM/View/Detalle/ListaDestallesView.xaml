@@ -20,6 +20,7 @@
 
 
     <StackLayout BackgroundColor="#E3DED2">
+        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
         <ListView  x:Name="LVTickets" ItemsSource="{Binding detalles}" SeparatorVisibility="None"    HasUnevenRows="True" Margin="5" >
             <ListView.ItemTemplate>
                 <DataTemplate>

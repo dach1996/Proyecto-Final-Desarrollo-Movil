@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinalDM.Login">
+             x:Class="ProyectoFinalDM.Login"
+             NavigationPage.HasNavigationBar="false"    >
     <ContentPage.Content>
         <Grid>
-            <!-- <Image Source="Imagen1.jpg" Aspect="AspectFill" />-->
-            <BoxView Color="AliceBlue" Opacity="0.8"/>
+            <Image Source="fondoLogin.jpg" Aspect="AspectFill" />
+            <BoxView Color="AliceBlue" Opacity="0.7"/>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -13,21 +14,15 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0" Source="Imagen2.jpg" WidthRequest="100" HeightRequest="100" Margin="0,50,0,30" />
-
+                <Image  Grid.Row="0" Source="iconoPrincipal.png" WidthRequest="100" HeightRequest="100" Margin="0,100,0,30" />
                 <StackLayout Grid.Row="1" Padding="30,20">
-                    <Entry Text="{Binding Username}" Placeholder="Usuario" PlaceholderColor="White" />
-                    <Entry Text="{Binding Password}"  Placeholder="Contraseña" PlaceholderColor="White" IsPassword="True" />
-                    <Button Command="{Binding verificarIngresoCommand}"  BackgroundColor="Gray" Text="Iniciar Sesión"  BorderRadius="20" TextColor="Black"  />
+                    <Entry Text="{Binding Username}" HorizontalTextAlignment="Center" Placeholder="Usuario" PlaceholderColor="Gray" />
+                    <Entry Text="{Binding Password}" HorizontalTextAlignment="Center" Placeholder="Contraseña" PlaceholderColor="Gray" IsPassword="True" />
+                    <Button Margin="0,40,0,0" Command="{Binding verificarIngresoCommand}"  BackgroundColor="Gray" Text="Iniciar Sesión"  BorderRadius="20" TextColor="White"  />
                     <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
                     <Label HorizontalOptions="Center"  FontSize="20" Text="{Binding estadoAuth}"></Label>
-                  
                 </StackLayout>
-
-
             </Grid>
-
-
         </Grid>
     </ContentPage.Content>
 </ContentPage>
