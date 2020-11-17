@@ -61,7 +61,7 @@ namespace ProyectoFinalDM.ViewModel.Login
                 StaticData.usuaroLogeado = usuarioLogiado;
                 IsBusy = false;
                 estadoAuth = "";
-                await App.navegacion.PushAsync(new TicketView());
+                await App.navegacion.PushAsync(new MainPage());
 
             }
             else

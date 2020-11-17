@@ -10,8 +10,10 @@ namespace ProyectoFinalDM
         public App()
         {
             InitializeComponent();
-            navegacion= new NavigationPage(new Login());
+            navegacion= new NavigationPage(new Login() );
             MainPage = navegacion;
+
+
         }
 
         protected override void OnStart()

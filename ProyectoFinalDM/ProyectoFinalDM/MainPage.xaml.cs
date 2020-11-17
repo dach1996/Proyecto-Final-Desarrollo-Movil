@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProyectoFinalDM.View;
+using ProyectoFinalDM.View.Detalle;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,11 +10,13 @@ using Xamarin.Forms;
 
 namespace ProyectoFinalDM
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : MasterDetailPage
     {
         public MainPage()
         {
             InitializeComponent();
+            this.Master = new MasterPage();
+            this.Detail = new NavigationPage(new TicketView());
         }
     }
 }
