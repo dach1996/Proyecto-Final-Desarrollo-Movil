@@ -7,6 +7,7 @@ namespace ProyectoFinalDM
     public partial class App : Application
     {
         public static NavigationPage navegacion;
+        public static MainPage PaginaMaestra;
         public App()
         {
             InitializeComponent();

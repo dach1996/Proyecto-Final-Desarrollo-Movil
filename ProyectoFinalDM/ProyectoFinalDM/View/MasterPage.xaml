@@ -4,10 +4,57 @@
              x:Class="ProyectoFinalDM.View.MasterPage"
              Title="Master page">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid BackgroundColor="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="#00748A">
+                
+                <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Image Source="UsuarioImage.png" Aspect="AspectFit" WidthRequest="120" HeightRequest="120" />
+                    <Label Text="{Binding Usuario.NombreCompleto}" TextColor="White" FontSize="Large" />
+                </StackLayout>
+            </Grid>
+            <StackLayout Grid.Row="1" Spacing="15">
+                <ListView x:Name="NavigationDrawerList"
+                          ItemsSource="{Binding menuList}"
+                  RowHeight="60"
+                  SeparatorVisibility="None"
+                  BackgroundColor="#e8e8e8" >
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+
+
+                                    <StackLayout VerticalOptions="FillAndExpand"
+                             Orientation="Horizontal"
+                             Padding="50,10,0,0"
+                             Spacing="20">
+
+                                        <Image Source="{Binding Icono}"
+                         WidthRequest="30"
+                         HeightRequest="30"
+                         Margin="0,0,30,0"
+                         VerticalOptions="Center" />
+
+                                        <Label Text="{Binding Titulo}"
+                                               
+                         FontSize="Medium"
+                         VerticalOptions="Center"
+                                              
+                              
+                         TextColor="Black"/>
+                                    </StackLayout>
+                                    <BoxView HeightRequest="1" BackgroundColor="Gray"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

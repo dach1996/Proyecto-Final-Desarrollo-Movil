@@ -15,6 +15,7 @@ namespace ProyectoFinalDM
         public MainPage()
         {
             InitializeComponent();
+            App.PaginaMaestra = this;
             this.Master = new MasterPage();
             this.Detail = new NavigationPage(new TicketView());
         }
