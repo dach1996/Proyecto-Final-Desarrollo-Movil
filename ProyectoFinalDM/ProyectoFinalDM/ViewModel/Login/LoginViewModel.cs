@@ -18,8 +18,6 @@ namespace ProyectoFinalDM.ViewModel.Login
     class LoginViewModel : Notificaciones
 
     {
-        private CancellationTokenSource _cancel;
-        private bool _initialized;
         private IUsuariosService usuarioService = new UsuarioServiceImplWS();
         private IClienteService clienteService = new ClientesServiceImplWS();
         private ILocalesService localService = new LocalesServiceImplWS();

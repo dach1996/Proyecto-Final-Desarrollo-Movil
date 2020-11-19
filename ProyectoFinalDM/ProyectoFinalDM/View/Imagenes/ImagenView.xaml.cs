@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoFinalDM.ViewModel.Imagenes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace ProyectoFinalDM.View.Imagenes
         public ImagenView()
         {
             InitializeComponent();
+            BindingContext = new ImagenesViewModel();
         }
     }
 }

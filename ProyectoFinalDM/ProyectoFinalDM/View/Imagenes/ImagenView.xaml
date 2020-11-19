@@ -2,18 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoFinalDM.View.Imagenes.ImagenView">
+    
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="btnItemMas.png"
+        <ToolbarItem IconImageSource="btnCamara.png"
                      Order="Primary"
-                     
-                     Priority="0" 
-                    />
+                     Command="{Binding nuevaImagenCommand}"
+                     Priority="0" />
+        <ToolbarItem IconImageSource="btnSubirImagen.png"
+                     Order="Primary"
+                     Command="{Binding cargarImagenCommand}"
+                     Priority="0" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Image Source="{Binding ImagenSource}"></Image>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
