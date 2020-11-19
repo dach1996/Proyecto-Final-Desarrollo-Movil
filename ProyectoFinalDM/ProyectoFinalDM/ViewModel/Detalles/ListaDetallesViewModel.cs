@@ -3,11 +3,13 @@ using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services;
 using ProyectoFinalDM.Services.IService;
 using ProyectoFinalDM.Services.WSImplements;
+using ProyectoFinalDM.View.Imagenes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ProyectoFinalDM.ViewModel.Detalles
@@ -26,7 +28,8 @@ namespace ProyectoFinalDM.ViewModel.Detalles
         public ObservableCollection<DetalleModel> detalles { get; set; }
 
         public TicketModel ticket { get; set; }
-        public Command guardarDetalleCommnad { get; set; }
+        public ICommand guardarDetalleCommnad { get; set; }
+        public ICommand verImagenesDetalleCommand { get; set; }
         public ListaDetallesViewModel(TicketModel ticket)
 
         {
@@ -35,7 +38,14 @@ namespace ProyectoFinalDM.ViewModel.Detalles
             this.ticket = ticket;
             cargarDatosTicket();
             this.guardarDetalleCommnad = new Command(() => guardarDetalle());
+            this.verImagenesDetalleCommand = new Command(() => verImagenesDetalle());
         }
+
+        private async void verImagenesDetalle()
+        {
+            await App.navegacion.PushAsync(new ImagenView());
+        }
+
         private async void cargarDatosTicket()
         {
             IsBusy = true;
