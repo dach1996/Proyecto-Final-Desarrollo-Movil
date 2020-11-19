@@ -1,9 +1,11 @@
-﻿using ProyectoFinalDM.View;
+﻿using Plugin.Fingerprint.Abstractions;
+using ProyectoFinalDM.View;
 using ProyectoFinalDM.ViewModel.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
@@ -18,11 +20,6 @@ namespace ProyectoFinalDM
         {
             InitializeComponent();
             BindingContext = new LoginViewModel();
-            
-        
-    
-
-
-}
+        }
     }
 }
