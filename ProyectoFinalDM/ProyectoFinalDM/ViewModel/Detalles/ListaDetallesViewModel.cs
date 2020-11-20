@@ -43,7 +43,7 @@ namespace ProyectoFinalDM.ViewModel.Detalles
 
         private async void verImagenesDetalle()
         {
-            await App.navegacion.PushAsync(new ImagenView());
+            await App.navegacion.PushAsync(new ListaImagenesView(this.ticket));
         }
 
         private async void cargarDatosTicket()

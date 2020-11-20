@@ -15,6 +15,10 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
+            
+            <Button Text="Subir Imagen" Command="{Binding guardarImagenCommand}"></Button>
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                               IsRunning="{Binding IsBusy}" />
             <Image Source="{Binding ImagenSource}"></Image>
         </StackLayout>
     </ContentPage.Content>

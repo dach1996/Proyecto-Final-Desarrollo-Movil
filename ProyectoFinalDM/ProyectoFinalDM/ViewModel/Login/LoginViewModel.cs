@@ -53,7 +53,7 @@ namespace ProyectoFinalDM.ViewModel.Login
         {
 
             var dialogConfig = new AuthenticationRequestConfiguration("Acceso", reason)
-            { // all optional
+            { // all optional 
                 CancelTitle = cancel,
                 FallbackTitle = fallback,
             };

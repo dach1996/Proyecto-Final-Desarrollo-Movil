@@ -12,12 +12,12 @@ using Xamarin.Forms.Xaml;
 namespace ProyectoFinalDM.View.Imagenes
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ImagenView : ContentPage
+    public partial class ListaImagenesView : ContentPage
     {
-        public ImagenView(TicketModel ticket)
+        public ListaImagenesView(TicketModel ticket)
         {
             InitializeComponent();
-            BindingContext = new ImagenesViewModel(ticket);
+            BindingContext = new ListaImagenesViewModel(ticket);    
         }
     }
 }
