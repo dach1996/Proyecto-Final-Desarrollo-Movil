@@ -1,4 +1,6 @@
-﻿using ProyectoFinalDM.INotifyProperty;
+﻿using Newtonsoft.Json;
+using ProyectoFinalDM.INotifyProperty;
+using ProyectoFinalDM.Services.WSImplements;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +11,7 @@ namespace ProyectoFinalDM.Models
     {
         private int codImagen;
 
+        [JsonProperty(PropertyName = "cod_imagen")]
         public int CodImagen
         {
             get { return codImagen; }
@@ -17,6 +20,7 @@ namespace ProyectoFinalDM.Models
 
         private String rutaImagen;
 
+        [JsonProperty(PropertyName = "ruta_imagen")]
         public String RutaImagen
         {
             get { return rutaImagen; }
@@ -25,12 +29,13 @@ namespace ProyectoFinalDM.Models
 
         private int codTicket;
 
+       [JsonProperty(PropertyName = "cod_ticket")]
         public int CodTicket
         {
             get { return codTicket; }
             set { codTicket = value; this.OnPropertyChanged(); }
         }
-
+        public String rutaFinalImagenes { get { return StaticData.rutaImagenes+this.rutaImagen; }  }
         public override bool Equals(object obj)
         {
             return obj is ImagenesModel model &&

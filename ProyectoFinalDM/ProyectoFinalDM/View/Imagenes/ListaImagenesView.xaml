@@ -8,9 +8,24 @@
                      Command="{Binding nuevaImagenCommand}"
                      Priority="0" />
     </ContentPage.ToolbarItems>
-    <ContentPage.Content>
+
         <StackLayout>
-            <Image Source="{Binding ImagenSource}"></Image>
-        </StackLayout>
-    </ContentPage.Content>
+
+        <ListView  x:Name="LVTickets"
+                   ItemsSource="{Binding imagenes}"
+                   HasUnevenRows="True"
+                   Margin="5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding rutaFinalImagenes}"></Label>
+                            <Image Source="{Binding rutaFinalImagenes}"></Image>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
 </ContentPage>

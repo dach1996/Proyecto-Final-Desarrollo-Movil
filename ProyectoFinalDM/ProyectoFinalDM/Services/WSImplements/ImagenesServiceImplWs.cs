@@ -1,7 +1,9 @@
-﻿using Plugin.Media.Abstractions;
+﻿using Newtonsoft.Json;
+using Plugin.Media.Abstractions;
 using ProyectoFinalDM.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.IO;
 using System.Net;
@@ -52,6 +54,31 @@ namespace ProyectoFinalDM.Services.WSImplements
 
             
 
+        }
+
+        public async Task<ObservableCollection<ImagenesModel>> listarImagenesPorId(int codTicket)
+        {
+            try
+            {
+                consulta = new ObservableCollection<ImagenesModel>();
+                var consultaSerializada = await httpClient.GetStringAsync(Url+"?cod_ticket="+codTicket);
+                var consultaDeserializada = JsonConvert.DeserializeObject<List<ImagenesModel>>(consultaSerializada);
+                this.consulta.Clear();
+                foreach (var item in consultaDeserializada)
+                {
+                    consulta.Add(new ImagenesModel
+                    {
+                        CodImagen = item.CodImagen,
+                        RutaImagen = item.RutaImagen,
+                        CodTicket = item.CodTicket,
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            return this.consulta;
         }
 
         private string nombreUnicoArchivo(string nombreOriginal)

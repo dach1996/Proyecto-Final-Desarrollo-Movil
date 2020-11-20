@@ -15,7 +15,8 @@ namespace ProyectoFinalDM.Services.WSImplements
         public static ObservableCollection<String> prioridades;
         public static ObservableCollection<String> estados;
         public static UsuarioModel usuaroLogeado;
+        public static String rutaImagenes = "http://alexmoyag-001-site1.ftempurl.com/api/";
 
-        
+
     }
 }

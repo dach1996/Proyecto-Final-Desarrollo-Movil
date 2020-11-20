@@ -14,10 +14,16 @@ namespace ProyectoFinalDM.View.Imagenes
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListaImagenesView : ContentPage
     {
+        private TicketModel ticket;
         public ListaImagenesView(TicketModel ticket)
         {
             InitializeComponent();
-            BindingContext = new ListaImagenesViewModel(ticket);    
+            this.ticket = ticket;
+        }
+        protected override void OnAppearing()
+        {
+            BindingContext = new ListaImagenesViewModel(ticket);
+            base.OnAppearing();
         }
     }
 }
