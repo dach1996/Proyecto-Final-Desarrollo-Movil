@@ -9,8 +9,7 @@
                      Priority="0" />
     </ContentPage.ToolbarItems>
 
-        <StackLayout>
-
+    <StackLayout>
         <ListView  x:Name="LVTickets"
                    ItemsSource="{Binding imagenes}"
                    HasUnevenRows="True"

@@ -48,12 +48,9 @@ namespace ProyectoFinalDM.Services.WSImplements
                 streamContent.Dispose();
             }
             catch (Exception e)
-            {    
-            
+            {
+                Console.WriteLine(e.Message);
             }
-
-            
-
         }
 
         public async Task<ObservableCollection<ImagenesModel>> listarImagenesPorId(int codTicket)
