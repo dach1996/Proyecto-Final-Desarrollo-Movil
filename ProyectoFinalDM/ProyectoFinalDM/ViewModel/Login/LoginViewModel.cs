@@ -3,7 +3,9 @@ using ProyectoFinalDM.INotifyProperty;
 using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services;
 using ProyectoFinalDM.Services.IService;
+using ProyectoFinalDM.Services.Security;
 using ProyectoFinalDM.Services.WSImplements;
+using ProyectoFinalDM.SQLite;
 using ProyectoFinalDM.View;
 using System;
 using System.Collections.Generic;
@@ -25,6 +27,7 @@ namespace ProyectoFinalDM.ViewModel.Login
         private IEstadosService estadosService = new EstadoServiceImplDatos();
         private IPrioridadService prioridadService = new PrioridadServiceImplDatos();
         public static UsuarioModel usuarioLogiado;
+        private ConnectionSQLite conexion;
         public string Username { get; set; }
         public string Password { get; set; }
         private string estadoAuth_;
@@ -39,7 +42,7 @@ namespace ProyectoFinalDM.ViewModel.Login
         public ICommand verificarHuellaDigitital { get; set; }
         public LoginViewModel()
         {
-
+            conexion = new ConnectionSQLite();
             verificarIngresoCommand = new Command(() => verificarIngreso());
             verificarHuellaDigitital = new Command(() => OnAuthenticate());
         }
@@ -70,38 +73,53 @@ namespace ProyectoFinalDM.ViewModel.Login
         {
             if (result.Authenticated)
             {
+                StaticData.cleanData();
                 IsBusy = true;
                 estadoAuth = "Autentificando";
                 await usuarioService.consultarJsonUsuarios();
-                usuarioLogiado = usuarioService.buscarUsuario("danny", "12345");
-
-                if (usuarioLogiado != null)
+                var lista = conexion.buscarUsuario();
+                if (lista.Count > 0)
                 {
-                    estadoAuth = "Cargando Información";
-                    await Task.WhenAll(
-                        estadosService.consultarEstados(),
-                        prioridadService.consultarPrioridades(),
-                        clienteService.consultarJsonCliente(),
-                        localService.consultarJsonLocal(),
-                        categoriaService.consultarJsonCategoria()
-                        );
+                    var user = Encrypt.DesEncriptar(lista[0].username);
+                    var pass =Encrypt.DesEncriptar(lista[0].password);
+                    usuarioLogiado = usuarioService.buscarUsuario(user,pass);
+                    if (usuarioLogiado != null)
+                    {
+                        estadoAuth = "Cargando Información";
+                        await Task.WhenAll(
+                            estadosService.consultarEstados(),
+                            prioridadService.consultarPrioridades(),
+                            clienteService.consultarJsonCliente(),
+                            localService.consultarJsonLocal(),
+                            categoriaService.consultarJsonCategoria()
+                            );
 
-                    Console.WriteLine("Terminé de cargar todos");
-                    StaticData.usuaroLogeado = usuarioLogiado;
+                        Console.WriteLine("Terminé de cargar todos");
+                        StaticData.usuaroLogeado = usuarioLogiado;
+                        IsBusy = false;
+                        estadoAuth = "";
+                        await App.navegacion.PushAsync(new MainPage());
+                    }
+                    else
+                    {
+                        estadoAuth = "";
+                        IsBusy = false;
+                        await App.navegacion.DisplayAlert("Acceso Denegado", "Error Usuario o Contraseña Incorrecto", "OK");
+                    }
+                }
+                else
+                {
                     IsBusy = false;
                     estadoAuth = "";
-                    await App.navegacion.PushAsync(new MainPage());
-
+                    await App.navegacion.DisplayAlert("Acceso Denegado", "Usted no tiene habilitado el acceso con Huella", "OK");
                 }
-            }
-            else
-            {
-
-            }
+                
+            } 
         }
 
         private async void verificarIngreso()
         {
+            StaticData.cleanData();
             IsBusy = true;
             estadoAuth = "Autentificando";
             await usuarioService.consultarJsonUsuarios();
@@ -109,6 +127,7 @@ namespace ProyectoFinalDM.ViewModel.Login
 
             if (usuarioLogiado != null)
             {
+                
                 estadoAuth = "Cargando Información";
                 await Task.WhenAll(
                     estadosService.consultarEstados(),

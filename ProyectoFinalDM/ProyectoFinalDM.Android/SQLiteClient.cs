@@ -21,7 +21,7 @@ namespace ProyectoFinalDM.Droid
         public SQLiteAsyncConnection GetConnection()
         {
             var document = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            var parth = Path.Combine(document, "uisrael.db3");
+            var parth = Path.Combine(document, ConnectionSQLite.nombreBaseDatos);
             return new SQLiteAsyncConnection(parth);
         }
     }

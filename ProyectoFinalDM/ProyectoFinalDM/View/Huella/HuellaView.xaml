@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalDM.View.Huella.HuellaView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Command="{Binding guardarUsuarioCommand}" Text="Activar acceso por huella dactilar" ></Button>
+            <Button Command="{Binding borrarUsuarioCommand}" Text="Desactivar acceso por huella dactilar" ></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

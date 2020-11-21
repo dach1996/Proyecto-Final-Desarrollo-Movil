@@ -11,6 +11,7 @@ namespace ProyectoFinalDM.Models
     {
         private int codUsuario;
 
+        
         [JsonProperty(PropertyName= "cod_usuario")]
         public int CodUsuario
         {

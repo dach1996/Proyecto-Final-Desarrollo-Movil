@@ -17,6 +17,17 @@ namespace ProyectoFinalDM.Services.WSImplements
         public static UsuarioModel usuaroLogeado;
         public static String rutaImagenes = "http://alexmoyag-001-site1.ftempurl.com/api/";
 
+        public static void cleanData()
+        {
+           /* StaticData.usuarios = null;
+            StaticData.clientes = null;
+            StaticData.categorias = null;
+            StaticData.locales = null;
+            StaticData.prioridades = null;
+            StaticData.estados = null;*/
 
+
+
+        }
     }
 }
