@@ -2,6 +2,7 @@
 using ProyectoFinalDM.Models.MasterPage;
 using ProyectoFinalDM.Services.WSImplements;
 using ProyectoFinalDM.View;
+using ProyectoFinalDM.View.AcercaDe;
 using ProyectoFinalDM.View.Huella;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace ProyectoFinalDM.ViewModel.MaterPage
             menuList.Add(new MaterPageItems() { Titulo = "Tráfico", Icono = "MenuItemTrafico.png", Pagina = typeof(GraficaView) });
             menuList.Add(new MaterPageItems() { Titulo = "Cargar Información", Icono = "MenuItemDatos.png", Pagina = typeof(TicketView) });
             menuList.Add(new MaterPageItems() { Titulo = "Huella dactilar", Icono = "MenuItemHuella.png", Pagina = typeof(HuellaView) });
-            menuList.Add(new MaterPageItems() { Titulo = "Acerca de", Icono = "MenuItemAcercaDe.png", Pagina = typeof(TicketView) });
+            menuList.Add(new MaterPageItems() { Titulo = "Acerca de", Icono = "MenuItemAcercaDe.png", Pagina = typeof(AcercaDeView) });
     
         }
     }
