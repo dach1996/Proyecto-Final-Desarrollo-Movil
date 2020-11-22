@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 using SkiaSharp;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Entry = Microcharts.ChartEntry;
+
 
 namespace ProyectoFinalDM.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Grafica : ContentPage
+    public partial class GraficaView : ContentPage
     {
-        List<Entry> entryList;
-        public Grafica()
+        List<ChartEntry> entryList;
+        public GraficaView()
         {
             InitializeComponent();
-            entryList = new List<Entry>();
+            entryList = new List<ChartEntry>();
         }
 
         private void LoadEntries(string empresalocal)
@@ -54,7 +54,7 @@ namespace ProyectoFinalDM.View
             for (int i = 0; i < personas.Length; i++)
             {
                 color = String.Format("#{0:X6}", random.Next(0x1000000));
-                Entry e1 = new Entry(personas[i])
+                ChartEntry e1 = new ChartEntry(personas[i])
                 {
                     Label = horas[i].ToString() + ":00h",
                     ValueLabel = personas[i].ToString(),

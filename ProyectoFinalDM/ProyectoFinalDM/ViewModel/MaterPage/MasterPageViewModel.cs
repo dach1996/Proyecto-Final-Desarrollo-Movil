@@ -20,11 +20,11 @@ namespace ProyectoFinalDM.ViewModel.MaterPage
             this.Usuario = StaticData.usuaroLogeado;
             menuList = new List<MaterPageItems>();
             menuList.Add(new MaterPageItems() { Titulo = "Tickets", Icono = "MenuItemTickets.png", Pagina = typeof(TicketView) });
-            menuList.Add(new MaterPageItems() { Titulo = "Tráfico", Icono = "MenuItemTrafico.png", Pagina = typeof(ClienteView) });
+            menuList.Add(new MaterPageItems() { Titulo = "Tráfico", Icono = "MenuItemTrafico.png", Pagina = typeof(GraficaView) });
             menuList.Add(new MaterPageItems() { Titulo = "Cargar Información", Icono = "MenuItemDatos.png", Pagina = typeof(TicketView) });
             menuList.Add(new MaterPageItems() { Titulo = "Huella dactilar", Icono = "MenuItemHuella.png", Pagina = typeof(HuellaView) });
             menuList.Add(new MaterPageItems() { Titulo = "Acerca de", Icono = "MenuItemAcercaDe.png", Pagina = typeof(TicketView) });
-            menuList.Add(new MaterPageItems() { Titulo = "Salir ", Icono = "MenuItemDatos.png", Pagina = typeof(TicketView) });
+    
         }
     }
 }

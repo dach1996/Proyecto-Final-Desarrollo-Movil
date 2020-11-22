@@ -24,13 +24,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="View\AcercaDe\AcercaDeView.xaml.cs">
+      <DependentUpon>AcercaDeView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="View\Ticket\ListaTicketView.xaml.cs">
       <DependentUpon>ListaTicketView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="View\Grafica.xaml">
+    <EmbeddedResource Update="View\AcercaDe\AcercaDeView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\Trafico\Grafica.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Huella\HuellaView.xaml">
