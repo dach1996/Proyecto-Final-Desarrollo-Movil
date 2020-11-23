@@ -5,11 +5,12 @@
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms">
     <ScrollView>
         <StackLayout>
-            <Label FontSize="25" HorizontalOptions="CenterAndExpand" Text="Diagrama Personas por horas"/>
+            <Label BackgroundColor="#022f58"  Padding="42,25"  TextColor="White" FontSize="25" HorizontalOptions="CenterAndExpand"  Text="Diagrama Personas por horas"/>
 
-            <Picker x:Name="picker"
+            <Picker  x:Name="picker"
             Title="Seleccione un local y presione visualizar"
-            TitleColor="Red">
+            TitleColor="Red"
+                    HorizontalTextAlignment="Center">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Crocs - Bosque</x:String>
@@ -21,11 +22,13 @@
             </Picker>
 
             <Button Text="Visualizar"
+                    TextColor="White"
+                    BackgroundColor="#0072af"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
-                Clicked="OnButtonClicked" />
+                Clicked="OnButtonClicked" Padding="15" />
 
-            <forms:ChartView x:Name="linesChart" HeightRequest="200" WidthRequest="100"/>
+            <forms:ChartView x:Name="linesChart" Margin="10,35" HeightRequest="200" WidthRequest="100"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

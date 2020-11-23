@@ -9,7 +9,7 @@
                 <RowDefinition Height="200" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Grid BackgroundColor="#00748A">
+            <Grid BackgroundColor="#022f58">
                 
                 <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <Image Source="UsuarioImage.png" Aspect="AspectFit" WidthRequest="120" HeightRequest="120" />

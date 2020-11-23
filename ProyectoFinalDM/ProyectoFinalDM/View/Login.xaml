@@ -18,12 +18,12 @@
                 <StackLayout Grid.Row="1" Padding="30,20">
                     <Entry Text="{Binding Username}" HorizontalTextAlignment="Center" Placeholder="Usuario" PlaceholderColor="Gray" />
                     <Entry Text="{Binding Password}" HorizontalTextAlignment="Center" Placeholder="Contraseña" PlaceholderColor="Gray" IsPassword="True" />
-                    <Button Margin="0,40,0,0" Command="{Binding verificarIngresoCommand}"  BackgroundColor="Gray" Text="Iniciar Sesión"  BorderRadius="20" TextColor="White"  />
+                    <Button Margin="0,40,0,0" Command="{Binding verificarIngresoCommand}"  BackgroundColor="#0072af" Text="Iniciar Sesión"  BorderRadius="20" TextColor="White"  />
                     
                     
                     <Button Margin="0,0,0,0"
                             Command="{Binding verificarHuellaDigitital}"
-                            BackgroundColor="Gray"
+                            BackgroundColor="#022f58"
                             Text="Acceso con Huella"
                             BorderRadius="20"
                             TextColor="White" />

@@ -19,7 +19,7 @@
     </NavigationPage.TitleView>
 
     <ScrollView>
-        <StackLayout>
+        <StackLayout Padding="15,10">
             <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
             <Label Text="{Binding ticket.CodTicket}" />
 
@@ -61,7 +61,7 @@
             <Entry  IsReadOnly="True"  Text="{Binding ticket.Usuario.NombreUsuario }" />
 
             <StackLayout Orientation="Vertical">
-                <Button Text="Guardar" Command="{Binding guardarTicketCommand }" />
+                <Button class="btn-alter" TextColor="White" Text="Guardar" Command="{Binding guardarTicketCommand }" />
             </StackLayout>
         </StackLayout>
     </ScrollView>

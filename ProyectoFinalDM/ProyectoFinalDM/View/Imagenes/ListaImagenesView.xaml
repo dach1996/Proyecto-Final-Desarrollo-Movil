@@ -9,7 +9,8 @@
                      Priority="0" />
     </ContentPage.ToolbarItems>
 
-    <StackLayout>
+    <StackLayout Padding="0">
+        <Label BackgroundColor="#022f58" Padding="122,15"  TextColor="White" FontSize="25" HorizontalOptions="CenterAndExpand"  Text="Histórico imágenes "/>
         <ListView  x:Name="LVTickets"
                    ItemsSource="{Binding imagenes}"
                    HasUnevenRows="True"
@@ -18,8 +19,10 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label Text="{Binding rutaFinalImagenes}"></Label>
+
                             <Image Source="{Binding rutaFinalImagenes}"></Image>
+                            
+                            <Label Padding="10" FontSize="8" Text="{Binding rutaFinalImagenes}"></Label>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

@@ -2,10 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoFinalDM.View.TicketView"   >
-    <StackLayout Margin="5" >
-        <Button Text="Nuevo Ticket +"  CornerRadius="20" BackgroundColor="Gray" Command="{Binding nuevoTicketCommand}"/>
+    <StackLayout>
+        <Label BackgroundColor="#022f58" Padding="162,15"  TextColor="White" FontSize="25" HorizontalOptions="CenterAndExpand"  Text="Tickets "/>
+
+        <Button  Margin="5"  Text="Nuevo Ticket +"  CornerRadius="20" BackgroundColor="#0072af" TextColor="White" Command="{Binding nuevoTicketCommand}"/>
         <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
-        <ListView  x:Name="LVTickets" ItemsSource="{Binding tickets}"  HasUnevenRows="True" Margin="5" >
+        <ListView  x:Name="LVTickets" ItemsSource="{Binding tickets}"  HasUnevenRows="True" Margin="15" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -16,21 +18,22 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="*"/> 
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Label VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Column="0" Text="{Binding CodTicket}"></Label>
-                            <Label HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1"  Text="{Binding Cliente.NombreCliente}"></Label>
-                            <Label HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="1"  Text="{Binding Local.NombreLocal}"></Label>
-                            <Label HorizontalTextAlignment="Center" Grid.Row="2" Grid.Column="1"  Text="{Binding Categoria.NombreCategoria}"></Label>
-                            <Label VerticalTextAlignment="Center"  Grid.RowSpan="3" Grid.Column="2"  Text="{Binding PrioridadTicket}"></Label>
-                            <ImageButton WidthRequest="40"  BackgroundColor="Transparent"  Command="{Binding Path=BindingContext.verDetallesCommand, Source={x:Reference LVTickets}}" CommandParameter="{Binding .}" Grid.RowSpan="3" Grid.Column="3" HeightRequest="30" Source="btnVer.png"></ImageButton>
-                            <ImageButton WidthRequest="40"  BackgroundColor="Transparent"   Command="{Binding Path=BindingContext.editarTicketCommand, Source={x:Reference LVTickets}}" CommandParameter="{Binding .}"  Grid.RowSpan="3" Grid.Column="4" HeightRequest="30" Source="btnEditar.png"></ImageButton>
-                            <ImageButton WidthRequest="40"  BackgroundColor="Transparent"   Command="{Binding Path=BindingContext.eliminarTicketCommand, Source={x:Reference LVTickets}}" CommandParameter="{Binding .}"  Grid.RowSpan="3" Grid.Column="5" HeightRequest="30" Source="btnEliminar.png"></ImageButton>
+                            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Grid.Column="1"  Text="{Binding Cliente.NombreCliente}"></Label>
+                            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Grid.Column="2"  Text="{Binding Local.NombreLocal}"></Label>
+                            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Grid.Column="3"  Text="{Binding Categoria.NombreCategoria}"></Label>
+                            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Grid.RowSpan="3" Grid.Row="1" Grid.Column="3"  Text="{Binding PrioridadTicket}"></Label>
+                            <ImageButton class="icon-action" WidthRequest="40"  BackgroundColor="Transparent"  Command="{Binding Path=BindingContext.verDetallesCommand, Source={x:Reference LVTickets}}" CommandParameter="{Binding .}" Grid.RowSpan="3" Grid.Column="4" HeightRequest="30" Source="btnVer.png"></ImageButton>
+                            <ImageButton class="icon-action" WidthRequest="40"  BackgroundColor="Transparent"  Command="{Binding Path=BindingContext.editarTicketCommand, Source={x:Reference LVTickets}}" CommandParameter="{Binding .}"  Grid.RowSpan="3" Grid.Column="5" HeightRequest="30" Source="btnEditar.png"></ImageButton>
+                            <ImageButton class="icon-action" WidthRequest="40"  BackgroundColor="Transparent"  Command="{Binding Path=BindingContext.eliminarTicketCommand, Source={x:Reference LVTickets}}" CommandParameter="{Binding .}"  Grid.RowSpan="3" Grid.Column="6" HeightRequest="30" Source="btnEliminar.png"></ImageButton>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

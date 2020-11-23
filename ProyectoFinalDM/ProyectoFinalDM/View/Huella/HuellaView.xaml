@@ -4,8 +4,15 @@
              x:Class="ProyectoFinalDM.View.Huella.HuellaView">
     <ContentPage.Content>
         <StackLayout>
-            <Button Command="{Binding guardarUsuarioCommand}" Text="Activar acceso por huella dactilar" ></Button>
-            <Button Command="{Binding borrarUsuarioCommand}" Text="Desactivar acceso por huella dactilar" ></Button>
-        </StackLayout>
+            <Label BackgroundColor="#022f58"  Padding="73,25"  TextColor="White" FontSize="25" HorizontalOptions="CenterAndExpand"  Text="Biometricas y Seguridad"/>
+
+            <Image  Source="fingerprintGray.png" WidthRequest="100" HeightRequest="100" Margin="0,100,0,30" />
+            
+            <Button BackgroundColor="#0072af" Margin="10,20" CornerRadius="20" TextColor="White" Padding="35,15" Command="{Binding guardarUsuarioCommand}" Text="Activar acceso por huella dactilar" ></Button>
+
+
+            <Button BackgroundColor="#fe4d01" Margin="10,20" CornerRadius="20" TextColor="White" Padding="35,15" Command="{Binding borrarUsuarioCommand}" Text="Desactivar acceso por huella dactilar" ></Button>
+           
+            </StackLayout>
     </ContentPage.Content>
 </ContentPage>

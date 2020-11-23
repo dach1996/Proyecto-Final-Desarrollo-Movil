@@ -4,6 +4,6 @@
              x:Class="ProyectoFinalDM.App"
              >
     <Application.Resources>
-
+        <StyleSheet Source="/Assets/styles.css" />
     </Application.Resources>
 </Application>

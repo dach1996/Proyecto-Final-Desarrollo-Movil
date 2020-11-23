@@ -1,0 +1,65 @@
+﻿body
+{
+}
+navigationpage {
+    -xf-bar-background-color: #022f58;
+}
+^contentpage {
+    background-color: lightgray;
+    
+}
+.btn-primary {
+    background-color: #0072af;
+}
+.btn-secondary {
+    background-color: #022f58;
+}
+.btn-alter {
+    background-color: #fe4d01;
+}
+
+.icon-action {
+    height: 10;
+    padding: 5;
+}
+ .col-1{
+     width: 10;
+ }
+.col-2 {
+    width: 20;
+}
+.col-3 {
+    width: 30;
+}
+.col-4 {
+    width: 40;
+}
+
+.col-5 {
+    width: 50;
+}
+
+#listView {
+    background-color: lightgray;
+    font-family: Roboto,Verdana;
+}
+
+.mainPageTitle {
+    font-style: bold;
+    font-size: medium;
+}
+
+.mainPageSubtitle {
+    margin-top: 15;
+}
+
+.detailPageTitle {
+    font-style: bold;
+    font-size: medium;
+    text-align: center;
+}
+
+.detailPageSubtitle {
+    text-align: center;
+    font-style: italic;
+}

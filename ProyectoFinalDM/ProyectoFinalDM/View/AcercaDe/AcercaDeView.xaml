@@ -4,9 +4,23 @@
              x:Class="ProyectoFinalDM.View.AcercaDe.AcercaDeView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label BackgroundColor="#022f58"  Padding="138,25"  TextColor="White" FontSize="25" HorizontalOptions="CenterAndExpand"  Text="Información"/>
+
+            <Image  Source="Kliente.png" WidthRequest="100" HeightRequest="100" Margin="0,100,0,30" />
+            <Label HorizontalOptions="Center"
+                           FontSize="20"
+                           Text="Version 1.1.12"
+                           Margin="20,40 "></Label>
+            <Label HorizontalOptions="Center"
+                           FontSize="15"
+                           Text="Terms of Service"
+                           >
+            </Label>
+            <Label HorizontalOptions="Center"
+                           FontSize="15"
+                           Text="Privacy Policy">
+            </Label>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
