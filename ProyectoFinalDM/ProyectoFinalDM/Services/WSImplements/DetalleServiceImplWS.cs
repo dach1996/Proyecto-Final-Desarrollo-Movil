@@ -27,7 +27,7 @@ namespace ProyectoFinalDM.Services
             base.httpClient = new HttpClient();
             base.Url = base.Url + "detalles.php";
         }
-        public async void guardarDetalle(DetalleModel detalle)
+        public async Task guardarDetalle(DetalleModel detalle)
         {
             try
             {

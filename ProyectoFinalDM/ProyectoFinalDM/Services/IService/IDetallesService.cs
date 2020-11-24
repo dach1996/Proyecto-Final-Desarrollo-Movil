@@ -9,7 +9,7 @@ namespace ProyectoFinalDM.Services.IService
 {
     public interface IDetallesService
     {
-        void guardarDetalle(DetalleModel detalle);
+        Task guardarDetalle(DetalleModel detalle);
         void editarDetalle(DetalleModel detalle);
         void eliminarDetalle(int codDetalle);
         Task consultarJsonDetalles();

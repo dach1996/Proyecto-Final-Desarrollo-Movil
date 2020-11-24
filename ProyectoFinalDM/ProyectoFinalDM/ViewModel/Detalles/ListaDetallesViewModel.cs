@@ -52,9 +52,9 @@ namespace ProyectoFinalDM.ViewModel.Detalles
             });
             Connect();
 
-        
-        
-    }
+
+
+        }
         public async void Connect()
         {
             try
@@ -86,16 +86,16 @@ namespace ProyectoFinalDM.ViewModel.Detalles
         private async void cargarDatosTicket()
         {
             IsBusy = true;
-            await Task.Run(async () =>
+
+            var consulta = await detallesService.buscarDetallesPorIdTicket(ticket.CodTicket);
+            this.detalles.Clear();
+            foreach (var item in consulta)
             {
-                var consulta = await detallesService.buscarDetallesPorIdTicket(ticket.CodTicket);
-                this.detalles.Clear();
-                foreach (var item in consulta)
-                {
-                    detalles.Add(item);
-                }
-                IsBusy = false;
-            });
+                detalles.Add(item);
+            }
+            IsBusy = false;
+            MessagingCenter.Send<object, object>(this, "MessageReceived", this.detalles.LastOrDefault());
+
 
         }
 
@@ -104,11 +104,11 @@ namespace ProyectoFinalDM.ViewModel.Detalles
         {
             this.detalle.Usuario = StaticData.usuaroLogeado;
             this.detalle.Ticket = this.ticket;
-            detallesService.guardarDetalle(this.detalle);   
+            await detallesService.guardarDetalle(this.detalle);
             cargarDatosTicket();
             this.detalle.TextoDetalle = "";
-            MessagingCenter.Send<object, object>(this, "MessageReceived", this.detalles.LastOrDefault()) ;
             await hubConnection.InvokeAsync("notificarTicket", this.ticket.CodTicket, StaticData.usuaroLogeado);
+          
 
         }
 
