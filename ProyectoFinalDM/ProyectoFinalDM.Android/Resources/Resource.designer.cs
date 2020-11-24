@@ -1748,6 +1748,7 @@ namespace ProyectoFinalDM.Droid
 			global::Plugin.Fingerprint.Resource.Styleable.View_paddingEnd = global::ProyectoFinalDM.Droid.Resource.Styleable.View_paddingEnd;
 			global::Plugin.Fingerprint.Resource.Styleable.View_paddingStart = global::ProyectoFinalDM.Droid.Resource.Styleable.View_paddingStart;
 			global::Plugin.Fingerprint.Resource.Styleable.View_theme = global::ProyectoFinalDM.Droid.Resource.Styleable.View_theme;
+			global::Plugin.LocalNotifications.Resource.Drawable.plugin_lc_smallicon = global::ProyectoFinalDM.Droid.Resource.Drawable.plugin_lc_smallicon;
 			global::Plugin.Media.Resource.Attribute.alpha = global::ProyectoFinalDM.Droid.Resource.Attribute.alpha;
 			global::Plugin.Media.Resource.Attribute.coordinatorLayoutStyle = global::ProyectoFinalDM.Droid.Resource.Attribute.coordinatorLayoutStyle;
 			global::Plugin.Media.Resource.Attribute.font = global::ProyectoFinalDM.Droid.Resource.Attribute.font;
@@ -13888,19 +13889,22 @@ namespace ProyectoFinalDM.Droid
 			public const int notify_panel_notification_icon_bg = 2131230994;
 			
 			// aapt resource value: 0x7F080113
-			public const int setting = 2131230995;
+			public const int plugin_lc_smallicon = 2131230995;
 			
 			// aapt resource value: 0x7F080114
-			public const int test_custom_background = 2131230996;
+			public const int setting = 2131230996;
 			
 			// aapt resource value: 0x7F080115
-			public const int tooltip_frame_dark = 2131230997;
+			public const int test_custom_background = 2131230997;
 			
 			// aapt resource value: 0x7F080116
-			public const int tooltip_frame_light = 2131230998;
+			public const int tooltip_frame_dark = 2131230998;
 			
 			// aapt resource value: 0x7F080117
-			public const int UsuarioImage = 2131230999;
+			public const int tooltip_frame_light = 2131230999;
+			
+			// aapt resource value: 0x7F080118
+			public const int UsuarioImage = 2131231000;
 			
 			static Drawable()
 			{
