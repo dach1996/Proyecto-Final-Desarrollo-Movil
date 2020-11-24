@@ -1,4 +1,5 @@
-﻿using ProyectoFinalDM.INotifyProperty;
+﻿using Microsoft.AspNetCore.SignalR.Client;
+using ProyectoFinalDM.INotifyProperty;
 using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services;
 using ProyectoFinalDM.Services.IService;
@@ -26,7 +27,7 @@ namespace ProyectoFinalDM.ViewModel.Detalles
         }
 
         public ObservableCollection<DetalleModel> detalles { get; set; }
-
+        private HubConnection hubConnection;
         public TicketModel ticket { get; set; }
         public ICommand guardarDetalleCommnad { get; set; }
         public ICommand verImagenesDetalleCommand { get; set; }
@@ -39,8 +40,39 @@ namespace ProyectoFinalDM.ViewModel.Detalles
             cargarDatosTicket();
             this.guardarDetalleCommnad = new Command(() => guardarDetalle());
             this.verImagenesDetalleCommand = new Command(() => verImagenesDetalle());
+            hubConnection = new HubConnectionBuilder()
+                .WithUrl($"http://192.168.100.29:5000/ticketsHub").WithAutomaticReconnect()
+                .Build();
+            hubConnection.On<int, UsuarioModel>("recibirNotificaciónTicket", (codTicket, usuario) =>
+            {
+                Plugin.LocalNotifications.CrossLocalNotifications.Current.Show("HOLA", "Notificacion");
+            });
+            Connect();
+          
+        }
+        public async void Connect()
+        {
+            try
+            {
+                await hubConnection.StartAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
+        public async Task Disconnect()
+        {
+            try
+            {
+                await hubConnection.StopAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
         private async void verImagenesDetalle()
         {
             await App.navegacion.PushAsync(new ListaImagenesView(this.ticket));
@@ -63,11 +95,12 @@ namespace ProyectoFinalDM.ViewModel.Detalles
         }
 
 
-        private void guardarDetalle()
+        private async void guardarDetalle()
         {
             this.detalle.Usuario = StaticData.usuaroLogeado;
             this.detalle.Ticket = this.ticket;
             detallesService.guardarDetalle(this.detalle);
+            await hubConnection.InvokeAsync("notificarTicket", this.ticket.CodTicket, StaticData.usuaroLogeado);
             cargarDatosTicket();
             this.detalle.TextoDetalle = "";
         }
