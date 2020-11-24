@@ -8,6 +8,7 @@ using ProyectoFinalDM.View.Imagenes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -20,6 +21,7 @@ namespace ProyectoFinalDM.ViewModel.Detalles
         private IDetallesService detallesService = new DetalleServiceImplWS();
         private DetalleModel detalleModel;
 
+        public Action RefresRefreshScrollDown;
         public DetalleModel detalle
         {
             get { return detalleModel; }
@@ -41,15 +43,18 @@ namespace ProyectoFinalDM.ViewModel.Detalles
             this.guardarDetalleCommnad = new Command(() => guardarDetalle());
             this.verImagenesDetalleCommand = new Command(() => verImagenesDetalle());
             hubConnection = new HubConnectionBuilder()
-                .WithUrl($"http://192.168.100.29:5000/ticketsHub").WithAutomaticReconnect()
+                .WithUrl("http://alexmoyag-001-site2.ftempurl.com/ticketsHub").WithAutomaticReconnect()
                 .Build();
             hubConnection.On<int, UsuarioModel>("recibirNotificaciónTicket", (codTicket, usuario) =>
             {
-                Plugin.LocalNotifications.CrossLocalNotifications.Current.Show("HOLA", "Notificacion");
+                Plugin.LocalNotifications.CrossLocalNotifications.Current.Show("Nueva modificación", $"{usuario.NombreCompleto} ha modificado el ticket: {codTicket}");
+                this.cargarDatosTicket();
             });
             Connect();
-          
-        }
+
+        
+        
+    }
         public async void Connect()
         {
             try
@@ -99,10 +104,12 @@ namespace ProyectoFinalDM.ViewModel.Detalles
         {
             this.detalle.Usuario = StaticData.usuaroLogeado;
             this.detalle.Ticket = this.ticket;
-            detallesService.guardarDetalle(this.detalle);
-            await hubConnection.InvokeAsync("notificarTicket", this.ticket.CodTicket, StaticData.usuaroLogeado);
+            detallesService.guardarDetalle(this.detalle);   
             cargarDatosTicket();
             this.detalle.TextoDetalle = "";
+            MessagingCenter.Send<object, object>(this, "MessageReceived", this.detalles.LastOrDefault()) ;
+            await hubConnection.InvokeAsync("notificarTicket", this.ticket.CodTicket, StaticData.usuaroLogeado);
+
         }
 
 

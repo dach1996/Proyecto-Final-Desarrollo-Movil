@@ -7,6 +7,7 @@
                      Order="Primary"
                      Priority="0"
                      Command="{Binding verImagenesDetalleCommand}"/>
+        
     </ContentPage.ToolbarItems>
     <NavigationPage.TitleView>
         <StackLayout
@@ -27,7 +28,7 @@
 
     <StackLayout Padding="15,10" BackgroundColor="lightgray">
         <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
-        <ListView  x:Name="LVTickets" ItemsSource="{Binding detalles}" SeparatorVisibility="None"    HasUnevenRows="True" Margin="5" >
+        <ListView  x:Name="LVTickets" Refreshing="LVTickets_Refreshing" ItemsSource="{Binding detalles}" SeparatorVisibility="None" ItemAppearing="LVTickets_ItemAppearing"   HasUnevenRows="True" Margin="5" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

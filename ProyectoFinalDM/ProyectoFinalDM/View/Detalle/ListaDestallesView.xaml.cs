@@ -18,6 +18,21 @@ namespace ProyectoFinalDM.View.Detalle
         {
             InitializeComponent();
             BindingContext = new ListaDetallesViewModel(ticket);
+            //Nos suscribimos al evento
+            MessagingCenter.Subscribe<object, object>(this, "MessageReceived", (sender, arg) => {
+                LVTickets.ScrollTo(arg, ScrollToPosition.End, true);
+            });
+        }
+
+        private void LVTickets_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+          
+      
+        }
+
+        private void LVTickets_Refreshing(object sender, EventArgs e)
+        {
+ 
         }
     }
 }
