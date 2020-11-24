@@ -83,6 +83,7 @@ namespace ProyectoFinalDM.View
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 DisplayAlert("Error", "Seleccione un local", "OK");
             }
 
