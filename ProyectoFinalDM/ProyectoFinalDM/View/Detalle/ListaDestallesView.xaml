@@ -35,7 +35,7 @@
                         <StackLayout Margin="5">
                         <Frame BorderColor="Gray" CornerRadius="5" Padding="8">
                             <StackLayout>
-                                    <Label FontSize="12" FontAttributes="None" >
+                                    <Label TextColor="#022f58" FontSize="12" FontAttributes="None" >
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
@@ -56,8 +56,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackLayout Padding="10" Orientation="Horizontal" BackgroundColor="#F0EEED">
-            <Entry Text="{Binding detalle.TextoDetalle}" Placeholder="Ingresa Detalles" HorizontalOptions="FillAndExpand" ></Entry>
+        <StackLayout Padding="10" Orientation="Horizontal" BackgroundColor="#022f58">
+            <Entry TextColor="White"  Text="{Binding detalle.TextoDetalle}" Placeholder="Ingresa Detalles" HorizontalOptions="FillAndExpand" ></Entry>
             <Button class="btn-alter" TextColor="White" Text="Guardar" Command="{Binding guardarDetalleCommnad}" HorizontalOptions="End"></Button>
         </StackLayout>
     </StackLayout>

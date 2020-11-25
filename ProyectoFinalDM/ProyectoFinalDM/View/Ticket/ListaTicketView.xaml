@@ -26,11 +26,11 @@
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
-                            <Label VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Column="0" Text="{Binding CodTicket}"></Label>
-                            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Grid.Column="1"  Text="{Binding Cliente.NombreCliente}"></Label>
-                            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Grid.Column="2"  Text="{Binding Local.NombreLocal}"></Label>
-                            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Grid.Column="3"  Text="{Binding Categoria.NombreCategoria}"></Label>
-                            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Grid.RowSpan="3" Grid.Row="1" Grid.Column="3"  Text="{Binding PrioridadTicket}"></Label>
+                            <Label TextColor="DarkBlue" VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Column="0" Text="{Binding CodTicket}"></Label>
+                            <Label TextColor="DarkBlue" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Grid.Column="1"  Text="{Binding Cliente.NombreCliente}"></Label>
+                            <Label TextColor="DarkBlue" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Grid.Column="2"  Text="{Binding Local.NombreLocal}"></Label>
+                            <Label TextColor="DarkBlue" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.RowSpan="3" Grid.Row="0" Grid.Column="3"  Text="{Binding Categoria.NombreCategoria}"></Label>
+                            <Label TextColor="DarkBlue" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Grid.RowSpan="3" Grid.Row="1" Grid.Column="3"  Text="{Binding PrioridadTicket}"></Label>
                             <ImageButton class="icon-action" WidthRequest="40"  BackgroundColor="Transparent"  Command="{Binding Path=BindingContext.verDetallesCommand, Source={x:Reference LVTickets}}" CommandParameter="{Binding .}" Grid.RowSpan="3" Grid.Column="4" HeightRequest="30" Source="btnVer.png"></ImageButton>
                             <ImageButton class="icon-action" WidthRequest="40"  BackgroundColor="Transparent"  Command="{Binding Path=BindingContext.editarTicketCommand, Source={x:Reference LVTickets}}" CommandParameter="{Binding .}"  Grid.RowSpan="3" Grid.Column="5" HeightRequest="30" Source="btnEditar.png"></ImageButton>
                             <ImageButton class="icon-action" WidthRequest="40"  BackgroundColor="Transparent"  Command="{Binding Path=BindingContext.eliminarTicketCommand, Source={x:Reference LVTickets}}" CommandParameter="{Binding .}"  Grid.RowSpan="3" Grid.Column="6" HeightRequest="30" Source="btnEliminar.png"></ImageButton>

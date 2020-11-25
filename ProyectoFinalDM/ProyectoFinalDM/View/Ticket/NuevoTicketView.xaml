@@ -21,44 +21,44 @@
     <ScrollView>
         <StackLayout Padding="15,10">
             <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
-            <Label Text="{Binding ticket.CodTicket}" />
+            <Label  TextColor="Blue" Text="{Binding ticket.CodTicket}" />
 
-            <Label Text="CLIENTE" />
-            <Picker  ItemsSource="{Binding clientes}"
+            <Label TextColor="Black" Text="CLIENTE" />
+            <Picker TextColor="DarkBlue"  ItemsSource="{Binding clientes}"
                      ItemDisplayBinding="{Binding NombreCliente}"
                      SelectedItem="{Binding ticket.Cliente}"/>
 
-            <Label Text="LOCAL" />
-            <Picker ItemsSource="{Binding locales}"
+            <Label TextColor="Black" Text="LOCAL" />
+            <Picker TextColor="DarkBlue" ItemsSource="{Binding locales}"
                     ItemDisplayBinding="{Binding NombreLocal}"  
                     SelectedItem="{Binding ticket.Local}"/>
 
-            <Label Text="CATEGORIA" />
-            <Picker  ItemsSource="{Binding categorias}" 
+            <Label TextColor="Black" Text="CATEGORIA" />
+            <Picker TextColor="DarkBlue"  ItemsSource="{Binding categorias}" 
                      ItemDisplayBinding="{Binding NombreCategoria}"
                      SelectedItem="{Binding ticket.Categoria}"/>
 
 
-            <Label Text="TITULO" />
-            <Entry Text="{Binding ticket.TituloTicket}" />
+            <Label TextColor="Black" Text="TITULO" />
+            <Entry TextColor="DarkBlue" Text="{Binding ticket.TituloTicket}" />
 
-            <Label Text="PRIORIDAD" />
-            <Picker  ItemsSource="{Binding prioridades}"
+            <Label TextColor="Black" Text="PRIORIDAD" />
+            <Picker TextColor="DarkBlue"  ItemsSource="{Binding prioridades}"
                      ItemDisplayBinding="{Binding .}"
                      SelectedItem="{Binding ticket.PrioridadTicket}"/>
 
 
-            <Label Text="FECHA TICKET" />
-            <Label Text="{Binding ticket.FechaTicket }" />
+            <Label TextColor="Black" Text="FECHA TICKET" />
+            <Label TextColor="DarkBlue" Text="{Binding ticket.FechaTicket }" />
 
-            <Label Text="FECHA FIN TICKET" />
-            <Label  Text="{Binding ticket.FechaFinTicket }" />
+            <Label TextColor="Black" Text="FECHA FIN TICKET" />
+            <Label  TextColor="DarkBlue" Text="{Binding ticket.FechaFinTicket }" />
 
-            <Label Text="ESTADO" />
-            <Entry  Text="{Binding ticket.Estado }" IsReadOnly="True" Placeholder="Ingresado" />
+            <Label TextColor="Black" Text="ESTADO" />
+            <Entry  TextColor="DarkBlue" Text="{Binding ticket.Estado }" IsReadOnly="True" Placeholder="Ingresado" />
 
-            <Label Text="USUARIO" />
-            <Entry  IsReadOnly="True"  Text="{Binding ticket.Usuario.NombreUsuario }" />
+            <Label TextColor="Black" Text="USUARIO" />
+            <Entry TextColor="DarkBlue"  IsReadOnly="True"  Text="{Binding ticket.Usuario.NombreUsuario }" />
 
             <StackLayout Orientation="Vertical">
                 <Button class="btn-alter" TextColor="White" Text="Guardar" Command="{Binding guardarTicketCommand }" />
