@@ -4,6 +4,7 @@ using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services;
 using ProyectoFinalDM.Services.IService;
 using ProyectoFinalDM.Services.Security;
+using ProyectoFinalDM.Services.SignalR;
 using ProyectoFinalDM.Services.WSImplements;
 using ProyectoFinalDM.SQLite;
 using ProyectoFinalDM.View;
@@ -26,6 +27,7 @@ namespace ProyectoFinalDM.ViewModel.Login
         private ICategoriasService categoriaService = new CategoriaServiceImplWS();
         private IEstadosService estadosService = new EstadoServiceImplDatos();
         private IPrioridadService prioridadService = new PrioridadServiceImplDatos();
+        
         public static UsuarioModel usuarioLogiado;
         private ConnectionSQLite conexion;
         public string Username { get; set; }
@@ -42,6 +44,7 @@ namespace ProyectoFinalDM.ViewModel.Login
         public ICommand verificarHuellaDigitital { get; set; }
         public LoginViewModel()
         {
+            
             conexion = new ConnectionSQLite();
             verificarIngresoCommand = new Command(() => verificarIngreso());
             verificarHuellaDigitital = new Command(() => OnAuthenticate());
@@ -85,6 +88,7 @@ namespace ProyectoFinalDM.ViewModel.Login
                     usuarioLogiado = usuarioService.buscarUsuario(user,pass);
                     if (usuarioLogiado != null)
                     {
+                       
                         estadoAuth = "Cargando Información";
                         await Task.WhenAll(
                             estadosService.consultarEstados(),
@@ -119,6 +123,8 @@ namespace ProyectoFinalDM.ViewModel.Login
 
         private async void verificarIngreso()
         {
+      
+
             StaticData.cleanData();
             IsBusy = true;
             estadoAuth = "Autentificando";

@@ -2,6 +2,7 @@
 using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services;
 using ProyectoFinalDM.Services.IService;
+using ProyectoFinalDM.Services.SignalR;
 using ProyectoFinalDM.Services.WSImplements;
 using ProyectoFinalDM.View;
 using ProyectoFinalDM.View.Detalle;
@@ -26,6 +27,7 @@ namespace ProyectoFinalDM.ViewModel.Tickets
         public ICommand nuevoTicketCommand { get; set; }
         public ICommand editarTicketCommand { get; set; }
         public ICommand eliminarTicketCommand { get; set; }
+        private HubTicket hubTicket;
         public ListaTicketsViewModel()
         {
             tickets = new ObservableCollection<TicketModel>();
@@ -33,6 +35,8 @@ namespace ProyectoFinalDM.ViewModel.Tickets
             nuevoTicketCommand = new Command(nuevoTicket);
             editarTicketCommand = new Command(editarTicket);
             eliminarTicketCommand = new Command(eliminarTicket);
+            hubTicket = new HubTicket();
+            hubTicket.suscribirceTicket();
             this.cargarTickets();
         }
 

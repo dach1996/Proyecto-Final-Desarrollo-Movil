@@ -3,6 +3,7 @@ using ProyectoFinalDM.INotifyProperty;
 using ProyectoFinalDM.Models;
 using ProyectoFinalDM.Services;
 using ProyectoFinalDM.Services.IService;
+using ProyectoFinalDM.Services.SignalR;
 using ProyectoFinalDM.Services.WSImplements;
 using ProyectoFinalDM.View.Imagenes;
 using System;
@@ -20,6 +21,7 @@ namespace ProyectoFinalDM.ViewModel.Detalles
     {
         private IDetallesService detallesService = new DetalleServiceImplWS();
         private DetalleModel detalleModel;
+        private HubTicket  hubTicket = new HubTicket();
 
         public Action RefresRefreshScrollDown;
         public DetalleModel detalle
@@ -29,7 +31,7 @@ namespace ProyectoFinalDM.ViewModel.Detalles
         }
 
         public ObservableCollection<DetalleModel> detalles { get; set; }
-        private HubConnection hubConnection;
+       
         public TicketModel ticket { get; set; }
         public ICommand guardarDetalleCommnad { get; set; }
         public ICommand verImagenesDetalleCommand { get; set; }
@@ -42,42 +44,14 @@ namespace ProyectoFinalDM.ViewModel.Detalles
             cargarDatosTicket();
             this.guardarDetalleCommnad = new Command(() => guardarDetalle());
             this.verImagenesDetalleCommand = new Command(() => verImagenesDetalle());
-            hubConnection = new HubConnectionBuilder()
-                .WithUrl("http://alexmoyag-001-site2.ftempurl.com/ticketsHub").WithAutomaticReconnect()
-                .Build();
-            hubConnection.On<int, UsuarioModel>("recibirNotificaciónTicket", (codTicket, usuario) =>
-            {
-                Plugin.LocalNotifications.CrossLocalNotifications.Current.Show("Nueva modificación", $"{usuario.NombreCompleto} ha modificado el ticket: {codTicket}");
+            hubTicket.suscribirceCargarDetalles(() => {
                 this.cargarDatosTicket();
             });
-            Connect();
-
-
-
-        }
-        public async void Connect()
-        {
-            try
-            {
-                await hubConnection.StartAsync();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
         }
 
-        public async Task Disconnect()
-        {
-            try
-            {
-                await hubConnection.StopAsync();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-        }
+     
+
+      
         private async void verImagenesDetalle()
         {
             await App.navegacion.PushAsync(new ListaImagenesView(this.ticket));
@@ -107,11 +81,7 @@ namespace ProyectoFinalDM.ViewModel.Detalles
             await detallesService.guardarDetalle(this.detalle);
             cargarDatosTicket();
             this.detalle.TextoDetalle = "";
-            await hubConnection.InvokeAsync("notificarTicket", this.ticket.CodTicket, StaticData.usuaroLogeado);
-          
-
+            this.hubTicket.enviarMensajeHubTicket(this.ticket.CodTicket, StaticData.usuaroLogeado);
         }
-
-
     }
 }
