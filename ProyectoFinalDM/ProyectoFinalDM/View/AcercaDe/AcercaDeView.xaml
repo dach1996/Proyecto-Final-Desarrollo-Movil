@@ -4,8 +4,10 @@
              x:Class="ProyectoFinalDM.View.AcercaDe.AcercaDeView">
     <ContentPage.Content>
         <StackLayout>
-            <Label BackgroundColor="#022f58"  Padding="138,25"  TextColor="White" FontSize="25" HorizontalOptions="CenterAndExpand"  Text="Información"/>
-
+            <Frame BackgroundColor="#022f58" Padding="20,30">
+                <Label BackgroundColor="#022f58"  TextColor="White" FontSize="25" HorizontalOptions="CenterAndExpand"  Text="Información"/>
+            </Frame>
+            
             <Image  Source="Kliente.png" WidthRequest="100" HeightRequest="100" Margin="0,100,0,30" />
             <Label HorizontalOptions="Center"
                            FontSize="20"

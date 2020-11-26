@@ -10,7 +10,9 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="0">
-        <Label BackgroundColor="#022f58" Padding="122,15"  TextColor="White" FontSize="25" HorizontalOptions="CenterAndExpand"  Text="Histórico imágenes "/>
+        <Frame BackgroundColor="#022f58" Padding="20,30">
+            <Label BackgroundColor="#022f58" TextColor="White" FontSize="25" HorizontalOptions="CenterAndExpand"  Text="Histórico imágenes "/>
+        </Frame>
         <ListView  x:Name="LVTickets"
                    ItemsSource="{Binding imagenes}"
                    HasUnevenRows="True"

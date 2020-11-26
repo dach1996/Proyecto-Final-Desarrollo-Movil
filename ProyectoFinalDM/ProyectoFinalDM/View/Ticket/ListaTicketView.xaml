@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoFinalDM.View.TicketView"   >
     <StackLayout>
-        <Label BackgroundColor="#022f58" Padding="162,15"  TextColor="White" FontSize="25" HorizontalOptions="CenterAndExpand"  Text="Tickets "/>
-
+        <Frame BackgroundColor="#022f58" Padding="20,30">
+          <Label BackgroundColor="#022f58"  TextColor="White" FontSize="25" HorizontalOptions="CenterAndExpand"  Text="Tickets "/>
+        </Frame>
         <Button  Margin="5"  Text="Nuevo Ticket +"  CornerRadius="20" BackgroundColor="#0072af" TextColor="White" Command="{Binding nuevoTicketCommand}"/>
         <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
         <ListView  x:Name="LVTickets" ItemsSource="{Binding tickets}"  HasUnevenRows="True" Margin="15" >

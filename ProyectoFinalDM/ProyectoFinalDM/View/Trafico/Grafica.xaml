@@ -5,8 +5,9 @@
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms">
     <ScrollView>
         <StackLayout>
-            <Label BackgroundColor="#022f58"  Padding="42,25"  TextColor="White" FontSize="25" HorizontalOptions="CenterAndExpand"  Text="Diagrama Personas por horas"/>
-
+            <Frame BackgroundColor="#022f58" Padding="20,30">
+                <Label BackgroundColor="#022f58" TextColor="White" FontSize="25" HorizontalOptions="CenterAndExpand"  Text="Diagrama Personas por horas"/>
+            </Frame>
             <Picker  x:Name="picker"
             Title="Seleccione un local y presione visualizar"
             TitleColor="Red"
